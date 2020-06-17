@@ -23,7 +23,7 @@ Route::group(['prefix' => 'sementara'], function(){
     Route::get('/',function(){
         return view('admin.penduduk_sementara.index');
     });
-    Route::get('/', function(){
+    Route::get('/detail', function(){
         return view('admin.penduduk_sementara.detail');
     });
 });

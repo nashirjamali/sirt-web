@@ -100,7 +100,7 @@
                                     <td>Laki-laki</td>
                                     <td>Jalan Surabaya</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="detail.php" role="button">
+                                        <a class="btn btn-sm btn-primary" href="/rt/sementara/detail" role="button">
                                             Detail
                                         </a>
                                         <a class="btn btn-sm btn-warning" href="edit.php" role="button">

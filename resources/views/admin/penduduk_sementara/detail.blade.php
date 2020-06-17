@@ -88,10 +88,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group">
                                 <h3>Keterangan</h3>
-                                <textarea>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam eveniet a iste sed numquam quibusdam culpa? Explicabo quae nam labore expedita, tempora rerum neque temporibus, architecto nemo repellat itaque possimus.</textarea>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, quam sapiente. Magnam aspernatur hic id numquam odit dicta explicabo eaque, voluptates illum placeat repudiandae impedit est modi quisquam totam in.<p>
                             </div>
                         </div>
 
