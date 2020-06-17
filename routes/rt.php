@@ -19,3 +19,17 @@ Route::group(['prefix' => 'data-warga'], function () {
     });
 });
 
+Route::group(['prefix' => 'mutasi-warga'], function () {
+    Route::get('/', function () {
+        return view('admin.mutasi.index');
+    });
+    Route::get('/create', function () {
+        return view('admin.mutasi.create');
+    });
+    Route::get('/edit', function () {
+        return view('admin.mutasi.edit');
+    });
+    Route::get('/detail', function () {
+        return view('admin.mutasi.detail');
+    });
+});
