@@ -4,12 +4,12 @@
     <div class="header-body">
         <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Edit Data Penduduk Sementara</h6>
+                <h6 class="h2 text-white d-inline-block mb-0"> Tambah Penduduk Sementara</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                         <li class="breadcrumb-item"><a href="/default"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="/rt/semetara">Data Penduduk Sementara</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Data Penduduk Sementara</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Penduduk Sementara</li>
                     </ol>
                 </nav>
             </div>
@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="my-4    btn btn-primary">Simpan Data</button>
+                            <button type="submit" class="my-4    btn btn-primary">Tambah Data</button>
                         </form>
                     </div>
                 </div>

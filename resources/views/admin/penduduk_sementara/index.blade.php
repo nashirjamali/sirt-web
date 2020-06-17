@@ -103,7 +103,7 @@
                                         <a class="btn btn-sm btn-primary" href="/rt/sementara/detail" role="button">
                                             Detail
                                         </a>
-                                        <a class="btn btn-sm btn-warning" href="edit.php" role="button">
+                                        <a class="btn btn-sm btn-warning" href="/rt/sementara/edit" role="button">
                                             Edit
                                         </a>
                                         <a class="btn btn-sm btn-danger" href="#" role="button">
