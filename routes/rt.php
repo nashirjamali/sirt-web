@@ -19,3 +19,11 @@ Route::group(['prefix' => 'data-warga'], function () {
     });
 });
 
+Route::group(['prefix' => 'sementara'], function(){
+    Route::get('/',function(){
+        return view('admin.penduduk_sementara.index');
+    });
+    Route::get('/', function(){
+        return view('admin.penduduk_sementara.detail');
+    });
+});
