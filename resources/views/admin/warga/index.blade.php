@@ -57,58 +57,59 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid mt--6">
-        <div class="row">
-            <!-- Warga datatable -->
-            <div class="col">
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header border-0">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-6 col-sm-12 mb-3">
-                                <h3 class="mb-0">List Warga</h3>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <a class="btn btn-success" href="/rt/data-warga/create">
-                                    <i class="fas fa-plus"></i> Tambah Data
-                                </a>
-                                <a class="btn btn-info" href="/rt/data-warga/export">
-                                    <i class="fas fa-file-excel"></i> Export Data
-                                </a>
-                            </div>
+    <div class="row">
+        <!-- Warga datatable -->
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6 col-sm-12 mb-3">
+                            <h3 class="mb-0">List Warga</h3>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a class="btn btn-success" href="/rt/data-warga/create">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </a>
+                            <a class="btn btn-info" href="/rt/data-warga/export">
+                                <i class="fas fa-file-excel"></i> Export Data
+                            </a>
                         </div>
                     </div>
-                    <!-- Warga datatable -->
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
+                </div>
+                <!-- Warga datatable -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="no">No</th>
+                            <th scope="col" class="sort" data-sort="nik">NIK</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jenis Kelamin</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        @for($i = 0; $i < 10; $i++)
                             <tr>
-                                <th scope="col" class="sort" data-sort="no">No</th>
-                                <th scope="col" class="sort" data-sort="nik">NIK</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col"></th>
+                                <th class="no" scope="row">{{ $i+1 }}</th>
+                                <td class="nik">1283478327489</td>
+                                <td>Nashir Jamali</td>
+                                <td>Laki-laki</td>
+                                <td>Jalan Surabaya</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" href="/rt/data-warga/detail" role="button">
+                                        Detail
+                                    </a>
+                                    <a class="btn btn-sm btn-warning" href="/rt/data-warga/edit" role="button">
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody class="list">
-                            @for($i = 0; $i < 10; $i++)
-                                <tr>
-                                    <th class="no" scope="row">{{ $i+1 }}</th>
-                                    <td class="nik">1283478327489</td>
-                                    <td>Nashir Jamali</td>
-                                    <td>Laki-laki</td>
-                                    <td>Jalan Surabaya</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="#" role="button">
-                                            Detail
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endfor
-                            </tbody>
-                        </table>
-                    </div>
+                        @endfor
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -18,5 +18,5 @@ Route::get('/default', function () {
 });
 
 Route::group(['prefix' => 'rt'], function () {
-    require ('rt.php');
+    require('rt.php');
 });

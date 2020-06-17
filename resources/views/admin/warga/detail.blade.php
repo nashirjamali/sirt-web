@@ -13,39 +13,94 @@
                 </nav>
             </div>
         </div>
-        <!-- Card stats -->
-        <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-stats">
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Warga</h5>
-                                <span class="h2 font-weight-bold mb-0">100.000</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
-                        </div>
+    </div>
+@endsection
+
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- Card body -->
+                <div class="card-body">
+                    <h1><strong>Nashir Jamali</strong></h1>
+                    <div class="my-3">
+                        <strong>NIK&nbsp;</strong>1245678987656789
+                    </div>
+                    <div class="my-3">
+                        <strong>No. KK&nbsp;</strong>1245678987656789
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-stats">
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah KK</h5>
-                                <span class="h2 font-weight-bold mb-0">2,356</span>
+        </div>
+        <div class="col-xl-6">
+           <div class="card">
+               <!-- Card header -->
+               <div class="card-header">
+                   <h3 class="mb-0">Identitas Diri</h3>
+               </div>
+               <!-- Card body -->
+               <div class="card-body">
+                   <div class="row">
+                       <div class="w-100"></div>
+                       <div class="col-lg-6 col-md-6 col-sm-12">
+                           <div class="form-group">
+                               <label class="form-control-label">Jenis Kelamin</label>
+                               <h3>Laki-laki</h3>
+                           </div>
+                       </div>
+                       <div class="w-100"></div>
+                       <div class="col-lg-6 col-md-6 col-sm-12">
+                           <div class="form-group">
+                               <label class="form-control-label">Agama</label>
+                               <h3>Islam</h3>
+                           </div>
+                       </div>
+                       <div class="w-100"></div>
+                       <div class="col-lg-6 col-md-6 col-sm-12">
+                           <div class="form-group">
+                               <label class="form-control-label">Status Kawin</label>
+                               <h3>Belum</h3>
+                           </div>
+                       </div>
+                       <div class="w-100"></div>
+                       <div class="col-lg-6 col-md-6 col-sm-12">
+                           <div class="form-group">
+                               <label class="form-control-label">Pekerjaan</label>
+                               <h3>Software Developer</h3>
+                           </div>
+                       </div>
+                       <div class="w-100"></div>
+                       <div class="col-lg-6 col-md-6 col-sm-12">
+                           <div class="form-group">
+                               <label class="form-control-label">Tempat Tanggal Lahir</label>
+                               <h3>Kediri, 31 Februari 2020</h3>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header">
+                    <h3 class="mb-0">Alamat</h3>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="w-100"></div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Alamat KTP</label>
+                                <h3>Jalan Kanginan 2 No 7, Ketabang, Genteng, Surabaya, Jawa Timur</h3>
                             </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                    <i class="fas fa-users"></i>
-                                </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Alamat Tinggal</label>
+                                <h3>Jalan Kanginan 2 No 7, Ketabang, Genteng, Surabaya, Jawa Timur</h3>
                             </div>
                         </div>
                     </div>
@@ -53,8 +108,5 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('content')
 @endsection
 
