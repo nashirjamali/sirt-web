@@ -17,6 +17,9 @@ Route::group(['prefix' => 'data-warga'], function () {
     Route::get('/edit', function () {
         return view('admin.warga.edit');
     });
+    Route::get('/detail', function () {
+        return view('admin.warga.detail');
+    });
 });
 
 
@@ -29,9 +32,9 @@ Route::group(['prefix' => 'sementara'], function() {
     });
     Route::get('/edit', function(){
         return view('admin.penduduk_sementara.edit');
-    )};
+    });
     Route::get('/create', function(){
         return view('admin.penduduk_sementara.create');
-    )};     
+    });     
 
 });

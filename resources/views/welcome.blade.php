@@ -127,7 +127,7 @@
                 <div class="row justify-content-center mb-5">
                     <div class="col-12 col-sm-8 col-md-7 col-lg-6 text-center">
                         <img src="./assets/img/brand/light.svg" class="mb-4" height="65" alt="Logo Impact">
-                        <h1 class="display-4 text-muted mb-5 font-weight-normal">Membantu proses administrasi dan informasi warga</h1>
+                        <h1 class="display-4 text-muted mb-5 font-weight-normal">Membantu administrasi dan informasi warga</h1>
                         <div class="d-flex align-items-center justify-content-center mb-5">
                             <a href="/" target="_blank" class="btn btn-secondary mb-3 mt-2 mr-3 animate-up-2">Coba Sekarang</a>
                         </div>
