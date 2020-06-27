@@ -8,7 +8,10 @@ class Warga extends Model
 {
     protected $table = 'warga';
     protected $fillable = [
-        'judul',
+        'id_user',
+        'id_mutasi_warga',
+        'id_bagian',
+        'nama',
         'nik',
         'tgl_lahir',
         'jkel',

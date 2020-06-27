@@ -8,6 +8,7 @@ class MutasiWarga extends Model
 {
     protected $table = 'mutasi_warga';
     protected $fillable = [
+        'id_warga',
         'tgl_mutasi',
         'status'
 
