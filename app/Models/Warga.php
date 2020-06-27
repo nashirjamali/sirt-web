@@ -8,8 +8,6 @@ class Warga extends Model
 {
     protected $table = 'warga';
     protected $fillable = [
-        'id_user',
-        'id_mutasi_warga',
         'id_bagian',
         'nama',
         'nik',
@@ -26,4 +24,39 @@ class Warga extends Model
         'alamat_ktp'
         
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
+
+    public function pemimpinRapat()
+    {
+        return $this->hasOne(Rapat::class);
+    }
+
+    public function presensiRapat()
+    {
+        return $this->hasMany(PresensiRapat::class);
+    }
+
+    public function pengusulPemilu()
+    {
+        return $this->hasMany(Pengusul::class);
+    }
+
+    public function aspirasi()
+    {
+        return $this->hasMany(AspirasiWarga::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function mutasi()
+    {
+        return $this->hasMany(MutasiWarga::class);
+    }
 }

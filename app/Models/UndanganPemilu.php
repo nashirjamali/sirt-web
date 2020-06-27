@@ -8,11 +8,13 @@ class UndanganPemilu extends Model
 {
     protected $table = 'undangan_pemilu';
     protected $fillable = [
+        'id_pemilu',
         'id_warga',
-        'id_bagian',
-        'periode',
-        'tgl_pemilu',
-        'tempat_pemilu'
         
     ];
+
+    public function pemilu()
+    {
+        return $this->belongsTo(Pemilu::class);
+    }
 }

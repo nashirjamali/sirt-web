@@ -13,4 +13,14 @@ class AspirasiWarga extends Model
         'isi_aspirasi'
 
     ];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }
