@@ -19,6 +19,8 @@ class CreatePendudukSementaraTable extends Migration
             $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
             $table->bigInteger('id_pemilik_rumah')->unsigned();
             $table->foreign('id_pemilik_rumah')->references('id')->on('warga')->cascadeOnDelete();
+            $table->string('status');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

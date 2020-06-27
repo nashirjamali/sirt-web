@@ -21,7 +21,7 @@ class CreateInventarisPerpustakaanTable extends Migration
             $table->string('judul');
             $table->string('pengarang');
             $table->string('penerbit');
-            $table->date('tahun_terbit');
+            $table->year('tahun_terbit');
             $table->date('tgl_dimiliki');
             $table->string('kepemilikan_dokumen');
             $table->string('asal');
