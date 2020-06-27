@@ -8,16 +8,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('layouts.default');
 });
+
 Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/default', function () {
-    return view('admin.default.index');
+    return view('layouts.login');
 });
 
-Route::group(['prefix' => 'rt'], function () {
-    require('rt.php');
+Route::prefix('rw')->name('rw')->group(function (){
+    require 'rw.php';
 });
-

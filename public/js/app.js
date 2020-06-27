@@ -12887,7 +12887,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 ( function() {
 
-	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// Executing both pixelPosition & boxSizingReliable tests require only one default
 	// so they're executed at the same time to save the second computation.
 	function computeStyleTests() {
 
@@ -47352,7 +47352,7 @@ var normalizeKey = {
 };
 /**
  * Translation from legacy `keyCode` to HTML5 `key`
- * Only special keys supported, all others depend on keyboard layout or browser
+ * Only special keys supported, all others depend on keyboard default or browser
  * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
  */
 
@@ -47421,7 +47421,7 @@ function getEventKey(nativeEvent) {
   }
 
   if (nativeEvent.type === 'keydown' || nativeEvent.type === 'keyup') {
-    // While user keyboard layout determines the actual meaning of each
+    // While user keyboard default determines the actual meaning of each
     // `keyCode` value, almost all function keys have a universal value.
     return translateToKey[nativeEvent.keyCode] || 'Unidentified';
   }
@@ -47459,8 +47459,8 @@ var SyntheticKeyboardEvent = SyntheticUIEvent.extend({
   keyCode: function (event) {
     // `keyCode` is the result of a KeyDown/Up event and represents the value of
     // physical keyboard key.
-    // The actual meaning of the value depends on the users' keyboard layout
-    // which cannot be detected. Assuming that it is a US keyboard layout
+    // The actual meaning of the value depends on the users' keyboard default
+    // which cannot be detected. Assuming that it is a US keyboard default
     // provides a surprisingly accurate mapping for US and European users.
     // Due to this, it is left to the user to implement at this time.
     if (event.type === 'keydown' || event.type === 'keyup') {
@@ -57285,7 +57285,7 @@ function commitLifeCycles(finishedRoot, current, finishedWork, committedExpirati
     case SimpleMemoComponent:
     case Block:
       {
-        // At this point layout effects have already been destroyed (during mutation phase).
+        // At this point default effects have already been destroyed (during mutation phase).
         // This is done to prevent sibling component effects from interfering with each other,
         // e.g. a destroy function in one component should never override a ref set
         // by a create function in another component during the same commit.
@@ -58687,7 +58687,7 @@ function scheduleUpdateOnFiber(fiber, expirationTime) {
     (executionContext & (RenderContext | CommitContext)) === NoContext) {
       // Register pending interactions on the root to avoid losing traced interaction data.
       schedulePendingInteractions(root, expirationTime); // This is a legacy edge case. The initial mount of a ReactDOM.render-ed
-      // root inside of batchedUpdates should be synchronous, but layout updates
+      // root inside of batchedUpdates should be synchronous, but default updates
       // should be deferred until the end of the batch.
 
       performSyncWorkOnRoot(root);
@@ -59970,7 +59970,7 @@ function commitRootImpl(root, renderPriorityLevel) {
 
     ReactCurrentOwner$2.current = null; // The commit phase is broken into several sub-phases. We do a separate pass
     // of the effect list for each phase: all mutation effects come before all
-    // layout effects, and so on.
+    // default effects, and so on.
     // The first phase a "before mutation" phase. We use this phase to read the
     // state of the host tree right before we mutate it. This is where
     // getSnapshotBeforeUpdate is called.
@@ -60031,12 +60031,12 @@ function commitRootImpl(root, renderPriorityLevel) {
     stopCommitHostEffectsTimer();
     resetAfterCommit(root.containerInfo); // The work-in-progress tree is now the current tree. This must come after
     // the mutation phase, so that the previous tree is still current during
-    // componentWillUnmount, but before the layout phase, so that the finished
+    // componentWillUnmount, but before the default phase, so that the finished
     // work is current during componentDidMount/Update.
 
-    root.current = finishedWork; // The next phase is the layout phase, where we call effects that read
+    root.current = finishedWork; // The next phase is the default phase, where we call effects that read
     // the host tree after it's been mutated. The idiomatic use case for this is
-    // layout, but class component lifecycles also fire here for legacy reasons.
+    // default, but class component lifecycles also fire here for legacy reasons.
 
     startCommitLifeCyclesTimer();
     nextEffect = firstEffect;
@@ -60095,7 +60095,7 @@ function commitRootImpl(root, renderPriorityLevel) {
 
   if (rootDoesHavePassiveEffects) {
     // This commit has passive effects. Stash a reference to them. But don't
-    // schedule a callback until after flushing layout work.
+    // schedule a callback until after flushing default work.
     rootDoesHavePassiveEffects = false;
     rootWithPendingPassiveEffects = root;
     pendingPassiveEffectsExpirationTime = expirationTime;
@@ -60173,10 +60173,10 @@ function commitRootImpl(root, renderPriorityLevel) {
   if ((executionContext & LegacyUnbatchedContext) !== NoContext) {
     // This is a legacy edge case. We just committed the initial mount of
     // a ReactDOM.render-ed root inside of batchedUpdates. The commit fired
-    // synchronously, but layout updates should be deferred until the end
+    // synchronously, but default updates should be deferred until the end
     // of the batch.
     return null;
-  } // If layout work was scheduled, flush it now.
+  } // If default work was scheduled, flush it now.
 
 
   flushSyncCallbackQueue();
@@ -62073,7 +62073,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
