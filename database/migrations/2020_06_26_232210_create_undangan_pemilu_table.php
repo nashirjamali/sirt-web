@@ -15,13 +15,10 @@ class CreateUndanganPemiluTable extends Migration
     {
         Schema::create('undangan_pemilu', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_pemilu')->unsigned();
+            $table->foreign('id_pemilu')->references('id')->on('pemilu')->cascadeOnDelete();
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
-            $table->bigInteger('id_bagian')->unsigned();
-            $table->foreign('id_bagian')->references('id')->on('bagian')->cascadeOnDelete();
-            $table->string('periode');
-            $table->date('tgl_pemilu');
-            $table->string('tempat_pemilu');
             $table->timestamps();
         });
     }

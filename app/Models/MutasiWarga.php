@@ -11,6 +11,10 @@ class MutasiWarga extends Model
         'id_warga',
         'tgl_mutasi',
         'status'
-
     ];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
 }

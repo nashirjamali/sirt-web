@@ -15,9 +15,10 @@ class CreateCalonPemiluTable extends Migration
     {
         Schema::create('calon_pemilu', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_bagian')->unsigned();
-            $table->foreign('id_bagian')->references('id')->on('bagian')->cascadeOnDelete();
-            $table->string('periode');
+            $table->bigInteger('id_pemilu')->unsigned();
+            $table->foreign('id_pemilu')->references('id')->on('pemilu')->cascadeOnDelete();
+            $table->bigInteger('id_warga')->unsigned();
+            $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
             $table->timestamps();
         });
     }

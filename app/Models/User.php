@@ -2,15 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'user';
     protected $fillable = [
         'id_warga',
         'id_bagian',
-        'tipe'
-        
+        'tipe',
+        'username',
+        'password',
     ];
+    protected $hidden = [
+        'password',
+    ];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }
