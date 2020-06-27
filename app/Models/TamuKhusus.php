@@ -8,6 +8,7 @@ class TamuKhusus extends Model
 {
     protected $table = 'tamu_khusus';
     protected $fillable = [
+        'id_tamu',
         'jabatan',
         'instansi'
         

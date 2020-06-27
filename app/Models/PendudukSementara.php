@@ -8,6 +8,8 @@ class PendudukSementara extends Model
 {
     protected $table = 'penduduk_sementara';
     protected $fillable = [
+        'id_warga',
+        'id_pemilik_rumah',
         'status'
 
     ];

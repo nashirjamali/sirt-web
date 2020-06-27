@@ -8,6 +8,7 @@ class PresensiRapat extends Model
 {
     protected $table = 'presensi_rapat';
     protected $fillable = [
+        'id_rapat',
         'kehadiran'
 
     ];

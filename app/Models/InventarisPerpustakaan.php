@@ -8,6 +8,7 @@ class InventarisPerpustakaan extends Model
 {
     protected $table = 'inventaris_perpustakaan';
     protected $fillable = [
+        'id_bagian',
         'kode_buku',
         'judul',
         'pengarang',
