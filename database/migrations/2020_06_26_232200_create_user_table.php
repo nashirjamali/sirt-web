@@ -20,6 +20,8 @@ class CreateUserTable extends Migration
             $table->bigInteger('id_bagian')->unsigned();
             $table->foreign('id_bagian')->references('id')->on('bagian')->cascadeOnDelete();
             $table->string('tipe');
+            $table->string('username');
+            $table->string('password');
             $table->timestamps();
         });
     }

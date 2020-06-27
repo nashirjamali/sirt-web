@@ -21,7 +21,7 @@ class CreateRegisterKeluarTable extends Migration
             $table->string('no_agenda');
             $table->date('tgl_kirim');
             $table->date('tgl_terima');
-            $table->string('asal_surat');
+            $table->string('penerima_surat');
             $table->string('perihal');
             $table->longText('keterangan')->nullable();
             $table->timestamps();
