@@ -23,7 +23,7 @@ class CreateInventarisTanahBangunanTable extends Migration
             $table->string('kelengkapan_dokumen');
             $table->string('alamat');
             $table->integer('luas');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

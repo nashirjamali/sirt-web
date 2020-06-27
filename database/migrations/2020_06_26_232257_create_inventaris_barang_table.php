@@ -26,7 +26,7 @@ class CreateInventarisBarangTable extends Migration
             $table->string('asal');
             $table->string('kondisi');
             $table->Integer('harga');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }
