@@ -23,7 +23,7 @@ class CreateInventarisAtkTable extends Migration
             $table->string('kelengkapan_dokumen');
             $table->string('asal');
             $table->integer('jumlah');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

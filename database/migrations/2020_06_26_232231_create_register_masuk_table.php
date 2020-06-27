@@ -23,7 +23,7 @@ class CreateRegisterMasukTable extends Migration
             $table->date('tgl_terima');
             $table->string('asal_surat');
             $table->string('perihal');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

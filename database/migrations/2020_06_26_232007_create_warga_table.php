@@ -30,7 +30,7 @@ class CreateWargaTable extends Migration
             $table->string('kedudukan_keluarga');
             $table->string('alamat');
             $table->string('alamat_ktp');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }

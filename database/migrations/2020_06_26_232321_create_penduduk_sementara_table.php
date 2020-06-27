@@ -17,8 +17,8 @@ class CreatePendudukSementaraTable extends Migration
             $table->id();
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
-            $table->bigInteger('war_id_warga')->unsigned();
-            $table->foreign('war_id_warga')->references('id')->on('warga')->cascadeOnDelete();
+            $table->bigInteger('id_pemilik_rumah')->unsigned();
+            $table->foreign('id_pemilik_rumah')->references('id')->on('warga')->cascadeOnDelete();
             $table->timestamps();
         });
     }
