@@ -8,6 +8,7 @@ class InventarisTanahBangunan extends Model
 {
     protected $table = 'inventaris_tanah_bangunan';
     protected $fillable = [
+        'id_bagian',
         'kode_tanah',
         'tgl_dimiliki',
         'asal',

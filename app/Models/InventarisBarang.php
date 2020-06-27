@@ -8,6 +8,7 @@ class InventarisBarang extends Model
 {
     protected $table = 'inventaris_barang';
     protected $fillable = [
+        'id_bagian',
         'kode_barang',
         'nama_barang',
         'tanggal_perolehan',

@@ -8,6 +8,7 @@ class InventarisATK extends Model
 {
     protected $table = 'inventaris_atk';
     protected $fillable = [
+        'id_bagian',
         'kode_atk',
         'nama_atk',
         'tgl_dimiliki',

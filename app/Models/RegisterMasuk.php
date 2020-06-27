@@ -8,6 +8,7 @@ class RegisterMasuk extends Model
 {
     protected $table = 'register_masuk';
     protected $fillable = [
+        'id_bagian',
         'no_surat',
         'no_agenda',
         'tgl_kirim',

@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CalonPemilu extends Model
+class Pengusul extends Model
 {
-    protected $table = 'calon_pemilu';
+    protected $table = 'pengusul';
     protected $fillable = [
-        'id_bagian',
-        'periode'
+        'id_warga'
 
     ];
 }
