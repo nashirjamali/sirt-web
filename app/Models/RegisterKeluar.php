@@ -15,6 +15,10 @@ class RegisterKeluar extends Model
         'tgl_terima',
         'penerima_surat',
         'perihal'
-
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }

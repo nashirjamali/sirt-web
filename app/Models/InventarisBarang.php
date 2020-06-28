@@ -18,7 +18,10 @@ class InventarisBarang extends Model
         'asal',
         'kondisi',
         'harga'
-
-
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }

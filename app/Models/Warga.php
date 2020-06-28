@@ -59,4 +59,19 @@ class Warga extends Model
     {
         return $this->hasMany(MutasiWarga::class);
     }
+
+    public function pengumumanWarga()
+    {
+        return $this->hasMany(PengumumanWarga::class);
+    }
+
+    public function pendudukSementara()
+    {
+        return $this->hasMany(PendudukSementara::class);
+    }
+
+    public function pemilikRumah()
+    {
+        return $this->hasMany(PendudukSementara::class);
+    }
 }

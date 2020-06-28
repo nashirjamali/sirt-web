@@ -13,8 +13,12 @@ class RegisterMasuk extends Model
         'no_agenda',
         'tgl_kirim',
         'tgl_terima',
-        'penerima_surat',
+        'asal_surat',
         'perihal'
-
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }
