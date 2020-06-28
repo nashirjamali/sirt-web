@@ -17,4 +17,9 @@ class InventarisATK extends Model
         'jumlah'
 
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }

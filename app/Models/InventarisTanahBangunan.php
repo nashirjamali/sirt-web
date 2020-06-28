@@ -17,4 +17,9 @@ class InventarisTanahBangunan extends Model
         'luas'
 
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }

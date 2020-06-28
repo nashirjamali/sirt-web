@@ -10,6 +10,10 @@ class NotulenRapat extends Model
     protected $fillable = [
         'id_rapat',
         'isi_notulen'
-
     ];
+
+    public function rapat()
+    {
+        return $this->belongsTo(Rapat::class);
+    }
 }

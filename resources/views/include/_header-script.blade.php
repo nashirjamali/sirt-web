@@ -1,53 +1,26 @@
-<!-- Canonical SEO -->
-<link rel="canonical" href="https://www.creative-tim.com/product/impact-design-system">
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
+<link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
 
-<!--  Social tags      -->
-<meta name="keywords"
-      content="impact design system, design system, login, form, table, tables, calendar, card, cards, navbar, modal, icons, icons, map, chat, carousel, menu, datepicker, gallery, slider, date, sidebar, social, dropdown, search, tab, nav, footer, date picker, forms, tabs, time, button, select, input, timeline, cart, car, fullcalendar, about us, invoice, account, chat, log in, blog, profile, portfolio, landing page, ecommerce, shop, landing, register, app, contact, one page, sign up, signup, store, bootstrap 4, bootstrap4, dashboard, bootstrap 4 dashboard, bootstrap 4 design, bootstrap 4 system, bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, impact, impact ui kit, creative tim, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit, impact dashboard">
-<meta name="description"
-      content="Kick-Start Your Development With An Awesome Design System carefully designed for your online business showcase. It comes as a complete solution, with front pages and dashboard pages included."><!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="Impact Design System by Creative Tim">
-<meta itemprop="description"
-      content="Kick-Start Your Development With An Awesome Design System carefully designed for your online business showcase. It comes as a complete solution, with front pages and dashboard pages included.">
-<meta itemprop="image"
-      content="https://s3.amazonaws.com/creativetim_bucket/products/296/original/opt_impact_thumbnail.jpg">
+<!-- Font Awesome 5 -->
+<link rel="stylesheet" href="{{asset('assets/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}">
 
-<!-- Twitter Card data -->
-<meta name="twitter:card" content="product">
-<meta name="twitter:site" content="@creativetim">
-<meta name="twitter:title" content="Impact Design System by Creative Tim">
-<meta name="twitter:description"
-      content="Kick-Start Your Development With An Awesome Design System carefully designed for your online business showcase. It comes as a complete solution, with front pages and dashboard pages included.">
-<meta name="twitter:creator" content="@creativetim">
-<meta name="twitter:image"
-      content="https://s3.amazonaws.com/creativetim_bucket/products/296/original/opt_impact_thumbnail.jpg">
+<!-- PLUGINS CSS STYLE -->
+<link href="{{asset('assets/plugins/nprogress/nprogress.css')}}" rel="stylesheet" />
+@stack('custom-style')
 
-<!-- Open Graph data -->
-<meta property="fb:app_id" content="655968634437471">
-<meta property="og:title" content="Impact Design System by Creative Tim">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://demos.creative-tim.com/impact-design-system/">
-<meta property="og:image"
-      content="https://s3.amazonaws.com/creativetim_bucket/products/296/original/opt_impact_thumbnail.jpg">
-<meta property="og:description"
-      content="Kick-Start Your Development With An Awesome Design System carefully designed for your online business showcase. It comes as a complete solution, with front pages and dashboard pages included.">
-<meta property="og:site_name" content="Creative Tim">
+<!-- SLEEK CSS -->
+<link id="sleek-css" rel="stylesheet" href="{{asset('assets/css/sleek.css')}}" />
 
-<!-- Favicon -->
-<link rel="icon" href="{{asset('assets/img/brand/favicon.png')}}" type="image/png">
+<!-- FAVICON -->
+<link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
 
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-
-<!-- Icons -->
-<link rel="stylesheet" href="{{asset('vendor/nucleo/css/nucleo.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
-
-<!-- Page plugins -->
-<link rel="stylesheet" href="{{asset('vendor/fullcalendar/dist/fullcalendar.min.css')}}">
-<link rel="stylesheet" href="{{asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}">
-
-<!-- Argon CSS -->
-<link rel="stylesheet" href="{{asset('css/dashboard.css')}}" type="text/css">
-
-
+<!--
+  HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+-->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>

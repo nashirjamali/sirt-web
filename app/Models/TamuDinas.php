@@ -13,6 +13,10 @@ class TamuDinas extends Model
         'instansi',
         'nip',
         'no_surat_tugas'
-
     ];
+
+    public function tamuKunjungan()
+    {
+        return $this->belongsTo(TamuKunjungan::class);
+    }
 }

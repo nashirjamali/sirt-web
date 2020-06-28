@@ -13,4 +13,14 @@ class PendudukSementara extends Model
         'status'
 
     ];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
+
+    public function pemilikRumah()
+    {
+        return $this->belongsTo(Warga::class);
+    }
 }

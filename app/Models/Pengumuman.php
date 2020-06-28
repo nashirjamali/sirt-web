@@ -12,6 +12,15 @@ class Pengumuman extends Model
         'judul_pengumuman',
         'isi_pengumuman',
         'tgl_pengumuman'
-
     ];
+
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
+
+    public function pengumumanWarga()
+    {
+        return $this->hasMany(PengumumanWarga::class);
+    }
 }

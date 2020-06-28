@@ -1,30 +1,14 @@
-<!-- Argon Scripts -->
-<!-- Core -->
-<script src="{{asset('vendor/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('vendor/js-cookie/js.cookie.js')}}"></script>
-<script src="{{asset('vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
-<script src="{{asset('vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
 
-<!-- Optional JS -->
-<script src="{{asset('vendor/chart.js/dist/Chart.min.js')}}"></script>
-<script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script>
+<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/plugins/slimscrollbar/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('assets/plugins/jekyll-search.min.js')}}"></script>
 
-<!-- Argon JS -->
-<script src="{{asset('js/dashboard.js?v=1.2.0')}}"></script>
+<!-- Font Awesome 5 -->
+<script src="{{asset('assets/plugins/@fortawesome/fontawesome-free/js/all.min.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!--Custom Script-->
+@stack('custom-script')
 
-<script>
-    @if(Session::has('success'))
-    toastr.success("{{Session::get('success')}}", "Success");
-    @endif
-</script>
-
-
-<script>
-    @if(Session::has('error'))
-    toastr.error("{{Session::get('error')}}", "Error");
-    @endif
-</script>
-@stack('footer-scripts')
+<script src="{{asset('assets/js/sleek.bundle.js')}}"></script>
+<!--Vue Js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
