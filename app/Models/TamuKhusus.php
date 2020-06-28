@@ -11,6 +11,10 @@ class TamuKhusus extends Model
         'id_tamu',
         'jabatan',
         'instansi'
-        
     ];
+
+    public function tamuKunjungan()
+    {
+        return $this->belongsTo(TamuKunjungan::class);
+    }
 }

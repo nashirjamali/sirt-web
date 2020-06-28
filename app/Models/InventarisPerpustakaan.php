@@ -21,4 +21,9 @@ class InventarisPerpustakaan extends Model
         'kondisi_buku'
 
     ];
+    
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
 }
