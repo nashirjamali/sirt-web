@@ -29,14 +29,14 @@
                 <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <img src="{{asset('assets/img/user/user.png')}}" class="user-image" alt="User Image" />
-                        <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                        <span class="d-none d-lg-inline-block">{{Auth::user()->warga->nama}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <!-- User image -->
                         <li class="dropdown-header">
                             <img src="{{asset('assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
-                            <div class="d-inline-block">
-                                Abdus Salam <small class="pt-1">iamabdus@gmail.com</small>
+                            <div class="d-inline-block p-2">
+                                {{Auth::user()->warga->nama}} <small class="pt-1">{{Auth::user()->warga->nik}}</small>
                             </div>
                         </li>
                         <li>
@@ -45,7 +45,12 @@
                             </a>
                         </li>
                         <li class="dropdown-footer">
-                            <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="mdi mdi-logout"></i> Log Out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </li>

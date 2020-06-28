@@ -34,21 +34,26 @@
                 <div class="card-body p-5">
 
                     <h4 class="text-dark mb-5">Masuk</h4>
-                    <form action="/">
+                    <form action="/login" method="post">
+                        @csrf
                         <div class="row">
                             <div class="form-row col-md-12 mb-4">
                                 <label for="username">NIK (Nomor Induk Penduduk)</label>
-                                <input type="text" class="form-control input-lg" id="username" placeholder="Masukan NIK" required>
+                                <input type="text" class="form-control input-lg  @error('username') is-invalid @enderror" id="username" placeholder="Masukan NIK" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                @error('username')
                                 <div class="invalid-feedback">
                                     NIK Salah
                                 </div>
+                                @enderror
                             </div>
                             <div class="form-row col-md-12 mb-4">
                                 <label>Password</label>
-                                <input type="password" class="form-control input-lg" id="password" placeholder="Masukan Password" required>
+                                <input type="password" class="form-control input-lg @error('password') is-invalid @enderror" id="password" placeholder="Masukan Password" name="password" required autocomplete="current-password>
+                                @error('password')
                                 <div class="invalid-feedback">
                                     Password Salah
                                 </div>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Masuk ke Aplikasi</button>

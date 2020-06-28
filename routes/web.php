@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -7,14 +9,18 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-   return view('layouts.default');
+Auth::routes();
+
+Route::get('/', function() {
+    return redirect('/login');
 });
 
-Route::get('/login', function () {
-    return view('layouts.login');
-});
-
-Route::prefix('rw')->name('rw')->group(function (){
+Route::prefix('rw')->name('rw')->middleware(['auth', 'rw'])->group(function (){
     require 'rw.php';
+});
+Route::prefix('rt')->name('rt')->middleware(['auth', 'rt'])->group(function (){
+    require 'rt.php';
+});
+Route::prefix('warga')->name('warga')->middleware(['auth', 'warga'])->group(function (){
+    require 'warga.php';
 });
