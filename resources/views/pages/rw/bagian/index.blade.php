@@ -33,7 +33,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Bagian</th>
-                                <th>Detail</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,7 +41,7 @@
                                 <td>1</td>
                                 <td>RT 001</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/bagian/detail">Detail</a>
                                 </td>
                             </tr>
                             </tbody>
