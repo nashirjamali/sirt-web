@@ -16,11 +16,11 @@ class PendudukSementara extends Model
 
     public function warga()
     {
-        return $this->belongsTo(Warga::class);
+        return $this->belongsTo(Warga::class, 'id_warga');
     }
 
     public function pemilikRumah()
     {
-        return $this->belongsTo(Warga::class);
+        return $this->belongsTo(Warga::class, 'id_pemilik_rumah');
     }
 }

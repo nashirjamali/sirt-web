@@ -14,7 +14,7 @@ class Bagian extends Model
 
     public function warga()
     {
-        return $this->hasMany(Warga::class);
+        return $this->hasMany(Warga::class, 'id_bagian');
     }
 
     public function rapat()

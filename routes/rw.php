@@ -15,10 +15,9 @@ Route::get('/', function() {
 
 Route::resource('bagian', 'RW\BagianController');
 
-Route::prefix('penduduk')->name('penduduk')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rw.penduduk.index');
-    });
+Route::prefix('penduduk')->name('penduduk.')->group(function () {
+    Route::get('/', 'RW\PendudukController@index')->name('index');
+    Route::get('/warga', 'RW\PendudukController@getWarga')->name('data.warga');
 
     Route::get('/create', function () {
         return view('pages.rw.penduduk.create');
