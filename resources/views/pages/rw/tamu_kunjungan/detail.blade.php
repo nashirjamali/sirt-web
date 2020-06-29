@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RW - Bagian
+RW - Tamu - Detail
 @endpush
 @section('content')
 <style>
