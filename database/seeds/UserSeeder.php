@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'id_warga' => 3,
                 'id_bagian' => 2,
                 'tipe' => 'RT',
-                'username' => 'su312',
+                'username' => '',
                 'password' => Hash::make('sus1995'),
             ],
             [
