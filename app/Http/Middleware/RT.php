@@ -21,7 +21,7 @@ class RT
         }
 
         if (Auth::user()->tipe == 'RW') {
-            return redirect()->route('rw');
+            return redirect()->route('rw.');
         }
 
         if (Auth::user()->tipe == 'RT') {
@@ -29,8 +29,8 @@ class RT
         }
 
         if (Auth::user()->tipe == 'Warga') {
-            return redirect()->route('warga');
+            return redirect()->route('warga.');
         }
-        
+
     }
 }

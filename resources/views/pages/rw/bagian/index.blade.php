@@ -37,13 +37,17 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @php $no = 0; @endphp
+                            @foreach($bagian as $val)
                             <tr>
-                                <td>1</td>
-                                <td>RT 001</td>
+                                <td>{{$no+1}}</td>
+                                <td>{{$val->nama_bagian}}</td>
                                 <td>
                                     <a class="btn btn-sm text-white btn-primary" href="/rw/bagian/detail">Detail</a>
                                 </td>
                             </tr>
+                            @php $no++; @endphp
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

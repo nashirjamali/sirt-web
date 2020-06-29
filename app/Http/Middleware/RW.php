@@ -25,11 +25,11 @@ class RW
         }
 
         if (Auth::user()->tipe == 'RT') {
-            return redirect()->route('rt');
+            return redirect()->route('rt.');
         }
 
         if (Auth::user()->tipe == 'Warga') {
-            return redirect()->route('warga');
+            return redirect()->route('warga.');
         }
     }
 }

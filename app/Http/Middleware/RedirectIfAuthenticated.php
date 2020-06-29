@@ -21,18 +21,18 @@ class RedirectIfAuthenticated
         if (Auth::check()) {
             switch (Auth::user()->tipe) {
                 case 'RW':
-                    return redirect()->route('rw');
+                    return redirect()->route('rw.');
                     break;
                 case 'RT':
-                    return redirect()->route('rt');
+                    return redirect()->route('rt.');
                     break;
                 case 'Warga':
-                    return redirect()->route('warga');
+                    return redirect()->route('warga.');
                     break;
                 default:
                     return redirect()->route('login');
                     break;
-            }   
+            }
         }
 
         return $next($request);

@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Middleware\RT;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,19 +13,7 @@ Route::get('/', function() {
     return redirect('/rw/bagian');
 });
 
-Route::prefix('bagian')->name('bagian')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rw.bagian.index');
-    });
-
-    Route::get('/create', function () {
-        return view('pages.rw.bagian.create');
-    });
-
-    Route::get('/detail', function () {
-        return view('pages.rw.bagian.detail');
-    });
-});
+Route::resource('bagian', 'RW\BagianController');
 
 Route::prefix('penduduk')->name('penduduk')->group(function () {
     Route::get('/', function () {

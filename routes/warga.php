@@ -12,5 +12,9 @@ Route::get('/', function() {
 });
 
 Route::prefix('pengumuman')->name('pengumuman')->group(function () {
-    Route::get('/', 'Warga\PengumumanController@index');
+    // Route::get('/', 'Warga\PengumumanController@index');
+    Route::get('/', function ()
+    {
+        return abort(404);
+    });
 });

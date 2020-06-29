@@ -53,7 +53,7 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
@@ -63,13 +63,13 @@ class LoginController extends Controller
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
             switch (Auth::user()->tipe) {
                 case 'RW':
-                    return redirect()->route('rw');
+                    return redirect()->route('rw.');
                     break;
                 case 'RT':
-                    return redirect()->route('rt');
+                    return redirect()->route('rt.');
                     break;
                 case 'Warga':
-                    return redirect()->route('warga');
+                    return redirect()->route('warga.');
                     break;
                 default:
                     return redirect()->route('login');
