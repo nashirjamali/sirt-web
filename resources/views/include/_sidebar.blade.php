@@ -1,5 +1,5 @@
 <ul class="nav sidebar-inner" id="sidebar-menu">
-    <!-- RT MENU -->
+    <!-- RW MENU -->
     @if(Auth::user()->tipe == 'RW')
     <li>
         <h6 class="px-4 py-2">Menu RW</h6>
@@ -32,7 +32,7 @@
 
 
     
-    <!-- RW MENU -->
+    <!-- RT MENU -->
     @if(Auth::user()->tipe == 'RT')
     <li>
         <h6 class="px-4 py-2">Menu RT</h6>
@@ -51,7 +51,7 @@
 
     <!-- Warga MENU -->
     <li>
-        <h6 class="px-4 py-2">Menu RW</h6>
+        <h6 class="px-4 py-2">Menu Warga</h6>
     </li>
     <li class="has-sub">
         <a class="sidenav-item-link" href="#">
