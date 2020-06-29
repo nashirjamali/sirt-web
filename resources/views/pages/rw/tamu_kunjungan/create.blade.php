@@ -21,13 +21,13 @@ RW - Bagian
 </div>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="card card-default tamu_umum">
+        <div class="card card-default" id="tamu_umum">
             <div class="card-header-border-bottom card-header d-flex justify-content-between">
                 <h2>Identitas Tamu Kunjungan</h2>
             </div>
             <div class="card-body">
                 <form>
-                    <div class="form-group row">
+                    <div class="form-row mb-4">
                         <!-- Nama Tamu -->
                         <label>Nama Tamu</label>
                         <input type="text" class="form-control" name="nama_tamu" placeholder="Masukan Nama Tamu">
@@ -97,12 +97,6 @@ RW - Bagian
                                 Dinas
                             </label>
                         </div>
-                        <div class="valid-feedback">
-                            -
-                        </div>
-                        <div class="invalid-feedback">
-                            -
-                        </div>
                     </div>
                 </form>
             </div>
@@ -112,7 +106,7 @@ RW - Bagian
 
     <div class="w-100"></div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="card card-default tamu_khusus">
+        <div class="card card-default d-none" id="tamu_khusus">
             <div class="card-header-border-bottom card-header d-flex justify-content-between">
                 <h2>Tamu Khusus</h2>
             </div>
@@ -150,7 +144,7 @@ RW - Bagian
 
     <div class="w-100"></div>
     <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="card card-default tamu_dinas">
+        <div class="card card-default d-none" id="tamu_dinas">
             <div class="card-header-border-bottom card-header d-flex justify-content-between">
                 <h2>Tamu Dinas</h2>
             </div>
@@ -196,33 +190,25 @@ RW - Bagian
                                         <th>NIP</th>
                                         <th>No Surat Tugas</th> -->
 
-</div>
+
 @endsection
 @push('custom-script')
 <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
 <script>
-    $('#tamu_umum').change(function() {
-        if ($("#jenistamu_umum").attr('checked', true)) {
-            $('#tamu_khusus').addClass('d-none');
-            $('#tamu_dinas').addClass('d-none');
-        }
+    $('#jenistamu_umum').change(function() {
     });
 
-    $('#tamu_khusus').change(function() {
-        if ($("#jenistamu_umum").attr('checked', true)) {
+    $('#jenistamu_khusus').change(function() {
+        if ($(this).attr('checked', true)) {
             $('#tamu_khusus').removeClass('d-none');
             $('#tamu_dinas').addClass('d-none');
         }
     });
 
 
-    $('#tamu_dinas').change(function() {
-        if ($("#jenistamu_umum").attr('checked', true)) {
-            $('#tamu_khusus').removeClass('d-none');
-            $('#tamu_dinas').addClass('d-none');
-        }
+    $('#jenistamu_dinas').change(function() {
     });
 </script>
 @endpush
