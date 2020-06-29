@@ -50,6 +50,7 @@ RW - Data Penduduk
                             <table class="table dt-responsive nowrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Wilayah RW</th>
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
@@ -66,6 +67,7 @@ RW - Data Penduduk
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>1</td>
                                         <td>RW 1</td>
                                         <td>12345</td>
                                         <td>Lampu</td>
@@ -104,6 +106,7 @@ RW - Data Penduduk
                             <table class="table dt-responsive wrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Wilayah Rw</th>
                                         <th>Kode Buku</th>
                                         <th>Judul</th>
@@ -120,6 +123,7 @@ RW - Data Penduduk
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>1</td>
                                         <td>RW 1</td>
                                         <td>007</td>
                                         <td>James Bond</td>
@@ -158,7 +162,8 @@ RW - Data Penduduk
                             <table class="table dt-responsive wrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Wilayahw</th>
+                                        <th>No</th>
+                                        <th>Wilayah</th>
                                         <th>Kode Tanah</th>
                                         <th>Tanggal Dimiliki</th>
                                         <th>Asal</th>
@@ -171,6 +176,7 @@ RW - Data Penduduk
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>1</td>
                                         <td>RW 1</td>
                                         <td>0313</td>
                                         <td>03/03/2020</td>
@@ -206,6 +212,7 @@ RW - Data Penduduk
                             <table class="table dt-responsive wrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Bagian Rw</th>
                                         <th>Kode Atk</th>
                                         <th>Nama Atk</th>
@@ -219,6 +226,7 @@ RW - Data Penduduk
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>1</td>
                                         <td>RW 1</td>
                                         <td>03250</td>
                                         <td>Pulpen</td>

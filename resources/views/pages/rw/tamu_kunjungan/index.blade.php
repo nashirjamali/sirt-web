@@ -47,23 +47,25 @@ RW - Data Penduduk
                             <table class="table dt-responsive nowrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th>nama bagian rw</th>
-                                    <th>nama_lengkap</th>
-                                    <th>jenis_tamu</th>
-                                    <th>periode</th>
-                                    <th>tujuan</th>
-                                    <th>tanggal</th>
-                                    <th></th>
+                                        <th>No</th>
+                                        <th>Nama Bagian RW</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jenis Tamu</th>
+                                        <th>Periode</th>
+                                        <th>Tujuan</th>
+                                        <th>Tanggal</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>RW 1</td>
-                                    <td>Nashir Jamali</td>
-                                    <td>Umum</td>
-                                    <td>2020</td>
-                                    <td>Inspeksi</td>
-                                    <td>03/03/2020</td>
+                                        <td>1</td>
+                                        <td>RW 1</td>
+                                        <td>Nashir Jamali</td>
+                                        <td>Umum</td>
+                                        <td>2020</td>
+                                        <td>Inspeksi</td>
+                                        <td>03/03/2020</td>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary" href="/rw/tamu_kunjungan/detail">Detail</a>
                                         </td>
@@ -91,26 +93,28 @@ RW - Data Penduduk
                             <table class="table dt-responsive wrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th>nama bagian rw</th>
-                                    <th>nama_lengkap</th>
-                                    <th>jenis_tamu</th>
-                                    <th>periode</th>
-                                    <th>tujuan</th>
-                                    <th>tanggal</th>
-                                    <th>jabatan</th>
-                                    <th>instansi</th>
+                                        <th>No</th>
+                                        <th>Nama Bagian RW</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jenis Tamu</th>
+                                        <th>Periode</th>
+                                        <th>Tujuan</th>
+                                        <th>Tanggal</th>
+                                        <th>Jabatan</th>
+                                        <th>Instansi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>RW 1</td>
-                                    <td>Nashir Jamali</td>
-                                    <td>Umum</td>
-                                    <td>2020</td>
-                                    <td>Inspeksi</td>
-                                    <td>03/03/2020</td>
-                                    <td>Mahasiswa</td>
-                                    <td>Undika</td>
+                                        <td>1</td>
+                                        <td>RW 1</td>
+                                        <td>Nashir Jamali</td>
+                                        <td>Umum</td>
+                                        <td>2020</td>
+                                        <td>Inspeksi</td>
+                                        <td>03/03/2020</td>
+                                        <td>Mahasiswa</td>
+                                        <td>Undika</td>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary" href="/rw/tamu_kunjungan/detail">Detail</a>
                                         </td>
@@ -138,30 +142,32 @@ RW - Data Penduduk
                             <table class="table dt-responsive wrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th>Nama Bagian Rw</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Jenis Tamu</th>
-                                    <th>Periode</th>
-                                    <th>Tujuan</th>
-                                    <th>Tanggal</th>
-                                    <th>Jabatan</th>
-                                    <th>Instansi</th>
-                                    <th>Nip</th>
-                                    <th>No Surat Tugas</th>
+                                        <th>No</th>
+                                        <th>Nama Bagian Rw</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jenis Tamu</th>
+                                        <th>Periode</th>
+                                        <th>Tujuan</th>
+                                        <th>Tanggal</th>
+                                        <th>Jabatan</th>
+                                        <th>Instansi</th>
+                                        <th>NIP</th>
+                                        <th>No Surat Tugas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>RW 1</td>
-                                    <td>Nashir Jamali</td>
-                                    <td>Umum</td>
-                                    <td>2020</td>
-                                    <td>Inspeksi</td>
-                                    <td>03/03/2020</td>
-                                    <td>Mahasiswa</td>
-                                    <td>Undika</td>
-                                    <th>1234567890123456</th>
-                                    <th>1111111111111111</th>
+                                        <td>1</td>
+                                        <td>RW 1</td>
+                                        <td>Nashir Jamali</td>
+                                        <td>Umum</td>
+                                        <td>2020</td>
+                                        <td>Inspeksi</td>
+                                        <td>03/03/2020</td>
+                                        <td>Mahasiswa</td>
+                                        <td>Undika</td>
+                                        <th>1234567890123456</th>
+                                        <th>1111111111111111</th>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary" href="/rw/tamu_kunjungan/detail">Detail</a>
                                         </td>
