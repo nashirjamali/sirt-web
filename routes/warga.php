@@ -7,3 +7,14 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', function() {
+    return redirect('/warga/pengumuman');
+});
+
+Route::prefix('pengumuman')->name('pengumuman')->group(function () {
+    // Route::get('/', 'Warga\PengumumanController@index');
+    Route::get('/', function ()
+    {
+        return abort(404);
+    });
+});
