@@ -38,9 +38,21 @@
         <h6 class="px-4 py-2">Menu RT</h6>
     </li>
     <li class="has-sub">
-        <a class="sidenav-item-link" href="#">
+        <a class="sidenav-item-link" href="/rt/penduduk">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Penduduk</span>
+        </a>
+    </li>
+    <li class="has-sub">
+        <a class="sidenav-item-link" href="/rt/inventaris">
+            <i class="mdi mdi-account-box-multiple"></i>
+            <span class="nav-text">Inventaris</span>
+        </a>
+    </li>
+    <li class="has-sub">
+        <a class="sidenav-item-link" href="/rt/tamu_kunjungan">
+            <i class="mdi mdi-account-box-multiple"></i>
+            <span class="nav-text">Tamu Kunjungan</span>
         </a>
     </li>
     @endif
