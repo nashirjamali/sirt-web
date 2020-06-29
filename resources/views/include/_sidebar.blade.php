@@ -1,4 +1,9 @@
 <ul class="nav sidebar-inner" id="sidebar-menu">
+    <!-- RT MENU -->
+    @if(Auth::user()->tipe == 'RW')
+    <li>
+        <h6 class="px-4 py-2">Menu RW</h6>
+    </li>
     <li class="has-sub active">
         <a class="sidenav-item-link" href="/rw/bagian">
             <i class="mdi mdi-office-building"></i>
@@ -23,4 +28,36 @@
             <span class="nav-text">Tamu Kunjungan</span>
         </a>
     </li>
+    @endif
+
+
+    
+    <!-- RW MENU -->
+    @if(Auth::user()->tipe == 'RT')
+    <li>
+        <h6 class="px-4 py-2">Menu RT</h6>
+    </li>
+    <li class="has-sub">
+        <a class="sidenav-item-link" href="#">
+            <i class="mdi mdi-account-box-multiple"></i>
+            <span class="nav-text">Penduduk</span>
+        </a>
+    </li>
+    @endif
+    <hr>
+
+
+
+
+    <!-- Warga MENU -->
+    <li>
+        <h6 class="px-4 py-2">Menu RW</h6>
+    </li>
+    <li class="has-sub">
+        <a class="sidenav-item-link" href="#">
+            <i class="mdi mdi-account-box-multiple"></i>
+            <span class="nav-text">Pengumuman</span>
+        </a>
+    </li>
+
 </ul>
