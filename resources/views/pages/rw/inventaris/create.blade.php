@@ -23,40 +23,49 @@ RW - Inventaris - Create
 <form id="form" method="POST" action="{{route('rw.inventaris.store')}}">
     @csrf
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-12">
+            @if($errors->any())
+            <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                {{ implode('', $errors->all(':message')) }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+        </div>
+        <div class="w-100"></div>
+        <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="card card-default" id="jenis_inv">
                 <div class="card-header-border-bottom card-header d-flex justify-content-between">
                     <h2>Jenis Inventaris</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-row mb-4">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_inventaris" id="inventaris_barang" value="Umum" checked>
-                                <label class="form-check-label" for="inventaris_barang">
-                                    Barang
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_inventaris" id="inventaris_perpustakaan" value="Khusus">
-                                <label class="form-check-label" for="inventaris_perpustakaan">
-                                    Perpustakaan
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_inventaris" id="inventaris_tanah_bangunan" value="Dinas">
-                                <label class="form-check-label" for="inventaris_tanah_bangunan">
-                                    Tanah Bangunan
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_inventaris" id="inventaris_atk" value="Dinas">
-                                <label class="form-check-label" for="inventaris_atk">
-                                    ATK
-                                </label>
-                            </div>
+                    <div class="form-row mb-4">
+                        <div class="form-check form-check-inline">
+                            <label id="inventaris_barang_label" class="control control-radio checkbox-primary">Barang
+                                <input type="radio" name="jenis_inventaris" id="inventaris_barang" value="Barang" {{ (old('inventaris_barang') == 'Barang' || old('inventaris_barang') == '') ? 'checked' : '' }}>
+                                <div class="control-indicator"></div>
+                            </label>
                         </div>
-                    </form>
+                        <div class="form-check form-check-inline">
+                            <label id="inventaris_perpustakaan_label" class="control control-radio checkbox-primary outlined ">Perpustakaan
+                                <input type="radio" name="jenis_inventaris" id="inventaris_perpustakaan" value="Perpustakaan" {{ (old('inventaris_barang') == 'Perpustakaan') ? 'checked' : '' }}>
+                                <div class="control-indicator"></div>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label id="inventaris_tanah_bangunan_label" class="control control-radio checkbox-primary outlined ">Tanah Bangunan
+                                <input type="radio" name="jenis_inventaris" id="inventaris_tanah_bangunan" value="Tanah Bangunan" {{ (old('inventaris_barang') == 'Tanah Bangunan') ? 'checked' : '' }}>
+                                <div class="control-indicator"></div>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label id="inventaris_atk_label" class="control control-radio checkbox-primary outlined ">ATK
+                                <input type="radio" name="jenis_inventaris" id="inventaris_atk" value="ATK" {{ (old('inventaris_barang') == 'ATK') ? 'checked' : '' }}>
+                                <div class="control-indicator"></div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,12 +95,26 @@ RW - Inventaris - Create
 
                         <div class="form-row mb-4">
                             <label>Kelengkapan Dokumen</label>
-                            <input type="text" class="form-control" name="brg_kelengkapan_dokumen" placeholder="Lengkap / Tidak">
+                            <div class="w-100 mb-2"></div>
+                            <ul class="list-unstyled list-inline">
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Lengkap
+                                        <input type="radio" name="brg_kelengkapan_dokumen" checked="checked" value="Lengkap" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Tidak
+                                        <input type="radio" name="brg_kelengkapan_dokumen" value="Tidak" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
 
                         <div class="form-row mb-4">
                             <label>Kuantitas</label>
-                            <input type="text" class="form-control" name="brg_kuantitas" placeholder="Masukan Kuantitas Barang">
+                            <input type="number" class="form-control" name="brg_kuantitas" placeholder="Masukan Kuantitas Barang">
                         </div>
 
                         <div class="form-row mb-4">
@@ -119,19 +142,22 @@ RW - Inventaris - Create
                                 <option value="Sangat Rusak">Sangat Rusak</option>
                             </select>
                         </div>
-
-
                         <div class="form-row mb-4">
                             <label>Harga Barang</label>
-                            <input type="text" class="form-control" name="brg_harga" placeholder="Masukan Harga Barang">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp </span>
+                                </div>
+                                <input type="number" class="form-control" name="brg_harga" placeholder="Masukan Harga Barang">
+                            </div>
                         </div>
 
                         <div class="form-row mb-4">
                             <label>Keterangan Barang</label>
-                            <input type="text" class="form-control" name="brg_keterangan" placeholder="Masukan Keterangan Barang">
+                            <textarea type="text" class="form-control" rows="2" name="brg_keterangan" placeholder="Masukan Keterangan Barang"></textarea>
                         </div>
 
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -168,7 +194,7 @@ RW - Inventaris - Create
 
                         <div class="form-row mb-4">
                             <label>Tahun Terbit</label>
-                            <input type="text" class="form-control" name="tahun_terbit_buku" placeholder="Masukan Tahun Terbit Buku">
+                            <input type="number" class="form-control" name="tahun_terbit_buku" placeholder="Masukan Tahun Terbit Buku">
                         </div>
 
                         <div class="form-row mb-4">
@@ -178,7 +204,21 @@ RW - Inventaris - Create
 
                         <div class="form-row mb-4">
                             <label>Kepemilikan Dokumen</label>
-                            <input type="text" class="form-control" name="buku_kepemilikan_dokumen" placeholder="Masukkan Kepemilikan Dokumen">
+                            <div class="w-100 mb-2"></div>
+                            <ul class="list-unstyled list-inline">
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Lengkap
+                                        <input type="radio" name="buku_kepemilikan_dokumen" checked="checked" value="Lengkap" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Tidak
+                                        <input type="radio" name="buku_kepemilikan_dokumen" value="Tidak" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
 
                         <div class="form-row mb-4">
@@ -194,7 +234,7 @@ RW - Inventaris - Create
 
                         <div class="form-row mb-4">
                             <label>Kuantitas</label>
-                            <input type="text" class="form-control" name="buku_kuantitas" placeholder="Masukan Kuantitas Buku">
+                            <input type="number" class="form-control" name="buku_kuantitas" placeholder="Masukan Kuantitas Buku">
                         </div>
 
                         <div class="form-row mb-4">
@@ -206,7 +246,7 @@ RW - Inventaris - Create
                                 <option value="Sangat Rusak">Sangat Rusak</option>
                             </select>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -261,7 +301,7 @@ RW - Inventaris - Create
                             <input type="text" class="form-control" name="tanah_keterangan" placeholder="Masukan Keterangan">
                         </div>
 
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -274,48 +314,47 @@ RW - Inventaris - Create
                     <h2>Inventaris ATK</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-row mb-4">
-                            <label>Kode ATK</label>
-                            <input type="text" class="form-control" name="kode_atk" placeholder="Masukan Kode ATK">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Kode ATK</label>
+                        <input type="text" class="form-control" name="kode_atk" placeholder="Masukan Kode ATK">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Nama ATK</label>
-                            <input type="text" class="form-control" name="nama_atk" placeholder="Masukan Nama ATK">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Nama ATK</label>
+                        <input type="text" class="form-control" name="nama_atk" placeholder="Masukan Nama ATK">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Tanggal Perolehan ATK</label>
-                            <input type="date" class="form-control" name="atk_tanggal_perolehan">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Tanggal Perolehan ATK</label>
+                        <input type="date" class="form-control" name="atk_tanggal_perolehan">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Kelengkapan Dokumen</label>
-                            <input type="text" class="form-control" name="atk_kelengkapan_dokumen" placeholder="Lengkap / Tidak">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Kelengkapan Dokumen</label>
+                        <input type="text" class="form-control" name="atk_kelengkapan_dokumen" placeholder="Lengkap / Tidak">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Asal ATK</label>
-                            <select class="form-control" name="atk_asal">
-                                <option value="Beli">Beli</option>
-                                <option value="Hibah">Hibah</option>
-                                <option value="Hadiah">Hadiah</option>
-                                <option value="Wakaf">Wakaf</option>
-                                <option value="Sumbangan">Sumbangan</option>
-                            </select>
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Asal ATK</label>
+                        <select class="form-control" name="atk_asal">
+                            <option value="Beli">Beli</option>
+                            <option value="Hibah">Hibah</option>
+                            <option value="Hadiah">Hadiah</option>
+                            <option value="Wakaf">Wakaf</option>
+                            <option value="Sumbangan">Sumbangan</option>
+                        </select>
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Kuantitas ATK</label>
-                            <input type="text" class="form-control" name="atk_kuantitas" placeholder="Masukan Kuantitas ATK">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Kuantitas ATK</label>
+                        <input type="text" class="form-control" name="atk_kuantitas" placeholder="Masukan Kuantitas ATK">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Keterangan</label>
-                            <input type="text" class="form-control" name="atk_keterangan" placeholder="Masukan Keterangan">
-                        </div>
-                    </form>
+                    <div class="form-row mb-4">
+                        <label>Keterangan</label>
+                        <input type="text" class="form-control" name="atk_keterangan" placeholder="Masukan Keterangan">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -323,47 +362,63 @@ RW - Inventaris - Create
     <button type="submit" class="btn btn-primary btn-lg">Tambah Data</button>
 </form>
 
-    @endsection
-    @push('custom-script')
-    <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
-    <script>
-        $('#inventaris_barang').change(function() {
-            if ($(this).attr('checked', true)) {
-                $('#inv_brg').removeClass('d-none');
-                $('#inv_perpus').addClass('d-none');
-                $('#inv_tanah').addClass('d-none');
-                $('#inv_atk').addClass('d-none');
-            }
-        });
+@endsection
+@push('custom-script')
+<script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
+<script>
+    $('#inventaris_barang').change(function() {
+        if ($(this).attr('checked', true)) {
+            $('#inventaris_atk_label').addClass('outlined')
+            $('#inventaris_perpustakaan_label').addClass('outlined')
+            $('#inventaris_tanah_bangunan_label').addClass('outlined')
+            $('#inventaris_barang_label').removeClass('outlined')
+            $('#inv_brg').removeClass('d-none');
+            $('#inv_perpus').addClass('d-none');
+            $('#inv_tanah').addClass('d-none');
+            $('#inv_atk').addClass('d-none');
+        }
+    });
 
-        $('#inventaris_perpustakaan').change(function() {
-            if ($(this).attr('checked', true)) {
-                $('#inv_brg').addClass('d-none');
-                $('#inv_perpus').removeClass('d-none');
-                $('#inv_tanah').addClass('d-none');
-                $('#inv_atk').addClass('d-none');
-            }
-        });
+    $('#inventaris_perpustakaan').change(function() {
+        if ($(this).attr('checked', true)) {
+            $('#inventaris_atk_label').addClass('outlined')
+            $('#inventaris_perpustakaan_label').removeClass('outlined')
+            $('#inventaris_tanah_bangunan_label').addClass('outlined')
+            $('#inventaris_barang_label').addClass('outlined')
+            $('#inv_brg').addClass('d-none');
+            $('#inv_perpus').removeClass('d-none');
+            $('#inv_tanah').addClass('d-none');
+            $('#inv_atk').addClass('d-none');
+        }
+    });
 
 
-        $('#inventaris_tanah_bangunan').change(function() {
-            if ($(this).attr('checked', true)) {
-                $('#inv_brg').addClass('d-none');
-                $('#inv_perpus').addClass('d-none');
-                $('#inv_tanah').removeClass('d-none');
-                $('#inv_atk').addClass('d-none');
-            }
-        });
+    $('#inventaris_tanah_bangunan').change(function() {
+        if ($(this).attr('checked', true)) {
+            $('#inventaris_atk_label').addClass('outlined')
+            $('#inventaris_perpustakaan_label').addClass('outlined')
+            $('#inventaris_tanah_bangunan_label').removeClass('outlined')
+            $('#inventaris_barang_label').addClass('outlined')
+            $('#inv_brg').addClass('d-none');
+            $('#inv_perpus').addClass('d-none');
+            $('#inv_tanah').removeClass('d-none');
+            $('#inv_atk').addClass('d-none');
+        }
+    });
 
-        $('#inventaris_atk').change(function() {
-            if ($(this).attr('checked', true)) {
-                $('#inv_brg').addClass('d-none');
-                $('#inv_perpus').addClass('d-none');
-                $('#inv_tanah').addClass('d-none');
-                $('#inv_atk').removeClass('d-none');
-            }
-        });
-    </script>
-    @endpush
+    $('#inventaris_atk').change(function() {
+        if ($(this).attr('checked', true)) {
+            $('#inventaris_atk_label').removeClass('outlined')
+            $('#inventaris_perpustakaan_label').addClass('outlined')
+            $('#inventaris_tanah_bangunan_label').addClass('outlined')
+            $('#inventaris_barang_label').addClass('outlined')
+            $('#inv_brg').addClass('d-none');
+            $('#inv_perpus').addClass('d-none');
+            $('#inv_tanah').addClass('d-none');
+            $('#inv_atk').removeClass('d-none');
+        }
+    });
+</script>
+@endpush

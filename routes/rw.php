@@ -28,21 +28,12 @@ Route::prefix('penduduk')->name('penduduk.')->group(function () {
     });
 });
 
+Route::resource('inventaris', 'RW\InventarisController');
 Route::prefix('inventaris')->name('inventaris')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rw.inventaris.index');
-    });
 
-    Route::get('/create', function () {
-        return view('pages.rw.inventaris.create');
-    });
-
-    Route::get('/detail', function () {
-        return view('pages.rw.inventaris.detail');
-    });
 });
 
-Route::prefix('tamu_kunjungan')->name('tamu_kunjungan')->group(function () {
+Route::prefix('tamu-kunjungan')->name('tamu-kunjungan')->group(function () {
     Route::get('/', function () {
         return view('pages.rw.tamu_kunjungan.index');
     });

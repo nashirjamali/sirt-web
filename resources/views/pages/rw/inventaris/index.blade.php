@@ -11,14 +11,21 @@ RW - Inventaris
 @endpush
 @section('content')
 <div class="breadcrumb-wrapper">
-    <h1>Data Inventaris</h1>
+    <h1>Data Inventaris RW</h1>
 </div>
 
 <div class="row">
     <div class="col-12">
         <div class="card card-default">
+            <div class="card-header border-bottom-0 d-flex justify-content-between">
+                <div>
+                    <a href="/rw/inventaris/create" target="" class="btn btn-outline-primary text-uppercase">
+                        <i class="fas fa-plus-circle mr-2"></i> Tambah Inventaris
+                    </a>
+                </div>
+            </div>
             <div class="card-body">
-                <ul class="nav nav-tabs nav-style-border pl-0 justify-content-between justify-content-xl-start bg-white" role="tablist">
+                <ul class="nav nav-tabs nav-style-border px-0 justify-content-between justify-content-xl-start bg-white nav-justified w-100" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="inventaris_barang-tab" data-toggle="tab" href="#inventaris_barang" role="tab" aria-controls="inventaris_barang" aria-selected="true">Inventaris Barang</a>
                     </li>
@@ -47,42 +54,43 @@ RW - Inventaris
                             </div>
                         </div>
                         <div class="responsive-data-table">
-                            <table class="table dt-responsive nowrap data-table" style="width:100%">
+                            <table class="table dt-responsive nowrap data-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Tanggal Perolehan</th>
-                                        <th>Kelengkapan Dokumen</th>
+                                        <th class="no-sort">Kelengkapan Dokumen</th>
                                         <th>Kuantitas</th>
-                                        <th>Satuan</th>
-                                        <th>Asal</th>
-                                        <th>Kondisi</th>
-                                        <th>Harga</th>
-                                        <th>Keterangan</th>
-                                        <th></th>
+                                        <th class="no-sort">Satuan</th>
+                                        <th class="no-sort">Asal</th>
+                                        <th class="no-sort">Kondisi</th>
+                                        <th class="no-sort">Harga</th>
+                                        <th class="no-sort">Keterangan</th>
+                                        <th class="no-sort"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($barang as $val)
                                     <tr>
-                                        <td>1</td>
-                                        <td>RW 1</td>
-                                        <td>12345</td>
-                                        <td>Lampu</td>
-                                        <td>03/03/2020</td>
-                                        <td>Lengkap</td>
-                                        <td>2</td>
-                                        <td>Unit</td>
-                                        <td>Beli</td>
-                                        <td>Sangat Baik</td>
-                                        <td>30000</td>
-                                        <td>-</td>
+                                        <td>{{$no}}</td>
+                                        <td>{{$val->kode_barang}}</td>
+                                        <td>{{$val->nama_barang}}</td>
+                                        <td>{{$val->tgl_perolehan}}</td>
+                                        <td>{{$val->kelengkapan_dokumen}}</td>
+                                        <td>{{$val->kuantitas}}</td>
+                                        <td>{{$val->satuan}}</td>
+                                        <td>{{$val->asal}}</td>
+                                        <td>{{$val->kondisi}}</td>
+                                        <td>Rp {{ number_format($val->harga,2,',','.') }}</td>
+                                        <td>{{$val->keterangan}}</td>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary">Detail</a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -103,42 +111,44 @@ RW - Inventaris
                             </div>
                         </div>
                         <div class="responsive-data-table">
-                            <table class="table dt-responsive wrap data-table" style="width:100%">
+                            <table class="table dt-responsive nowrap data-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-
-                                        <th>Kode Buku</th>
-                                        <th>Judul</th>
-                                        <th>Pengarang</th>
-                                        <th>Penerbit</th>
+                                        <th class="no-sort">Kode Buku</th>
+                                        <th class="no-sort">Judul</th>
+                                        <th class="no-sort">Pengarang</th>
+                                        <th class="no-sort">Penerbit</th>
                                         <th>Tahun Terbit</th>
                                         <th>Tanggal Dimiliki</th>
-                                        <th>Kepemilikan Dokumen</th>
-                                        <th>Asal</th>
+                                        <th class="no-sort">Kepemilikan Dokumen</th>
+                                        <th class="no-sort">Asal</th>
                                         <th>Jumlah Buku</th>
-                                        <th>Kondisi Buku</th>
-                                        <th></th>
+                                        <th class="no-sort">Kondisi Buku</th>
+                                        <th class="no-sort"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($perpustakaan as $val)
                                     <tr>
-                                        <td>1</td>
-
-                                        <td>007</td>
-                                        <td>James Bond</td>
-                                        <td>Nashir</td>
-                                        <td>Undika</td>
-                                        <td>2020</td>
-                                        <td>03/03/2020</td>
-                                        <td>Ada</td>
-                                        <td>Hibah</td>
-                                        <td>2</td>
-                                        <td>Baik</td>
+                                        <td>{{$no}}</td>
+                                        <td>{{$val->kode_buku}}</td>
+                                        <td>{{$val->judul}}</td>
+                                        <td>{{$val->pengarang}}</td>
+                                        <td>{{$val->penerbit}}</td>
+                                        <td>{{$val->tahun_terbit}}</td>
+                                        <td>{{$val->tgl_dimiliki}}</td>
+                                        <td>{{$val->kepemilikan_dokumen}}</td>
+                                        <td>{{$val->asal}}</td>
+                                        <td>{{$val->jumlah_buku}}</td>
+                                        <td>{{$val->kondisi_buku}}</td>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary">Detail</a>
                                         </td>
                                     </tr>
+                                    @php $no++; @endphp
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -159,7 +169,7 @@ RW - Inventaris
                             </div>
                         </div>
                         <div class="responsive-data-table">
-                            <table class="table dt-responsive wrap data-table" style="width:100%">
+                            <table class="table dt-responsive nowrap data-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -177,7 +187,6 @@ RW - Inventaris
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-
                                         <td>0313</td>
                                         <td>03/03/2020</td>
                                         <td>Hibah</td>
@@ -209,7 +218,7 @@ RW - Inventaris
                             </div>
                         </div>
                         <div class="responsive-data-table">
-                            <table class="table dt-responsive wrap data-table" style="width:100%">
+                            <table class="table dt-responsive nowrap data-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -258,7 +267,19 @@ RW - Inventaris
 <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
 <script>
     $(document).ready(function() {
-        $('.data-table').DataTable();
+        $('.data-table').DataTable({
+            "responsive": true,
+            "aLengthMenu": [
+                [20, 30, 50, 75, -1],
+                [20, 30, 50, 75, "All"]
+            ],
+            "pageLength": 20,
+            "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
+        });
     });
 </script>
 @endpush

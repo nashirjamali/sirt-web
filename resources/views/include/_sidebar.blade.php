@@ -4,26 +4,26 @@
     <li>
         <h6 class="px-4 py-2">Menu RW</h6>
     </li>
-    <li class="has-sub active">
+    <li class="has-sub {{ request()->is('rw/bagian*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rw/bagian">
             <i class="mdi mdi-office-building"></i>
             <span class="nav-text">Bagian</span>
         </a>
     </li>
-    <li class="has-sub">
+    <li class="has-sub {{ request()->is('rw/penduduk*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rw/penduduk">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Penduduk</span>
         </a>
     </li>
-    <li class="has-sub">
+    <li class="has-sub {{ request()->is('rw/inventaris*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rw/inventaris">
             <i class="mdi mdi-archive"></i>
             <span class="nav-text">Inventaris</span>
         </a>
     </li>
-    <li class="has-sub">
-        <a class="sidenav-item-link" href="/rw/tamu_kunjungan">
+    <li class="has-sub {{ request()->is('rw/tamu-kunjungan*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/tamu-kunjungan">
             <i class="mdi mdi-archive"></i>
             <span class="nav-text">Tamu Kunjungan</span>
         </a>
