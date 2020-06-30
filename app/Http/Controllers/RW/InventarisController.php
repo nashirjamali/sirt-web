@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\RW;
 
 use App\Http\Controllers\Controller;
+use App\Models\InventarisATK;
 use App\Models\InventarisBarang;
 use App\Models\InventarisPerpustakaan;
+use App\Models\InventarisTanahBangunan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -20,9 +22,13 @@ class InventarisController extends Controller
     {
         $barang = InventarisBarang::where('id_bagian', Auth::user()->id_bagian)->get();
         $perpustakaan = InventarisPerpustakaan::where('id_bagian', Auth::user()->id_bagian)->get();
+        $tanah_bangunan = InventarisTanahBangunan::where('id_bagian', Auth::user()->id_bagian)->get();
+        $atk = InventarisATK::where('id_bagian', Auth::user()->id_bagian)->get();
         $data = [
             "barang" => $barang,
-            "perpustakaan" => $perpustakaan
+            "perpustakaan" => $perpustakaan,
+            "tanah_bangunan" => $tanah_bangunan,
+            "atk" => $atk,
         ];
         return view('pages.rw.inventaris.index', $data);
     }
@@ -114,6 +120,61 @@ class InventarisController extends Controller
                     'kondisi_buku' => $request->get('buku_kondisi'),
                 ]);
                 break;
+
+            case 'Tanah Bangunan':
+                $validator = Validator::make(request()->all(), [
+                    'kode_tanah' => 'required',
+                    'tanah_tanggal_perolehan' => 'required|date',
+                    'tanah_kelengkapan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'tanah_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'tanah_alamat' => 'required',
+                    'tanah_luas' => 'required|numeric',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                InventarisTanahBangunan::create([
+                    'id_bagian' => Auth::user()->id_bagian,
+                    'kode_tanah' => $request->get('kode_tanah'),
+                    'tgl_dimiliki' => $request->get('tanah_tanggal_perolehan'),
+                    'asal' => $request->get('tanah_asal'),
+                    'kelengkapan_dokumen' => $request->get('tanah_kelengkapan_dokumen'),
+                    'alamat' => $request->get('tanah_alamat'),
+                    'luas' => $request->get('tanah_luas')
+                ]);
+                break;
+
+            case 'ATK':
+                $validator = Validator::make(request()->all(), [
+                    'kode_atk' => 'required',
+                    'nama_atk' => 'required',
+                    'atk_tanggal_perolehan' => 'required|date',
+                    'atk_kelengkapan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'atk_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'atk_kuantitas' => 'required|numeric',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                InventarisATK::create([
+                    'id_bagian' => Auth::user()->id_bagian,
+                    'kode_atk' => $request->get('kode_atk'),
+                    'nama_atk' => $request->get('nama_atk'),
+                    'tgl_dimiliki' => $request->get('atk_tanggal_perolehan'),
+                    'kelengkapan_dokumen' => $request->get('atk_kelengkapan_dokumen'),
+                    'asal' => $request->get('atk_asal'),
+                    'jumlah' => $request->get('atk_kuantitas')
+                ]);
+                break;
+
             default:
 
                 break;

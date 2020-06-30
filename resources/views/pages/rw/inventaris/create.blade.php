@@ -283,17 +283,31 @@ RW - Inventaris - Create
 
                         <div class="form-row mb-4">
                             <label>Kelengkapan Dokumen</label>
-                            <input type="text" class="form-control" name="tanah_kelengkapan_dokumen" placeholder="Lengkap / Tidak">
+                            <div class="w-100 mb-2"></div>
+                            <ul class="list-unstyled list-inline">
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Lengkap
+                                        <input type="radio" name="tanah_kelengkapan_dokumen" checked="checked" value="Lengkap" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                                <li class="d-inline-block mr-3">
+                                    <label class="control control-radio">Tidak
+                                        <input type="radio" name="tanah_kelengkapan_dokumen" value="Tidak" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
 
                         <div class="form-row mb-4">
                             <label>Alamat Tanah</label>
-                            <input type="text" class="form-control" name="tanah_alamat" placeholder="Masukan Alamat Tanah">
+                            <textarea rows="2" class="form-control" name="tanah_alamat" placeholder="Masukan Alamat Tanah"></textarea>
                         </div>
 
                         <div class="form-row mb-4">
                             <label>Luas Tanah</label>
-                            <input type="text" class="form-control" name="tanah_luas" placeholder="Masukan Luas Tanah">
+                            <input type="number" class="form-control" name="tanah_luas" placeholder="Masukan Luas Tanah">
                         </div>
 
                         <div class="form-row mb-4">
@@ -331,7 +345,21 @@ RW - Inventaris - Create
 
                     <div class="form-row mb-4">
                         <label>Kelengkapan Dokumen</label>
-                        <input type="text" class="form-control" name="atk_kelengkapan_dokumen" placeholder="Lengkap / Tidak">
+                        <div class="w-100"></div>
+                        <ul class="list-unstyled list-inline">
+                            <li class="d-inline-block mr-3">
+                                <label class="control control-radio">Lengkap
+                                    <input type="radio" name="atk_kelengkapan_dokumen" checked="checked" value="Lengkap" />
+                                    <div class="control-indicator"></div>
+                                </label>
+                            </li>
+                            <li class="d-inline-block mr-3">
+                                <label class="control control-radio">Tidak
+                                    <input type="radio" name="atk_kelengkapan_dokumen" value="Tidak" />
+                                    <div class="control-indicator"></div>
+                                </label>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="form-row mb-4">
@@ -347,7 +375,7 @@ RW - Inventaris - Create
 
                     <div class="form-row mb-4">
                         <label>Kuantitas ATK</label>
-                        <input type="text" class="form-control" name="atk_kuantitas" placeholder="Masukan Kuantitas ATK">
+                        <input type="number" class="form-control" name="atk_kuantitas" placeholder="Masukan Kuantitas ATK">
                     </div>
 
                     <div class="form-row mb-4">
