@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RW - Data Penduduk
+RW - Tamu
 @endpush
 @push('custom-style')
 <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />

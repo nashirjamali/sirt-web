@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RW - Data Penduduk
+RW - Inventaris
 @endpush
 @push('custom-style')
 <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
@@ -51,7 +51,7 @@ RW - Data Penduduk
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Wilayah RW</th>
+
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Tanggal Perolehan</th>
@@ -107,7 +107,7 @@ RW - Data Penduduk
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Wilayah Rw</th>
+
                                         <th>Kode Buku</th>
                                         <th>Judul</th>
                                         <th>Pengarang</th>
@@ -124,7 +124,7 @@ RW - Data Penduduk
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>RW 1</td>
+
                                         <td>007</td>
                                         <td>James Bond</td>
                                         <td>Nashir</td>
@@ -163,7 +163,7 @@ RW - Data Penduduk
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Wilayah</th>
+
                                         <th>Kode Tanah</th>
                                         <th>Tanggal Dimiliki</th>
                                         <th>Asal</th>
@@ -177,12 +177,12 @@ RW - Data Penduduk
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>RW 1</td>
+
                                         <td>0313</td>
                                         <td>03/03/2020</td>
                                         <td>Hibah</td>
                                         <td>Ada</td>
-                                        <td>Jl. Kedung Baruk</td>
+                                        <td>Jl. Jalan</td>
                                         <td>3000 m2</td>
                                         <td>Tanah Sengketa</td>
                                         <td>
@@ -213,7 +213,7 @@ RW - Data Penduduk
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Bagian Rw</th>
+
                                         <th>Kode Atk</th>
                                         <th>Nama Atk</th>
                                         <th>Tanggal Dimiliki</th>
@@ -227,7 +227,7 @@ RW - Data Penduduk
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>RW 1</td>
+
                                         <td>03250</td>
                                         <td>Pulpen</td>
                                         <td>03/03/2020</td>

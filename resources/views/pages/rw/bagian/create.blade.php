@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-    RW - Bagian
+    RW - Bagian - Create
 @endpush
 @push('custom-style')
     <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet"/>
