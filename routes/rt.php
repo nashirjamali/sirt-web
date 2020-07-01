@@ -11,23 +11,8 @@ Route::get('/', function() {
     return redirect('/rt/penduduk');
 });
 
-Route::prefix('penduduk')->name('penduduk')->group(function () {
-    Route::get('/', 'RT\PendudukController@index');
-});
+Route::resource('penduduk', 'RT\PendudukController');
 
-Route::prefix('penduduk')->name('penduduk')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rt.penduduk.index');
-    });
-
-    Route::get('/create', function () {
-        return view('pages.rt.penduduk.create');
-    });
-
-    Route::get('/detail', function () {
-        return view('pages.rt.penduduk.detail');
-    });
-});
 
 Route::prefix('inventaris')->name('inventaris')->group(function () {
     Route::get('/', function () {
