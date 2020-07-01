@@ -427,19 +427,23 @@ RW - Inventaris
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($tanah_bangunan as $val)
                                     <tr>
-                                        <td>1</td>
-                                        <td>0313</td>
-                                        <td>03/03/2020</td>
-                                        <td>Hibah</td>
-                                        <td>Ada</td>
-                                        <td>Jl. Jalan</td>
-                                        <td>3000 m2</td>
-                                        <td>Tanah Sengketa</td>
+                                        <td>{{$no}}</td>
+                                        <td>{{$val->kode_tanah}}</td>
+                                        <td>{{$val->tgl_dimiliki}}</td>
+                                        <td>{{$val->asal}}</td>
+                                        <td>{{$val->kelengkapan_dokumen}}</td>
+                                        <td>{{$val->alamat}}</td>
+                                        <td>{{$val->luas}}</td>
+                                        <td>{{$val->keterangan}}</td>
                                         <td>
                                             <a class="btn btn-sm text-white btn-primary">Detail</a>
                                         </td>
                                     </tr>
+                                    @php $no++; @endphp
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -464,7 +468,6 @@ RW - Inventaris
                                 <thead>
                                     <tr>
                                         <th>No</th>
-
                                         <th>Kode Atk</th>
                                         <th>Nama Atk</th>
                                         <th>Tanggal Dimiliki</th>
@@ -476,20 +479,23 @@ RW - Inventaris
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($atk as $val)
                                     <tr>
-                                        <td>1</td>
-
-                                        <td>03250</td>
-                                        <td>Pulpen</td>
-                                        <td>03/03/2020</td>
-                                        <td>Ada</td>
-                                        <td>Beli</td>
-                                        <td>3</td>
-                                        <td>-</td>
+                                        <td>{{$no}}</td>
+                                        <td>{{$val->kode_atk}}</td>
+                                        <td>{{$val->tgl_dimiliki}}</td>
+                                        <td>{{$val->nama_atk}}</td>
+                                        <td>{{$val->kelengkapan_dokumen}}</td>
+                                        <td>{{$val->asal}}</td>
+                                        <td>{{$val->jumlah}}</td>
+                                        <td>{{$val->keterangan}}</td>
                                         <td>
-                                            <a class="btn btn-sm text-white btn-primary" href="/rw/inventaris/detail">Detail</a>
+                                            <a class="btn btn-sm text-white btn-primary">Detail</a>
                                         </td>
                                     </tr>
+                                    @php $no++; @endphp
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
