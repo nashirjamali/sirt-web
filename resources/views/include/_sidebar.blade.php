@@ -24,7 +24,7 @@
     </li>
     <li class="has-sub {{ request()->is('rw/tamu-kunjungan*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rw/tamu-kunjungan">
-            <i class="mdi mdi-archive"></i>
+            <i class="mdi mdi-account-supervisor-circle"></i>
             <span class="nav-text">Tamu Kunjungan</span>
         </a>
     </li>

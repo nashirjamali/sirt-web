@@ -49,7 +49,7 @@ class Bagian extends Model
 
     public function tamuKunjungan()
     {
-        return $this->hasMany(TamuKunjungan::class);
+        return $this->hasMany(TamuKunjungan::class, 'id_bagian');
     }
 
     public function inventarisBarang()
