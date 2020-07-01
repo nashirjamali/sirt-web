@@ -33,7 +33,7 @@ Route::prefix('inventaris')->name('inventaris')->group(function () {
 
 });
 
-Route::prefix('tamu-kunjungan')->name('tamu-kunjungan')->group(function () {
+Route::prefix('tamu_kunjungan')->name('tamu_kunjungan')->group(function () {
     Route::get('/', function () {
         return view('pages.rw.tamu_kunjungan.index');
     });

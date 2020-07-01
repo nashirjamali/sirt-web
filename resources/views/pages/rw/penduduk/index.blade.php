@@ -58,7 +58,6 @@ RW - Data Penduduk
                 <div class="tab-content">
                     <!--begin::Warga Tab-->
                     <div class="tab-pane fade show active" id="warga" role="tabpanel" aria-labelledby="warga-tab">
-
                         <div class="border-bottom mb-5 pb-5">
                             <h4>Summary</h4>
                             <div class="row justify-content-center">
@@ -379,7 +378,7 @@ RW - Data Penduduk
                         backgroundColor: "#BFB0F7",
                         label: "Usia"
                     }],
-                    labels: [ '0-10', '10-18', '18-30', '40-60', '60 <', ]
+                    labels: ['0-10', '10-18', '18-30', '40-60', '60 <', ]
                 },
                 options: {
                     responsive: true,
