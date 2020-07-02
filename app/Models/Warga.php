@@ -27,7 +27,7 @@ class Warga extends Model
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class, 'id_bagian');
     }
 
     public function pemimpinRapat()
@@ -52,12 +52,12 @@ class Warga extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasOne(User::class, 'id_warga');
     }
 
     public function mutasi()
     {
-        return $this->hasMany(MutasiWarga::class);
+        return $this->hasMany(MutasiWarga::class, 'id_warga');
     }
 
     public function pengumumanWarga()
@@ -67,11 +67,11 @@ class Warga extends Model
 
     public function pendudukSementara()
     {
-        return $this->hasMany(PendudukSementara::class);
+        return $this->hasMany(PendudukSementara::class, 'id_warga');
     }
 
     public function pemilikRumah()
     {
-        return $this->hasMany(PendudukSementara::class);
+        return $this->hasMany(PendudukSementara::class, 'id_pemilik');
     }
 }

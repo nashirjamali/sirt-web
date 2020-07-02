@@ -14,7 +14,7 @@ class Bagian extends Model
 
     public function warga()
     {
-        return $this->hasMany(Warga::class);
+        return $this->hasMany(Warga::class, 'id_bagian');
     }
 
     public function rapat()
@@ -49,7 +49,7 @@ class Bagian extends Model
 
     public function tamuKunjungan()
     {
-        return $this->hasMany(TamuKunjungan::class);
+        return $this->hasMany(TamuKunjungan::class, 'id_bagian');
     }
 
     public function inventarisBarang()

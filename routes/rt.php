@@ -7,3 +7,10 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', function() {
+    return redirect('/rt/penduduk');
+});
+
+Route::resource('penduduk', 'RT\PendudukController');
+Route::resource('inventaris', 'RT\InventarisController');
+Route::resource('tamu-kunjungan', 'RT\TamuController');

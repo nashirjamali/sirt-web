@@ -18,16 +18,16 @@ class TamuKunjungan extends Model
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class, 'id_bagian');
     }
 
     public function tamuDinas()
     {
-        return $this->hasOne(TamuDinas::class);
+        return $this->hasOne(TamuDinas::class, 'id_tamu');
     }
 
     public function tamuKhusus()
     {
-        return $this->hasOne(TamuKhusus::class);
+        return $this->hasOne(TamuKhusus::class, 'id_tamu');
     }
 }

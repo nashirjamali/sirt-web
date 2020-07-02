@@ -23,11 +23,11 @@ class User extends Authenticatable
 
     public function warga()
     {
-        return $this->belongsTo(Warga::class);
+        return $this->belongsTo(Warga::class, 'id_warga');
     }
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class, 'id_bagian');
     }
 }

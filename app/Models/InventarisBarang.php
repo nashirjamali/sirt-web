@@ -11,7 +11,7 @@ class InventarisBarang extends Model
         'id_bagian',
         'kode_barang',
         'nama_barang',
-        'tanggal_perolehan',
+        'tgl_perolehan',
         'kelengkapan_dokumen',
         'kuantitas',
         'satuan',

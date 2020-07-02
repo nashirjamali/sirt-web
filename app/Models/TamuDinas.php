@@ -17,6 +17,6 @@ class TamuDinas extends Model
 
     public function tamuKunjungan()
     {
-        return $this->belongsTo(TamuKunjungan::class);
+        return $this->belongsTo(TamuKunjungan::class, 'id_tamu');
     }
 }
