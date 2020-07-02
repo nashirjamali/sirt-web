@@ -34,41 +34,14 @@
     <form id="form" method="POST" action="{{route('rt.penduduk.store')}}">
         @csrf
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="card card-default">
-                    <div class="card-header-border-bottom card-header d-flex justify-content-between">
-                        <h2>Identitas RT</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-row">
-                            <label>Nama RT</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">RT </span>
-                                </div>
-                                <input type="text" name="nama_rt" class="form-control" placeholder="Masukan Nama RT"
-                                       id="inputGroupRT" required value="{{old('nama_rt')}}">
-                            </div>
-                            <p style="font-size: 90%">contoh. 001</p>
-                            <div class="valid-feedback">
-                                Bagus! nama RT belum pernah dibuat
-                            </div>
-                            <div class="invalid-feedback">
-                                Maaf, nama RT sudah pernah dibuat
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-100"></div>
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="card card-default">
                     <div class="card-header-border-bottom card-header d-flex justify-content-between">
-                        <h2>Input Data Ketua / Pengurus RT</h2>
+                        <h2>Input Data Warga</h2>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="form-row col-lg-6 col-md-6 col-sm-12 mb-4">
+                            <div class="form-row col-lg-12 col-md-12 col-sm-12 mb-4">
                                 <label>Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama"
                                        placeholder="Masukan Nama Lengkap" required value="{{old('nama')}}">

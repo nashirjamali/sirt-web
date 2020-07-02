@@ -62,6 +62,13 @@ RT - Data Penduduk
             <div class="card-header card-header-border-bottom d-flex justify-content-between mb-4">
                 <h2>Data Warga</h2>
                 <div>
+                    <a href="/rt/penduduk/create" target="" class="btn btn-outline-primary text-uppercase">
+                        <i class="fas fa-plus-circle mr-2"></i> Tambah Data Warga
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
                     <a href="/" target="" class="btn btn-outline-success btn-sm text-uppercase">
                         <i class="fas fa-file-excel"></i> Export Excel
                     </a>
@@ -69,8 +76,6 @@ RT - Data Penduduk
                         <i class="fas fa-print"></i> Print
                     </a>
                 </div>
-            </div>
-            <div class="card-body">
                 <div class="responsive-data-table">
                     <table class="table dt-responsive nowrap data-table" style="width:100%">
                         <thead>
@@ -111,10 +116,28 @@ RT - Data Penduduk
             <div class="card-header card-header-border-bottom">
                 <h2>Mutasi Warga</h2>
             </div>
+            <div class="card-body">
+                <p class="mb-4">Pengelolaan untuk warga datang / pindah / meninggal</p>
+                <button class="btn btn-primary mb-4">
+                    Tambah Mutasi
+                </button>
+                <button class="btn btn-outline-secondary mb-4">
+                    Lihat Data
+                </button>
+            </div>
         </div>
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
                 <h2>Penduduk Sementara</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">Pengelolaan data penduduk pendatang, bertujuan untuk tinggal sementara tidak menetap</p>
+                <button class="btn btn-primary mb-4">
+                    Tambah Penduduk Sementara
+                </button>
+                <button class="btn btn-outline-secondary mb-4">
+                    Lihat Data
+                </button>
             </div>
         </div>
     </div>

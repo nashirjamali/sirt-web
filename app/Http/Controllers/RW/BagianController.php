@@ -108,11 +108,6 @@ class BagianController extends Controller
         $warga->save();
 
 //        Insert User Table
-//        'id_warga',
-//        'id_bagian',
-//        'tipe',
-//        'username',
-//        'password',
         $user = new User;
         $user->id_warga = $warga->id;
         $user->id_bagian = $bagian->id;

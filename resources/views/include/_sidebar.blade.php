@@ -37,21 +37,21 @@
     <li>
         <h6 class="px-4 py-2">Menu RT</h6>
     </li>
-    <li class="has-sub">
+    <li class="has-sub {{ request()->is('rt/penduduk*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rt/penduduk">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Penduduk</span>
         </a>
     </li>
-    <li class="has-sub">
+    <li class="has-sub {{ request()->is('rt/inventaris*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rt/inventaris">
-            <i class="mdi mdi-account-box-multiple"></i>
+            <i class="mdi mdi-archive"></i>
             <span class="nav-text">Inventaris</span>
         </a>
     </li>
-    <li class="has-sub">
-        <a class="sidenav-item-link" href="/rt/tamu_kunjungan">
-            <i class="mdi mdi-account-box-multiple"></i>
+    <li class="has-sub {{ request()->is('rt/tamu-kunjungan*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/tamu-kunjungan">
+            <i class="mdi mdi-account-supervisor-circle"></i>
             <span class="nav-text">Tamu Kunjungan</span>
         </a>
     </li>
