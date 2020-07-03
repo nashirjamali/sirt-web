@@ -118,12 +118,12 @@ RT - Data Penduduk
             </div>
             <div class="card-body">
                 <p class="mb-4">Pengelolaan untuk warga datang / pindah / meninggal</p>
-                <button class="btn btn-primary mb-4">
+                <a href="/rt/mutasi/create" class="btn btn-primary mb-4">
                     Tambah Mutasi
-                </button>
-                <button class="btn btn-outline-secondary mb-4">
+                </a>
+                <a href="/rt/mutasi" class="btn btn-outline-secondary mb-4">
                     Lihat Data
-                </button>
+                </a>
             </div>
         </div>
         <div class="card card-default">

@@ -37,7 +37,7 @@
     <li>
         <h6 class="px-4 py-2">Menu RT</h6>
     </li>
-    <li class="has-sub {{ request()->is('rt/penduduk*') ? 'active' : '' }}">
+    <li class="has-sub {{ request()->is('rt/penduduk*') || request()->is('rt/mutasi*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rt/penduduk">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Penduduk</span>

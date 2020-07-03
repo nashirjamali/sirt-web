@@ -20,7 +20,7 @@ class PendudukController extends Controller
      */
     public function index()
     {
-        $models = Warga::all();
+        $models = Warga::where('id_bagian', Auth::user()->id_bagian)->get();
 
         $warga = [];
         foreach ($models as $val) {
