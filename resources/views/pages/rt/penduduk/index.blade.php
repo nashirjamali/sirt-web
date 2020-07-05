@@ -135,9 +135,9 @@ RT - Data Penduduk
                 <button class="btn btn-primary mb-4">
                     Tambah Penduduk Sementara
                 </button>
-                <button class="btn btn-outline-secondary mb-4">
+                <a href="/rt/penduduk-sementara" class="btn btn-outline-secondary mb-4">
                     Lihat Data
-                </button>
+                </a>
             </div>
         </div>
     </div>
