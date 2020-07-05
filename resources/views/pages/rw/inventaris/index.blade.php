@@ -14,8 +14,8 @@ RW - Inventaris
     <h1>Data Inventaris RW</h1>
     <br>
     <a href="/rw/inventaris/create" target="" class="btn btn-outline-primary text-uppercase">
-    <i class="fas fa-plus-circle mr-2"></i> Tambah Inventaris
-</a>
+        <i class="fas fa-plus-circle mr-2"></i> Tambah Inventaris
+    </a>
 </div>
 
 <div class="row">
