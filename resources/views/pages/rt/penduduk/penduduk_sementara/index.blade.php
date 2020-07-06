@@ -75,7 +75,20 @@ RT - Penduduk Sementara
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            @php $no=1; @endphp
+                            @foreach($penduduk_sementara as $val)
+                            <tr>
+                                <td>{{$no}}</td>
+                                <td>{{$val->warga->nik}}</td>
+                                <td>{{$val->warga->nama}}</td>
+                                <td>{{$val->warga->jkel}}</td>
+                                <td>{{$val->pemilikRumah->nama}}</td>
+                                <td>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rt/penduduk/detail">Detail</a>
+                                </td>
+                            </tr>
+                            @php $no++; @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

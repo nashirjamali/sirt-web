@@ -52,8 +52,6 @@ RT - Penduduk Sementara
                             </thead>
                             <tbody>
                                 @foreach($warga as $val)
-                                @if($val->mutasi != null)
-                                @if($val->mutasi->status == 'Datang')
                                 <tr>
                                     <td>
                                         <label class="control outlined control-checkbox checkbox-primary">
@@ -66,21 +64,6 @@ RT - Penduduk Sementara
                                     <td>{{$val->alamat}}</td>
                                     <td>{{$val->nik}}</td>
                                 </tr>
-                                @endif
-                                @elseif($val->pendudukSementara->isEmpty())
-                                <tr>
-                                    <td>
-                                        <label class="control outlined control-checkbox checkbox-primary">
-                                            <input name="id_warga[]" type="checkbox" value="{{$val->id}}" />
-                                            <div class="control-indicator"></div>
-                                        </label>
-                                    </td>
-                                    <td>{{$val->nama}}</td>
-                                    <td>{{$val->jkel}}</td>
-                                    <td>{{$val->alamat}}</td>
-                                    <td>{{$val->nik}}</td>
-                                </tr>
-                                @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -95,20 +78,15 @@ RT - Penduduk Sementara
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-row col-lg-4 col-md-4 col-sm-12 mb-4">
-                            <label>Tanggal</label>
-                            <input type="date" class="form-control" name="tgl" id="inputTg" placeholder="Masukan Tanggal Mutasi" required value="{{old('tgl_mutasi')}}">
-                        </div>
                         <div class="form-row col-lg-4 col-md-6 col-sm-12 mb-4">
                             <label>Pemilik Rumah</label>
                             <div class="w-100"></div>
                             <div class="select2-wrapper w-100">
-                                <select id="pemilik" class="form-control select2-pemilik">
-                                    @foreach($warga as $val)
+                                <select id="pemilik" name="id_pemilik" class="form-control select2-pemilik">
+                                    @foreach($daftar_pemilik as $val)
                                     <option value="{{$val->id}}">{{$val->nama}}</option>
                                     @endforeach
                                 </select>
-                                <input type="hidden" name="id_pemilik">
                             </div>
                         </div>
                         <div class="form-row col-lg-4 col-md-6 col-sm-12 mb-4">

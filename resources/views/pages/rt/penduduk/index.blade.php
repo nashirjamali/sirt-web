@@ -132,9 +132,9 @@ RT - Data Penduduk
             </div>
             <div class="card-body">
                 <p class="mb-4">Pengelolaan data penduduk pendatang, bertujuan untuk tinggal sementara tidak menetap</p>
-                <button class="btn btn-primary mb-4">
+                <a href="/rt/penduduk-sementara/create" class="btn btn-primary mb-4">
                     Tambah Penduduk Sementara
-                </button>
+                </a>
                 <a href="/rt/penduduk-sementara" class="btn btn-outline-secondary mb-4">
                     Lihat Data
                 </a>

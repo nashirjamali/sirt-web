@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\RT;
 
 use App\Http\Controllers\Controller;
+use App\Models\PendudukSementara;
 use App\Models\Warga;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +18,14 @@ class PendudukSementaraController extends Controller
      */
     public function index()
     {
-        return view('pages.rt.penduduk.penduduk_sementara.index');
+        $warga = Warga::where('id_bagian', Auth::user()->id_bagian)->pluck('id')->toArray();
+        $penduduk_sementara = PendudukSementara::whereIn('id_warga', $warga)->get();
+
+        $data = [
+            'penduduk_sementara' => $penduduk_sementara
+        ];
+
+        return view('pages.rt.penduduk.penduduk_sementara.index', $data);
     }
 
     /**
@@ -26,10 +35,20 @@ class PendudukSementaraController extends Controller
      */
     public function create()
     {
-        $warga = Warga::where('id_bagian', Auth::user()->id_bagian)->get();
-        
+        $warga = Warga::where('id_bagian', Auth::user()->id_bagian)
+            ->whereDoesntHave('pendudukSementara')
+            ->whereDoesntHave('mutasi', function (Builder $query) {
+                $query->where('mutasi_warga.status', '=', 'Meninggal');
+            })
+            ->get();
+
+        $daftar_pemilik = Warga::where('id_bagian', Auth::user()->id_bagian)
+            ->whereDoesntHave('pendudukSementara')
+            ->get();
+
         $data = [
-            "warga" => $warga
+            "warga" => $warga,
+            "daftar_pemilik" => $daftar_pemilik
         ];
         return view('pages.rt.penduduk.penduduk_sementara.create', $data);
     }
@@ -42,7 +61,15 @@ class PendudukSementaraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_warga = $request->get('id_warga');
+        foreach ($id_warga as $val) {
+            PendudukSementara::create([
+                'id_warga' => $val,
+                'id_pemilik_rumah' => $request->get('id_pemilik'),
+                'status' => $request->get('status')
+            ]);
+        }
+        return redirect()->route('rt.penduduk-sementara.index');
     }
 
     /**

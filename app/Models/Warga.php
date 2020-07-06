@@ -67,7 +67,7 @@ class Warga extends Model
 
     public function pendudukSementara()
     {
-        return $this->hasMany(PendudukSementara::class, 'id_warga');
+        return $this->hasOne(PendudukSementara::class, 'id_warga');
     }
 
     public function pemilikRumah()
