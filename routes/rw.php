@@ -37,3 +37,12 @@ Route::resource('tamu-kunjungan', 'RW\TamuController');
 
 Route::prefix('tamu-kunjungan')->name('tamu-kunjungan')->group(function () {
 });
+
+Route::prefix('pengumuman')->name('pengumuman.')->group(function(){
+    Route::get('/', function(){
+        return view('pages.rw.pengumuman.index');
+    });
+    Route::get('/create', function(){
+        return view('pages.rw.pengumuman.create');
+    });
+});

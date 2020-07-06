@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RT - Data Pengumuman
+RW - Data Pengumuman
 @endpush
 @push('custom-style')
 <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
