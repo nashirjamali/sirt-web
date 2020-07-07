@@ -49,16 +49,20 @@ RT - Register
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
+                            @foreach($register_keluar as $val)
                             <tr>
-                                <td>$no</td>
-                                <td>no_surat</td>
-                                <td>no_agenda</td>
-                                <td>penerima_surat</td>
-                                <td>tgl_kirim</td>
+                                <td>{{$no}}</td>
+                                <td>{{$val->no_surat}}</td>
+                                <td>{{$val->no_agenda}}</td>
+                                <td>{{$val->penerima_surat}}</td>
+                                <td>{{$val->tgl_kirim}}</td>
                                 <td>
                                     <a class="btn btn-sm text-white btn-primary">Detail</a>
                                 </td>
                             </tr>
+                            @php $no++; @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -96,16 +100,20 @@ RT - Register
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
+                            @foreach($register_masuk as $val)
                             <tr>
-                                <td>$no</td>
-                                <td>no_surat</td>
-                                <td>no_agenda</td>
-                                <td>asal_surat</td>
-                                <td>tgl_surat</td>
+                                <td>{{$no}}</td>
+                                <td>{{$val->no_surat}}</td>
+                                <td>{{$val->no_agenda}}</td>
+                                <td>{{$val->asal_surat}}</td>
+                                <td>{{$val->tgl_surat}}</td>
                                 <td>
                                     <a class="btn btn-sm text-white btn-primary">Detail</a>
                                 </td>
                             </tr>
+                            @php $no++; @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -115,45 +123,45 @@ RT - Register
 </div>
 
 
-    @endsection
-    @push('custom-script')
-    <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
-    <script>
-        $(document).ready(function() {
-            $('.data-table').DataTable({
-                "responsive": true,
-                "aLengthMenu": [
-                    [20, 30, 50, 75, -1],
-                    [20, 30, 50, 75, "All"]
-                ],
-                "pageLength": 20,
-                "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
-                "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
-            });
+@endsection
+@push('custom-script')
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+<script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.data-table').DataTable({
+            "responsive": true,
+            "aLengthMenu": [
+                [20, 30, 50, 75, -1],
+                [20, 30, 50, 75, "All"]
+            ],
+            "pageLength": 20,
+            "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
         });
+    });
 
-        // $('#keluar_register').change(function() {
-        //     if ($(this).attr('checked', true)) {
-        //         $('#masuk_register_label').addClass('outlined')
-        //         $('#keluar_register_label').removeClass('outlined')
-        //         $('#keluar_register_card').removeClass('d-none');
-        //         $('#masuk_register_card').addClass('d-none');
-        //     }
-        // });
+    // $('#keluar_register').change(function() {
+    //     if ($(this).attr('checked', true)) {
+    //         $('#masuk_register_label').addClass('outlined')
+    //         $('#keluar_register_label').removeClass('outlined')
+    //         $('#keluar_register_card').removeClass('d-none');
+    //         $('#masuk_register_card').addClass('d-none');
+    //     }
+    // });
 
-        // $('#masuk_register').change(function() {
-        //     if ($(this).attr('checked', true)) {
-        //         $('#keluar_register_label').addClass('outlined')
-        //         $('#masuk_register_label').removeClass('outlined')
-        //         $('#masuk_register_card').removeClass('d-none');
-        //         $('#keluar_register_card').addClass('d-none');
-        //     }
-        // });
-    </script>
-    @endpush
+    // $('#masuk_register').change(function() {
+    //     if ($(this).attr('checked', true)) {
+    //         $('#keluar_register_label').addClass('outlined')
+    //         $('#masuk_register_label').removeClass('outlined')
+    //         $('#masuk_register_card').removeClass('d-none');
+    //         $('#keluar_register_card').addClass('d-none');
+    //     }
+    // });
+</script>
+@endpush

@@ -11,7 +11,7 @@ class RegisterMasuk extends Model
         'id_bagian',
         'no_surat',
         'no_agenda',
-        'tgl_kirim',
+        'tgl_surat',
         'tgl_terima',
         'asal_surat',
         'perihal'
@@ -19,6 +19,6 @@ class RegisterMasuk extends Model
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class, 'id_bagian');
     }
 }

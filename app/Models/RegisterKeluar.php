@@ -19,6 +19,6 @@ class RegisterKeluar extends Model
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class, 'id_bagian');
     }
 }

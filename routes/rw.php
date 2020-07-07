@@ -29,25 +29,9 @@ Route::prefix('penduduk')->name('penduduk.')->group(function () {
 });
 
 Route::resource('inventaris', 'RW\InventarisController');
-Route::prefix('inventaris')->name('inventaris')->group(function () {
-
-});
+Route::resource('register', 'RW\RegisterController');
 
 Route::resource('tamu-kunjungan', 'RW\TamuController');
 
 Route::prefix('tamu-kunjungan')->name('tamu-kunjungan')->group(function () {
-});
-
-Route::prefix('register')->name('register.')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rw.register.index');
-    });
-
-    Route::get('/create', function () {
-        return view('pages.rw.register.create');
-    });
-
-    Route::get('/detail', function () {
-        return view('pages.rw.register.detail');
-    });
 });

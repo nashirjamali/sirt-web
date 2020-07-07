@@ -20,7 +20,7 @@ RT - Register - Create
     </nav>
 </div>
 
-<form id="form" method="POST" action="{{route('rw.inventaris.store')}}">
+<form id="form" method="POST" action="{{route('rt.register.store')}}">
     @csrf
     <div class="row">
         <div class="col-12">
@@ -65,42 +65,41 @@ RT - Register - Create
                     <h2>Register Keluar</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-row mb-4">
-                            <label>Nomor Surat</label>
-                            <input type="text" class="form-control" name="no_surat_keluar" placeholder="Masukan No Surat">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Nomor Surat</label>
+                        <input type="text" class="form-control" name="no_surat_keluar" placeholder="Masukan No Surat">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Nomor Agenda</label>
-                            <input type="text" class="form-control" name="no_agenda_keluar" placeholder="Masukan No Agenda">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Nomor Agenda</label>
+                        <input type="text" class="form-control" name="no_agenda_keluar" placeholder="Masukan No Agenda">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Tanggal Kirim</label>
-                            <input type="date" class="form-control" name="tgl_kirim">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Tanggal Kirim</label>
+                        <input type="date" class="form-control" name="tgl_kirim">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Tanggal Terima</label>
-                            <input type="date" class="form-control" name="tgl_terima_keluar">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Tanggal Terima</label>
+                        <input type="date" class="form-control" name="tgl_terima_keluar">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Penerima Surat</label>
-                            <input type="text" class="form-control" name="penerima_surat_keluar" placeholder="Masukan Penerima Surat">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Penerima Surat</label>
+                        <input type="text" class="form-control" name="penerima_surat_keluar" placeholder="Masukan Penerima Surat">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Perihal</label>
-                            <input type="text" class="form-control" name="perihal_keluar" placeholder="Masukan Perihal">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Perihal</label>
+                        <input type="text" class="form-control" name="perihal_keluar" placeholder="Masukan Perihal">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Keterangan</label>
-                            <input type="text" class="form-control" name="keterangan_keluar" placeholder="Masukan Keterangan">
-                        </div>
-                    </form>
+                    <div class="form-row mb-4">
+                        <label>Keterangan</label>
+                        <input type="text" class="form-control" name="keterangan_keluar" placeholder="Masukan Keterangan">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -112,42 +111,40 @@ RT - Register - Create
                     <h2>Register Masuk</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-row mb-4">
-                            <label>Nomor Surat</label>
-                            <input type="text" class="form-control" name="no_surat_masuk" placeholder="Masukan No Surat">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Nomor Surat</label>
+                        <input type="text" class="form-control" name="no_surat_masuk" placeholder="Masukan No Surat">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Nomor Agenda</label>
-                            <input type="text" class="form-control" name="no_agenda_masuk" placeholder="Masukan No Agenda">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Nomor Agenda</label>
+                        <input type="text" class="form-control" name="no_agenda_masuk" placeholder="Masukan No Agenda">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Tanggal Surat</label>
-                            <input type="date" class="form-control" name="tgl_surat">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Tanggal Surat</label>
+                        <input type="date" class="form-control" name="tgl_surat">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Tanggal Terima</label>
-                            <input type="date" class="form-control" name="tgl_terima_masuk">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Tanggal Terima</label>
+                        <input type="date" class="form-control" name="tgl_terima_masuk">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Penerima Surat</label>
-                            <input type="text" class="form-control" name="penerima_surat_masuk" placeholder="Masukan Penerima Surat">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Asal Surat</label>
+                        <input type="text" class="form-control" name="asal_surat_masuk" placeholder="Masukan Asal Surat">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Perihal</label>
-                            <input type="text" class="form-control" name="perihal_masuk" placeholder="Masukan Perihal">
-                        </div>
+                    <div class="form-row mb-4">
+                        <label>Perihal</label>
+                        <input type="text" class="form-control" name="perihal_masuk" placeholder="Masukan Perihal">
+                    </div>
 
-                        <div class="form-row mb-4">
-                            <label>Keterangan</label>
-                            <input type="text" class="form-control" name="keterangan_masuk" placeholder="Masukan Keterangan">
-                        </div>
-                    </form>
+                    <div class="form-row mb-4">
+                        <label>Keterangan</label>
+                        <input type="text" class="form-control" name="keterangan_masuk" placeholder="Masukan Keterangan">
+                    </div>
                 </div>
             </div>
         </div>
@@ -162,6 +159,13 @@ RT - Register - Create
 <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
 <script>
+    $('#masuk_register_label').addClass('outlined')
+    $('#keluar_register_label').removeClass('outlined')
+    $('#keluar_register_card').removeClass('d-none');
+    $('#masuk_register_card').addClass('d-none');
+    $('#reg_masuk').addClass('d-none');
+    $('#reg_keluar').removeClass('d-none');
+
     $('#keluar_register').change(function() {
         if ($(this).attr('checked', true)) {
             $('#masuk_register_label').addClass('outlined')
