@@ -28,6 +28,12 @@
             <span class="nav-text">Tamu Kunjungan</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rw/register*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/register">
+            <i class="mdi mdi-email-outline"></i>
+            <span class="nav-text">Register</span>
+        </a>
+    </li>
     @endif
 
 
@@ -53,6 +59,12 @@
         <a class="sidenav-item-link" href="/rt/tamu-kunjungan">
             <i class="mdi mdi-account-supervisor-circle"></i>
             <span class="nav-text">Tamu Kunjungan</span>
+        </a>
+    </li>
+    <li class="has-sub {{ request()->is('rt/register*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/register">
+            <i class="mdi mdi-email-outline"></i>
+            <span class="nav-text">Register</span>
         </a>
     </li>
     @endif
