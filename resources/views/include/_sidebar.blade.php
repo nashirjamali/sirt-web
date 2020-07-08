@@ -67,6 +67,12 @@
             <span class="nav-text">Register</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rt/request*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/request">
+            <i class="mdi mdi-email-plus-outline"></i>
+            <span class="nav-text">Request Surat Kependudukan</span>
+        </a>
+    </li>
     @endif
     <hr>
 
@@ -81,6 +87,12 @@
         <a class="sidenav-item-link" href="#">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Pengumuman</span>
+        </a>
+    </li>
+    <li class="has-sub {{ request()->is('warga/request*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/warga/request">
+            <i class="mdi mdi-email-plus-outline"></i>
+            <span class="nav-text">Request Surat Kependudukan</span>
         </a>
     </li>
 

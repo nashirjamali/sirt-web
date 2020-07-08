@@ -28,3 +28,17 @@ Route::prefix('register')->name('register.')->group(function () {
         return view('pages.rt.register.detail');
     });
 });
+
+Route::prefix('request')->name('request.')->group(function () {
+    Route::get('/', function () {
+        return view('pages.rt.request_surat_kependudukan.index');
+    });
+
+    Route::get('/create', function () {
+        return view('pages.rt.request_surat_kependudukan.create');
+    });
+
+    Route::get('/detail', function () {
+        return view('pages.rt.request_surat_kependudukan.detail');
+    });
+});
