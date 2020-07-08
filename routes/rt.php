@@ -15,20 +15,6 @@ Route::resource('penduduk', 'RT\PendudukController');
 Route::resource('inventaris', 'RT\InventarisController');
 Route::resource('tamu-kunjungan', 'RT\TamuController');
 
-Route::prefix('register')->name('register.')->group(function () {
-    Route::get('/', function () {
-        return view('pages.rt.register.index');
-    });
-
-    Route::get('/create', function () {
-        return view('pages.rt.register.create');
-    });
-
-    Route::get('/detail', function () {
-        return view('pages.rt.register.detail');
-    });
-});
-
 Route::prefix('request')->name('request.')->group(function () {
     Route::get('/', function () {
         return view('pages.rt.request_surat_kependudukan.index');
@@ -42,3 +28,7 @@ Route::prefix('request')->name('request.')->group(function () {
         return view('pages.rt.request_surat_kependudukan.detail');
     });
 });
+Route::resource('mutasi', 'RT\MutasiWargaController');
+Route::resource('penduduk-sementara', 'RT\PendudukSementaraController');
+Route::resource('register', 'RT\RegisterController');
+Route::resource('pengumuman', 'RT\PengumumanController');

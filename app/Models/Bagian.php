@@ -39,12 +39,12 @@ class Bagian extends Model
 
     public function registerKeluar()
     {
-        return $this->hasMany(RegisterKeluar::class);
+        return $this->hasMany(RegisterKeluar::class, 'id_bagian');
     }
 
     public function registerMasuk()
     {
-        return $this->hasMany(RegisterMasuk::class);
+        return $this->hasMany(RegisterMasuk::class, 'id_bagian');
     }
 
     public function tamuKunjungan()

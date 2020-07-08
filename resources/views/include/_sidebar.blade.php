@@ -34,6 +34,12 @@
             <span class="nav-text">Register</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rw/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/pengumuman">
+            <i class="mdi mdi-message-alert-outline"></i>
+            <span class="nav-text">Pengumuman</span>
+        </a>
+    </li>
     @endif
 
 
@@ -43,7 +49,7 @@
     <li>
         <h6 class="px-4 py-2">Menu RT</h6>
     </li>
-    <li class="has-sub {{ request()->is('rt/penduduk*') ? 'active' : '' }}">
+    <li class="has-sub {{ request()->is('rt/penduduk*') || request()->is('rt/mutasi*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rt/penduduk">
             <i class="mdi mdi-account-box-multiple"></i>
             <span class="nav-text">Penduduk</span>
@@ -71,6 +77,12 @@
         <a class="sidenav-item-link" href="/rt/request">
             <i class="mdi mdi-email-plus-outline"></i>
             <span class="nav-text">Request Surat Kependudukan</span>
+        </a>
+    </li>
+    <li class="has-sub {{ request()->is('rt/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/pengumuman">
+            <i class="mdi mdi-message-alert-outline"></i>
+            <span class="nav-text">Pengumuman</span>
         </a>
     </li>
     @endif
