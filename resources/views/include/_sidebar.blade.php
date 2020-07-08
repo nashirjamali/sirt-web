@@ -34,8 +34,8 @@
             <span class="nav-text">Register</span>
         </a>
     </li>
-    <li class="has-sub {{ request()->is('rt/pengumuman*') ? 'active' : '' }}">
-        <a class="sidenav-item-link" href="/rt/pengumuman">
+    <li class="has-sub {{ request()->is('rw/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/pengumuman">
             <i class="mdi mdi-message-alert-outline"></i>
             <span class="nav-text">Pengumuman</span>
         </a>
