@@ -14,7 +14,7 @@
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
 <div class="wrapper">
     <aside class="left-sidebar bg-sidebar">
-        <div id="sidebar" class="sidebar sidebar-with-footer">
+        <div id="sidebar" class="sidebar">
             <!-- Aplication Brand -->
             <div class="app-brand">
                 <a href="/" title="SiRT">

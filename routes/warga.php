@@ -11,13 +11,7 @@ Route::get('/', function() {
     return redirect('/warga/pengumuman');
 });
 
-Route::prefix('pengumuman')->name('pengumuman')->group(function () {
-    // Route::get('/', 'Warga\PengumumanController@index');
-    Route::get('/', function ()
-    {
-        return abort(404);
-    });
-});
+Route::resource('pengumuman', 'Warga\PengumumanController');
 
 Route::prefix('request')->name('request.')->group(function () {
     Route::get('/', function () {

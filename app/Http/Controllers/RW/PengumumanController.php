@@ -63,7 +63,6 @@ class PengumumanController extends Controller
         $validator = Validator::make(request()->all(), [
             'judul' => 'required',
             'isi' => 'required',
-            'tgl' => 'required|date'
         ]);
         if ($validator->fails()) {
             return back()
@@ -75,8 +74,9 @@ class PengumumanController extends Controller
             'id_bagian' => Auth::user()->id_bagian,
             'judul_pengumuman' => $request->get('judul'),
             'isi_pengumuman' => $request->get('isi'),
-            'tgl_pengumuman' => $request->get('tgl'),
+            'tgl_pengumuman' => date("Y-m-d"),
         ]);
+
 
         return redirect()->route('rw.pengumuman.index');
     }

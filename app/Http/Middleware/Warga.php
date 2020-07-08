@@ -21,11 +21,11 @@ class Warga
         }
 
         if (Auth::user()->tipe == 'RW') {
-            return redirect()->route('rw.');
+            return $next($request);
         }
 
         if (Auth::user()->tipe == 'RT') {
-            return redirect()->route('rt.');
+            return $next($request);
         }
 
         if (Auth::user()->tipe == 'Warga') {

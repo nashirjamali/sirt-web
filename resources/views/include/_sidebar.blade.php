@@ -95,9 +95,9 @@
     <li>
         <h6 class="px-4 py-2">Menu Warga</h6>
     </li>
-    <li class="has-sub">
-        <a class="sidenav-item-link" href="#">
-            <i class="mdi mdi-account-box-multiple"></i>
+    <li class="has-sub {{ request()->is('warga/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/warga/pengumuman">
+            <i class="mdi mdi-message-alert-outline"></i>
             <span class="nav-text">Pengumuman</span>
         </a>
     </li>

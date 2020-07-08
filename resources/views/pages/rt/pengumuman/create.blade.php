@@ -50,10 +50,6 @@ RT - Pengumuman
                             <textarea class="form-control" rows="10" placeholder="Masukan isi pengumuman" required name="isi"></textarea>
                         </div>
                         <div class="w-100"></div>
-                        <div class="form-row col-lg-4 col-md-4 col-sm-12 mb-4">
-                            <label>Tanggal Pengumuman</label>
-                            <input type="date" class="form-control" name="tgl" placeholder="Masukan Tanggal Pengumuman" required value="{{old('tgl')}}">
-                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg float-right">Tambah Data</button>
                 </div>

@@ -76,7 +76,7 @@ class LoginController extends Controller
                     break;
             }
         } else {
-            return redirect()->route('login')->withErrors(['msg', 'Username atau Password salah']);
+            return redirect()->route('login')->withErrors(['Username atau Password salah']);
         }
     }
 }
