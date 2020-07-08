@@ -34,6 +34,12 @@
             <span class="nav-text">Register</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rt/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/pengumuman">
+            <i class="mdi mdi-message-alert-outline"></i>
+            <span class="nav-text">Pengumuman</span>
+        </a>
+    </li>
     @endif
 
 
@@ -65,6 +71,12 @@
         <a class="sidenav-item-link" href="/rt/register">
             <i class="mdi mdi-email-outline"></i>
             <span class="nav-text">Register</span>
+        </a>
+    </li>
+    <li class="has-sub {{ request()->is('rt/pengumuman*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/pengumuman">
+            <i class="mdi mdi-message-alert-outline"></i>
+            <span class="nav-text">Pengumuman</span>
         </a>
     </li>
     @endif

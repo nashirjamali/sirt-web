@@ -17,3 +17,13 @@ Route::resource('tamu-kunjungan', 'RT\TamuController');
 Route::resource('mutasi', 'RT\MutasiWargaController');
 Route::resource('penduduk-sementara', 'RT\PendudukSementaraController');
 Route::resource('register', 'RT\RegisterController');
+
+
+Route::prefix('pengumuman')->name('pengumuman.')->group(function(){
+    Route::get('/', function(){
+        return view('pages.rt.pengumuman.index');
+    });
+    Route::get('/create', function(){
+        return view('pages.rt.pengumuman.create');
+    });
+});
