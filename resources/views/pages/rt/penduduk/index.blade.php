@@ -14,27 +14,20 @@ RT - Data Penduduk
 <div class="breadcrumb-wrapper">
     <h1>Data Penduduk</h1>
 </div>
-<!-- <div class="">
-    <a href="/rt/penduduk/create"
-        target="" class="btn btn-outline-primary text-uppercase">
-        <i class="fas fa-plus-circle mr-2"></i> Tambah Data Penduduk
-    </a>
-</div> -->
-
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12">
         <div class="card bg-primary card-default">
             <div class="card-body text-white">
-                <span class="h2">40</span>
-                <h5 class="card-title mt-2">Jumlah Penduduk</h5>
+                <h5 class="card-title">Jumlah Penduduk</h5>
+                <span class="h2 mt-2">{{$jmlh_penduduk}}</span>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-12">
         <div class="card bg-success card-default">
             <div class="card-body text-white">
-                <span class="h2">40</span>
-                <h5 class="card-title mt-2">Jumlah Keluarga</h5>
+                <h5 class="card-title">Jumlah Keluarga</h5>
+                <span class="h2 mt-2">{{$jmlh_kk}}</span>
             </div>
         </div>
     </div>
@@ -100,7 +93,7 @@ RT - Data Penduduk
                                 <td>{{$val['alamat']}}</td>
                                 <td>{{$val['status']}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rw/penduduk/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rt/penduduk/{{$val['id']}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
@@ -148,6 +141,7 @@ RT - Data Penduduk
 @endsection
 @push('custom-script')
 <script src="{{asset('assets/plugins/charts/Chart.min.js')}}"></script>
+<script src="{{asset('assets/plugins/charts/chartjs-plugin-colorschemes.min.js')}}"></script>
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
@@ -156,36 +150,31 @@ RT - Data Penduduk
     $(document).ready(function() {
         $('.data-table').DataTable();
 
-        new Chart(document.getElementById("jkel-chart"), {
-            type: 'pie',
-            data: {
-                labels: ["Laki-Laki", "Perempuan"],
-                datasets: [{
-                    label: "Orang",
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
-                    data: [2478, 5267]
-                }]
-            },
-            options: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
+        let pekerjaan = <?= json_encode($pekerjaan); ?>;
+        let nama_pekerjaan = [];
+        let jmlh_pekerjaan = [];
+        pekerjaan.forEach(el => {
+            nama_pekerjaan.push(el.pekerjaan);
+            jmlh_pekerjaan.push(el.total);
         });
-
+        
         new Chart(document.getElementById("pekerjaan-chart"), {
             type: 'pie',
             data: {
-                labels: ["PNS", "Karyawan Swasta", "Wirausaha", "Pelajar", "Tidak Bekerja"],
+                labels: nama_pekerjaan,
                 datasets: [{
                     label: "Orang",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                    data: [2478, 5267, 734, 784, 433]
+                    data: jmlh_pekerjaan
                 }]
             },
             options: {
                 legend: {
                     position: 'bottom'
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.Paired12'
+                    }
                 }
             }
         });
@@ -196,13 +185,20 @@ RT - Data Penduduk
                 labels: ["Laki-Laki", "Perempuan"],
                 datasets: [{
                     label: "Jenis Kelamin (orang)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2"],
-                    data: [2478, 5267]
+                    data: [
+                        <?= $jkel[0] ?>,
+                        <?= $jkel[1] ?>
+                    ]
                 }]
             },
             options: {
                 legend: {
                     position: 'bottom'
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.Paired12'
+                    }
                 }
             }
         });

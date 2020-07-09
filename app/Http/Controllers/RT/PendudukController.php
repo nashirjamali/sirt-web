@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PendudukController extends Controller
@@ -46,9 +47,22 @@ class PendudukController extends Controller
 
             array_push($warga, $x);
         }
+        $jmlh_laki = Warga::where('id_bagian', Auth::user()->id_bagian)->where('jkel', 'L')->count();
+        $jmlh_perempuan = Warga::where('id_bagian', Auth::user()->id_bagian)->where('jkel', 'P')->count();
+        $pekerjaan = Warga::where('id_bagian', Auth::user()->id_bagian)->groupBy('pekerjaan')->select('pekerjaan', DB::raw('count(*) as total'))->get()->toArray();
+
+        $jmlh_kk = Warga::where('id_bagian', Auth::user()->id_bagian)->groupBy('no_kk')->count();
+        $jmlh_penduduk = Warga::where('id_bagian', Auth::user()->id_bagian)->count();
 
         $data = [
-            "warga" => $warga
+            "warga" => $warga,
+            "jkel" => [
+                $jmlh_laki,
+                $jmlh_perempuan,
+            ],
+            "pekerjaan" => $pekerjaan,
+            "jmlh_kk" => $jmlh_kk,
+            "jmlh_penduduk" => $jmlh_penduduk,
         ];
         return view('pages.rt.penduduk.index', $data);
     }
@@ -149,7 +163,11 @@ class PendudukController extends Controller
      */
     public function show($id)
     {
-        //
+        $warga = Warga::where('id', $id)->first();
+        $data = [
+            'warga' => $warga,
+        ];
+        return view('pages.rt.penduduk.detail', $data);
     }
 
     /**
