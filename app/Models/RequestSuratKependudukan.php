@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class RequestSuratKependudukan extends Model
 {
-    use Notifiable;
-
     protected $table = 'request_surat_kependudukan';
     protected $fillable = [
         'id_bagian',

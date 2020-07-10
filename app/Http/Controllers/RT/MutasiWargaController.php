@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RT;
 use App\Http\Controllers\Controller;
 use App\Models\MutasiWarga;
 use App\Models\Warga;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,13 @@ class MutasiWargaController extends Controller
      */
     public function create()
     {
-        $warga = Warga::where('id_bagian', Auth::user()->id_bagian)->get();
+        // $warga = Warga::where('id_bagian', Auth::user()->id_bagian)->get();
+
+        $warga = Warga::where('id_bagian', Auth::user()->id_bagian)
+            ->whereDoesntHave('mutasi', function (Builder $query) {
+                $query->where('mutasi_warga.status', '=', ['Meninggal', 'Pindah']);
+            })
+            ->get();
 
         $data = [
             "warga" => $warga
