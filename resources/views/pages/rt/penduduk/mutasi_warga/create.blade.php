@@ -49,7 +49,6 @@ RT - Penduduk
                             </thead>
                             <tbody>
                                 @foreach($warga as $val)
-                                @if($val->mutasi->isEmpty())
                                 <tr>
                                     <td>
                                         <label class="control outlined control-checkbox checkbox-primary">
@@ -62,7 +61,6 @@ RT - Penduduk
                                     <td>{{$val->alamat}}</td>
                                     <td>{{$val->nik}}</td>
                                 </tr>
-                                @endif
                                 @endforeach
                             </tbody>
                         </table>
