@@ -84,7 +84,7 @@ RT - Penduduk Sementara
                                 <td>{{$val->warga->jkel}}</td>
                                 <td>{{$val->pemilikRumah->nama}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rt/penduduk/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rt/penduduk-sementara/{{$val->warga->id}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
@@ -106,15 +106,24 @@ RT - Penduduk Sementara
 <script>
     $(document).ready(function() {
         $('.data-table').DataTable();
-
+        
+        
+        let stats = <?= json_encode($stats); ?>;
+        let month = [];
+        let jmlh_penduduk = [];
+        console.log(stats);
+        stats.forEach(el => {
+            month.push(el[0].month);
+            jmlh_penduduk.push(el[0].total);
+        });
         let ctx = $('#mutasi-chart').get(0).getContext('2d');
         ctx.height = 600;
         return chart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+                labels: month,
                 datasets: [{
-                    data: [4, 5, 6, 7, 8, 1, 2, 4, 5, 10, 5, 2],
+                    data: jmlh_penduduk,
                     label: "Orang",
                     borderColor: "#3e95cd",
                     fill: false
