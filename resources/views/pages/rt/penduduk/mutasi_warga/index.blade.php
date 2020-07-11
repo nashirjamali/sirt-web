@@ -86,7 +86,7 @@ RT - Mutasi Warga
                                 <td>{{$val->warga->alamat}}</td>
                                 <td>{{$val->status}}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-primary">
+                                    <a href="/rt/mutasi/{{$val->warga->id}}" class="btn btn-sm btn-primary">
                                         Detail
                                     </a>
                                 </td>
@@ -111,30 +111,57 @@ RT - Mutasi Warga
     $(document).ready(function() {
         $('.data-table').DataTable();
 
+        let stats_datang = <?php echo json_encode($stats_datang); ?>;
+        let stats_pindah = <?php echo json_encode($stats_pindah); ?>;
+        let stats_meninggal = <?php echo json_encode($stats_meninggal); ?>;
+        let bulan = [];
+        let jmlh_datang = [];
+        let jmlh_pindah = [];
+        let jmlh_meninggal = [];
+        stats_datang.forEach(el => {
+            bulan.push(el[0].month);
+            jmlh_datang.push(el[0].total);
+        });
+        stats_pindah.forEach(el => {
+            jmlh_pindah.push(el[0].total);
+        });
+
+        stats_meninggal.forEach(el => {
+            jmlh_meninggal.push(el[0].total);
+        });
+
         let ctx = $('#mutasi-chart').get(0).getContext('2d');
         ctx.height = 600;
         return chart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+                labels: bulan,
                 datasets: [{
-                    data: [4, 5, 6, 7, 8, 1, 2, 4, 5, 10, 5, 2],
+                    data: jmlh_meninggal,
                     label: "Meninggal",
                     borderColor: "#3e95cd",
                     fill: false
                 }, {
-                    data: [10, 4, 3, 2, 1, 5, 1, 4, 5, 10, 22],
+                    data: jmlh_pindah,
                     label: "Pindah",
                     borderColor: "#8e5ea2",
                     fill: false
                 }, {
-                    data: [8, 17, 8, 10, 23, 6, 8, 7, 6, 4],
+                    data: jmlh_datang,
                     label: "Datang",
                     borderColor: "#3cba9f",
                     fill: false
                 }]
             },
             options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: true,
+                        },
+                    }],
+                },
                 responsive: true,
                 title: {
                     display: true,
