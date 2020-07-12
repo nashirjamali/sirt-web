@@ -112,9 +112,34 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        return view('pages.rt.register.detail');
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'keluar':
+                $register = RegisterKeluar::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                break;
+
+            case 'masuk':
+                $register = RegisterMasuk::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                break;
+
+            default:
+                return redirect()->route('rt.register.index');
+                break;
+        }
+
+        $data = [
+            'jenis' => $jenis,
+            'register' => $register,
+        ];
+        return view('pages.rt.register.detail', $data);
     }
 
     /**

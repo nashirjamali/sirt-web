@@ -1,85 +1,193 @@
 @extends('layouts.default')
 @push('page-title')
-RT - Register - Detail
+RT - Detail Register
 @endpush
 @section('content')
-<style>
-    .spasi {
-        margin-bottom: 30px;
-    }
-
-    h5 {
-        margin-bottom: 10px;
-        color: black;
-    }
-</style>
 <div class="breadcrumb-wrapper">
     <h1 class="mb-2">Detail Register</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-0">
             <li class="breadcrumb-item">
-                <a href="/rw/bagian">
+                <a href="/rt/register">
                     <span class="mdi mdi-home"></span>
                 </a>
             </li>
             <li class="breadcrumb-item">
-                Data Register
+                <a href="/rt/register">
+                    Data Register
+                </a>
             </li>
             <li class="breadcrumb-item" aria-current="page">Detail Register</li>
         </ol>
     </nav>
 </div>
+
+<!-- Register Keluar -->
+@if($jenis == 'keluar')
 <div class="row">
-    <div class="w-100"></div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="col-md-6 col-sm-12">
         <div class="card card-default">
-            <div class="card-header-border-bottom card-header d-flex justify-content-between">
-                <h2>Informasi Register</h2>
+            <div class="card-header">
+                <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+                    <i class="mdi mdi-email-open font-size-20"></i>
+                </div>
+                <h2>Identitas Register</h2>
             </div>
             <div class="card-body">
-                <form>
-                    <h5>No Surat</h5>
-                    <p class="mb-4">12345</p>
-                    <h5>No Agenda</h5>
-                    <p class="mb-4">123132</p>
-                    <h5>Tanggal Surat</h5>
-                    <p class="mb-4">03/03/2020</p>
-                    <h5>Tanggal Terima</h5>
-                    <p class="mb-4">L03/03/2020</p>
-                    <h5>Penerima Surat</h5>
-                    <p class="mb-4">Nashir</p>
-                    <h5>Perihal</h5>
-                    <p class="mb-4">-</p>
-                    <h5>Keterangan</h5>
-                    <p class="">-</p>
-                </form>
+                <div class="form-row mb-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                        <label for="">Jenis Surat Register</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">Keluar</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+                        <label for="">Nomor Surat</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->no_surat}}</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+                        <label for="">Nomor Agenda</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->no_agenda}}</h5>
+                    </div>
+                </div>
+                <a href="/rt/register/id/edit?jenis=keluar" class="mr-2 btn btn-warning btn-pill text-white">
+                    <i class="mdi mdi-circle-edit-outline"></i>
+                    Edit
+                </a>
+                <button class="btn btn-danger btn-pill text-white" data-toggle="modal" data-target="#deleteModal">
+                    <i class="mdi mdi-trash-can"></i>
+                    Hapus
+                </button>
             </div>
         </div>
     </div>
-    <!-- 
-    <th>nama bagian_rw</th>
-    <th>kode_barang</th>
-    <th>nama_barang</th>
-    <th>tgl_perolehan</th>
-    <th>kelengkapan_dokumen</th>
-    <th>kuantitas</th>
-    <th>satuan</th>
-    <th>asal</th>
-    <th>kondisi</th>
-    <th>harga</th>
-    <th>keterangan</th>
-
-                                        <td>RW 1</td>
-                                        <td>12345</td>
-                                        <td>Lampu</td>
-                                        <td>03/03/2020</td>
-                                        <td>Lengkap</td>
-                                        <td>2</td>
-                                        <td>Unit</td>
-                                        <td>Beli</td>
-                                        <td>Sangat Baik</td>
-                                        <td>30000</td>
-                                        <td>-</td>
--->
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+                    <i class="mdi mdi-information font-size-20"></i>
+                </div>
+                <h2>Informasi Surat Register</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-row mb-4">
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Tanggal Kirim</label>
+                        <div class="w-100"></div>
+                        @php
+                        $date = new DateTime($register->tgl_kirim);
+                        $result = $date->format('d M Y');
+                        @endphp
+                        <h5 class="text-dark">{{$result}}</h5>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Tanggal Terima</label>
+                        <div class="w-100"></div>
+                        @php
+                        $date = new DateTime($register->tgl_terima);
+                        $result = $date->format('d M Y');
+                        @endphp
+                        <h5 class="text-dark">{{$result}}</h5>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Penerima Surat</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->penerima_surat}}</h5>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Perihal</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->perihal}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+@elseif($jenis == 'masuk')
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+                    <i class="mdi mdi-email-open font-size-20"></i>
+                </div>
+                <h2>Identitas Register</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-row mb-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                        <label for="">Jenis Surat Register</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">Masuk</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+                        <label for="">Nomor Surat</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->no_surat}}</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+                        <label for="">Nomor Agenda</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->no_agenda}}</h5>
+                    </div>
+                </div>
+                <a href="/rt/register/id/edit?jenis=masuk" class="mr-2 btn btn-warning btn-pill text-white">
+                    <i class="mdi mdi-circle-edit-outline"></i>
+                    Edit
+                </a>
+                <button class="btn btn-danger btn-pill text-white" data-toggle="modal" data-target="#deleteModal">
+                    <i class="mdi mdi-trash-can"></i>
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+                    <i class="mdi mdi-information font-size-20"></i>
+                </div>
+                <h2>Informasi Surat Register</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-row mb-4">
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Tanggal Surat</label>
+                        <div class="w-100"></div>
+                        @php
+                        $date = new DateTime($register->tgl_surat);
+                        $result = $date->format('d M Y');
+                        @endphp
+                        <h5 class="text-dark">{{$result}}</h5>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Tanggal Terima</label>
+                        <div class="w-100"></div>
+                        @php
+                        $date = new DateTime($register->tgl_terima);
+                        $result = $date->format('d M Y');
+                        @endphp
+                        <h5 class="text-dark">{{$result}}</h5>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Asal Surat</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->asal_surat}}</h5>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-4">
+                        <label for="">Perihal</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$register->perihal}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @endsection
