@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RT - Penduduk
+RT - Tambah Mutasi Warga
 @endpush
 @push('custom-style')
 <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
@@ -14,12 +14,12 @@ RT - Penduduk
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-0">
             <li class="breadcrumb-item">
-                <a href="/rt/penduduk">
+                <a href="/rt/mutasi">
                     <span class="mdi mdi-home"></span>
                 </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="/rt/penduduk">
+                <a href="/rt/mutasi">
                     Data Mutasi Warga
                 </a>
             </li>

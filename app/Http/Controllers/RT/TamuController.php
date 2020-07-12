@@ -138,7 +138,7 @@ class TamuController extends Controller
 
                 break;
             default:
-                
+
                 break;
         }
         return redirect()->route('rt.tamu-kunjungan.index');
@@ -152,7 +152,12 @@ class TamuController extends Controller
      */
     public function show($id)
     {
-        //
+        $tamu = TamuKunjungan::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+
+        $data = [
+            'tamu' => $tamu,
+        ];
+        return view('pages.rt.tamu_kunjungan.detail', $data);
     }
 
     /**
@@ -163,7 +168,12 @@ class TamuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tamu = TamuKunjungan::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+
+        $data = [
+            'tamu' => $tamu,
+        ];
+        return view('pages.rt.tamu_kunjungan.edit', $data);
     }
 
     /**
@@ -175,7 +185,77 @@ class TamuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tamu = TamuKunjungan::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+
+        if ($tamu == null) {
+            return redirect()->route('rt.tamu-kunjungan.index');
+        }
+
+        $jenis = $tamu->jenis_tamu;
+
+        $validator = Validator::make(request()->all(), [
+            'nama_tamu' => 'required',
+            'periode_tamu' => 'required',
+            'tanggal_tamu' => 'required|date',
+            'tujuan_tamu' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator->errors())
+                ->withInput($request->input());
+        }
+
+        $tamu->nama_lengkap = $request->get('nama_tamu');
+        $tamu->periode = $request->get('periode_tamu');
+        $tamu->tujuan = $request->get('tujuan_tamu');
+        $tamu->tanggal = $request->get('tanggal_tamu');
+        $tamu->save();
+
+        switch ($jenis) {
+            case 'Khusus':
+                $validator = Validator::make(request()->all(), [
+                    'jabatan_tamu' => 'required',
+                    'instansi_tamu' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+                $tamu_khusus = TamuKhusus::where('id_tamu', $id)->first();
+                $tamu_khusus->jabatan = $request->get('jabatan_tamu');
+                $tamu_khusus->instansi = $request->get('instansi_tamu');
+                $tamu_khusus->save();
+                break;
+
+            case 'Dinas':
+                $validator = Validator::make(request()->all(), [
+                    'jabatan_tamu_dinas' => 'required',
+                    'instansi_tamu_dinas' => 'required',
+                    'nip_tamu' => 'required',
+                    'no_surat_tugas_tamu' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                $tamu_dinas = TamuDinas::where('id_tamu', $id)->first();
+                $tamu_dinas->jabatan = $request->get('jabatan_tamu_dinas');
+                $tamu_dinas->instansi = $request->get('instansi_tamu_dinas');
+                $tamu_dinas->nip = $request->get('nip_tamu');
+                $tamu_dinas->no_surat_tugas = $request->get('no_surat_tugas_tamu');
+                $tamu_dinas->save();
+                break;
+            default:
+
+                break;
+        }
+        return redirect()->route('rt.tamu-kunjungan.index');
     }
 
     /**
@@ -186,6 +266,7 @@ class TamuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TamuKunjungan::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->delete();
+        return redirect()->route('rt.tamu-kunjungan.index');
     }
 }

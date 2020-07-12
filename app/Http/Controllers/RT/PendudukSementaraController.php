@@ -27,10 +27,10 @@ class PendudukSementaraController extends Controller
         $stats = [];
         for ($i = 1; $i <= 12; $i++) {
             $get_month = PendudukSementara::whereIn('id_warga', $warga)
-                ->whereYear('created_at', $year)
-                ->whereMonth('created_at', $i)
+                ->whereYear('updated_at', $year)
+                ->whereMonth('updated_at', $i)
                 ->groupBy('id')
-                ->select(DB::raw('MONTHNAME(created_at) as month'), DB::raw('count(id) as total'))
+                ->select(DB::raw('MONTHNAME(updated_at) as month'), DB::raw('count(id) as total'))
                 ->get()
                 ->toArray();
 

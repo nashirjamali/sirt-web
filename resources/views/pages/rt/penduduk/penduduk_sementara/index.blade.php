@@ -111,7 +111,6 @@ RT - Penduduk Sementara
         let stats = <?= json_encode($stats); ?>;
         let month = [];
         let jmlh_penduduk = [];
-        console.log(stats);
         stats.forEach(el => {
             month.push(el[0].month);
             jmlh_penduduk.push(el[0].total);
