@@ -51,7 +51,7 @@ RT - Detail Register
                         <h5 class="text-dark">{{$register->no_agenda}}</h5>
                     </div>
                 </div>
-                <a href="/rt/register/id/edit?jenis=keluar" class="mr-2 btn btn-warning btn-pill text-white">
+                <a href="/rt/register/{{$register->id}}/edit?jenis=keluar" class="mr-2 btn btn-warning btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Edit
                 </a>
@@ -134,7 +134,7 @@ RT - Detail Register
                         <h5 class="text-dark">{{$register->no_agenda}}</h5>
                     </div>
                 </div>
-                <a href="/rt/register/id/edit?jenis=masuk" class="mr-2 btn btn-warning btn-pill text-white">
+                <a href="/rt/register/{{$register->id}}/edit?jenis=masuk" class="mr-2 btn btn-warning btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Edit
                 </a>
@@ -190,4 +190,31 @@ RT - Detail Register
     </div>
 </div>
 @endif
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="{{route('rt.register.destroy', $register->id)}}" method="post">
+            @csrf
+            <input name="_method" type="hidden" value="DELETE">
+            <input name="jenis" type="hidden" value="{{$jenis}}">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>
+                        Yakin mengahapus data register {{$jenis}} {{$register->no_surat}} ?
+                    </h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-pill" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-pill">Ok</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 @endsection

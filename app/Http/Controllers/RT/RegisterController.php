@@ -148,9 +148,34 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'keluar':
+                $register = RegisterKeluar::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                break;
+
+            case 'masuk':
+                $register = RegisterMasuk::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                break;
+
+            default:
+                return redirect()->route('rt.register.index');
+                break;
+        }
+
+        $data = [
+            'jenis' => $jenis,
+            'register' => $register,
+        ];
+        return view('pages.rt.register.edit', $data);
     }
 
     /**
@@ -162,7 +187,70 @@ class RegisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'keluar':
+                $register = RegisterKeluar::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                $validator = Validator::make(request()->all(), [
+                    'no_surat_keluar' => 'required',
+                    'no_agenda_keluar' => 'required',
+                    'tgl_kirim' => 'required|date',
+                    'tgl_terima_keluar' => 'required|date',
+                    'penerima_surat_keluar' => 'required',
+                    'perihal_keluar' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                $register->no_surat = $request->get('no_surat_keluar');
+                $register->no_agenda = $request->get('no_agenda_keluar');
+                $register->tgl_kirim = $request->get('tgl_kirim');
+                $register->tgl_terima = $request->get('tgl_terima_keluar');
+                $register->penerima_surat = $request->get('penerima_surat_keluar');
+                $register->perihal = $request->get('perihal_keluar');
+                $register->save();
+                break;
+
+            case 'masuk':
+                $register = RegisterMasuk::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                $validator = Validator::make(request()->all(), [
+                    'no_surat_masuk' => 'required',
+                    'no_agenda_masuk' => 'required',
+                    'tgl_surat' => 'required|date',
+                    'tgl_terima_masuk' => 'required|date',
+                    'asal_surat_masuk' => 'required',
+                    'perihal_masuk' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                $register->no_surat = $request->get('no_surat_masuk');
+                $register->no_agenda = $request->get('no_agenda_masuk');
+                $register->tgl_surat = $request->get('tgl_surat');
+                $register->tgl_terima = $request->get('tgl_terima_masuk');
+                $register->asal_surat = $request->get('asal_surat_masuk');
+                $register->perihal = $request->get('perihal_masuk');
+                $register->save();
+                break;
+
+            default:
+                return redirect()->route('rt.register.index');
+                break;
+        }
+
+        return redirect()->route('rt.register.index');
     }
 
     /**
@@ -171,8 +259,35 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'keluar':
+                $register = RegisterKeluar::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                $register->delete();
+                break;
+
+            case 'masuk':
+                $register = RegisterMasuk::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+                if ($register == null) {
+                    return redirect()->route('rt.register.index');
+                }
+                $register->delete();
+                break;
+
+            default:
+                return redirect()->route('rt.register.index');
+                break;
+        }
+
+        $data = [
+            'jenis' => $jenis,
+            'register' => $register,
+        ];
+        return redirect()->route('rt.register.index');
     }
 }
