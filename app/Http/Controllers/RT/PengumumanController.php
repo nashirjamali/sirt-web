@@ -17,7 +17,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumanLast = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->take(3)->get();
+        $pengumumanLast = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->orderBy('created_at', 'DESC')->take(3)->get();
 
         $last = [];
 
@@ -33,7 +33,7 @@ class PengumumanController extends Controller
         }
         
 
-        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->get();
+        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->orderBy('created_at', 'DESC')->get();
         $data = [
             "last" => $last,
             "pengumuman_last" => $pengumumanLast,
@@ -88,7 +88,12 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+        $data = [
+            'pengumuman' => $pengumuman
+        ];
+
+        return view('pages.rt.pengumuman.detail', $data);
     }
 
     /**
@@ -99,7 +104,12 @@ class PengumumanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+        $data = [
+            'pengumuman' => $pengumuman
+        ];
+
+        return view('pages.rt.pengumuman.edit', $data);
     }
 
     /**
@@ -111,7 +121,11 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+        $pengumuman->judul_pengumuman = $request->get('judul');
+        $pengumuman->isi_pengumuman = $request->get('isi');
+        $pengumuman->save();
+        return redirect()->route('rt.pengumuman.index');
     }
 
     /**
@@ -122,7 +136,8 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pengumuman::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->delete();
+        return redirect()->route('rt.pengumuman.index');
     }
 
     function character_limiter($str, $n = 500, $end_char = '....')

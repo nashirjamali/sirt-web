@@ -54,21 +54,26 @@ class Bagian extends Model
 
     public function inventarisBarang()
     {
-        return $this->hasMany(InventarisBarang::class);
+        return $this->hasMany(InventarisBarang::class, 'id_bagian');
     }
 
     public function inventarisPerpustakaan()
     {
-        return $this->hasMany(InventarisPerpustakaan::class);
+        return $this->hasMany(InventarisPerpustakaan::class, 'id_bagian');
     }
 
     public function inventarisATK()
     {
-        return $this->hasMany(InventarisATK::class);
+        return $this->hasMany(InventarisATK::class, 'id_bagian');
     }
 
     public function inventarisTanah()
     {
-        return $this->hasMany(InventarisTanahBangunan::class);
+        return $this->hasMany(InventarisTanahBangunan::class, 'id_bagian');
+    }
+
+    public function requestSurat()
+    {
+        return $this->hasMany(RequestSuratKependudukan::class, 'id_bagian');
     }
 }

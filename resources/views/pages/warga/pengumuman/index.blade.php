@@ -19,7 +19,7 @@ Warga - Pengumuman
                 <p class="card-text">
                     <small class="text-muted">{{$val->tgl_pengumuman}}</small>
                 </p>
-                <a type="button" class="btn btn-primary text-white mt-4">
+                <a href="/warga/pengumuman/{{$val->id}}" type="button" class="btn btn-primary text-white mt-4">
                     Baca
                 </a>
             </div>

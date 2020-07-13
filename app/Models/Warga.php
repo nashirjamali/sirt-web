@@ -74,4 +74,9 @@ class Warga extends Model
     {
         return $this->hasMany(PendudukSementara::class, 'id_pemilik_rumah');
     }
+    
+    public function requestSurat()
+    {
+        return $this->hasMany(RequestSuratKependudukan::class, 'id_bagian');
+    }
 }

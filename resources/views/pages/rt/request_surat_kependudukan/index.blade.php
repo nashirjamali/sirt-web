@@ -19,32 +19,31 @@ RT - Request
         <div class="card card-default">
             <div class=" card-header-border-bottom card-header d-flex justify-content-between">
                 <h2>Data Request</h2>
-                <!-- <div>
-                    <a href="/rt/request/create" target="" class="btn btn-outline-primary text-uppercase">
-                        <i class="fas fa-plus-circle mr-2"></i> Tambah Request
-                    </a>
-                </div> -->
             </div>
             <div class="card-body">
                 <div class="responsive-data-table">
                     <table class="table dt-responsive nowrap data-table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th>Tanggal</th>
                                 <th>Nama Warga</th>
                                 <th>Tipe Surat</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($request as $val)
                             <tr>
-                                <td>No.</td>
-                                <td>id_warga</td>
-                                <td>tipe_surat</td>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{$val->warga->nama}}</td>
+                                <td>{{$val->tipe_surat}}</td>
+                                <td>{{$val->status_request}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rt/request/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rt/request/{{$val->id}}">Detail</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

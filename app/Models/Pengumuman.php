@@ -21,6 +21,6 @@ class Pengumuman extends Model
 
     public function pengumumanWarga()
     {
-        return $this->hasMany(PengumumanWarga::class);
+        return $this->hasMany(PengumumanWarga::class, 'id_pengumuman');
     }
 }
