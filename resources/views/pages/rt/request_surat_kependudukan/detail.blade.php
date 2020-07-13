@@ -120,8 +120,3 @@ RT - Request - Detail
     </div>
 </div>
 @endsection
-
-<!-- <option value="Done">Done</option>
-                            <option value="In progress">In Progress</option>
-                            <option value="On hold">On Hold</option>
-                            <option value="Canceled">Canceled</option> -->
