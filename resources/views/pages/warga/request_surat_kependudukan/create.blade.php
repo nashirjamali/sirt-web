@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-Warga - Request - Create
+Warga - Request Create
 @endpush
 @section('content')
 <div class="breadcrumb-wrapper">
@@ -19,9 +19,10 @@ Warga - Request - Create
         </ol>
     </nav>
 </div>
-<form id="form" method="POST">
+<form id="form" action="{{route('warga.request.store')}}" method="POST">
+    @csrf
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-6 col-md-8 col-sm-12">
             <div class="card card-default" id="request_card">
                 <div class="card-header-border-bottom card-header d-flex justify-content-between">
                     <h2>Request Surat Kependudukan</h2>
@@ -35,15 +36,15 @@ Warga - Request - Create
                         </select>
                     </div>
                     <div class="w-100"></div>
-                    <div class="form-row mb-4">
+                    <div class="form-row w-100 mb-4">
                         <label>Keterangan</label>
-                        <input type="text" class="form-control" name="keterangan_request" placeholder="Masukan Keterangan">
+                        <textarea rows="3" class="form-control" name="keterangan_request" placeholder="Masukan Keterangan"></textarea>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Tambah Data</button>
+    <button type="submit" class="btn btn-primary btn-lg">Tambah Request</button>
 </form>
 
 

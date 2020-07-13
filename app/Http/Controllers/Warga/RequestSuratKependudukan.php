@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Warga;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestSuratKependudukan as ModelsRequestSuratKependudukan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequestSuratKependudukan extends Controller
 {
@@ -14,7 +16,11 @@ class RequestSuratKependudukan extends Controller
      */
     public function index()
     {
-        //
+        $req = ModelsRequestSuratKependudukan::where('id_bagian', Auth::user()->id_bagian)->where('id_warga', Auth::user()->id_warga)->get();
+        $data = [
+            'request' => $req,
+        ];
+        return view('pages.warga.request_surat_kependudukan.index', $data);
     }
 
     /**
@@ -24,7 +30,7 @@ class RequestSuratKependudukan extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.warga.request_surat_kependudukan.create');
     }
 
     /**
@@ -35,7 +41,15 @@ class RequestSuratKependudukan extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ModelsRequestSuratKependudukan::create([
+            'id_bagian' => Auth::user()->id_bagian,
+            'id_warga' => Auth::user()->id_warga,
+            'tipe_surat' => $request->get('jenis_surat_request'),
+            'keterangan' => $request->get('keterangan_request'),
+            'status_request' => 'Ditangguhkan'
+        ]);
+
+        return redirect()->route('warga.request.index');
     }
 
     /**

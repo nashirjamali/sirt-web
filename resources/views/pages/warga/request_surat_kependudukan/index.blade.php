@@ -31,16 +31,24 @@ Warga - Request
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Warga</th>
                                 <th>Tipe Surat</th>
+                                <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
+                            @foreach($request as $val)
                             <tr>
-                                <td>No.</td>
-                                <td>id_warga</td>
-                                <td>tipe_surat</td>
+                                <td>{{$no}}</td>
+                                <td>{{$val->tipe_surat}}</td>
+                                <td>{{$val->status_request}}</td>
+                                <td>
+                                    <a class="btn btn-sm text-white btn-primary" href="/warga/request/{{$val->id}}">Detail</a>
+                                </td>
                             </tr>
+                            @php $no++; @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -15,4 +15,14 @@ class RequestSuratKependudukan extends Model
         'status_request'
     ];
     
+    public function bagian()
+    {
+        return $this->belongsTo(Bagian::class, 'id_bagian');
+    }
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class, 'id_bagian');
+    }
+    
 }
