@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Warga;
 use App\Http\Controllers\Controller;
 use App\Models\Bagian;
 use App\Models\Pengumuman;
+use App\Models\PengumumanWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class PengumumanController extends Controller
     public function index()
     {
         $id_rw = Bagian::where('tipe_bagian', 'RW')->first();
-        $pengumuman = Pengumuman::whereIn('id_bagian', [Auth::user()->id_bagian, $id_rw->id])->paginate(5);
+        $pengumuman = Pengumuman::whereIn('id_bagian', [Auth::user()->id_bagian, $id_rw->id])->orderBy('created_at', 'DESC')->paginate(5);
         $data = [
             'pengumuman' => $pengumuman
         ];
@@ -54,7 +55,19 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pengumumanWarga = PengumumanWarga::where('id_warga', Auth::user()->id_warga)->where('id_pengumuman', $id)->first();
+        if ($pengumumanWarga == null) {
+            PengumumanWarga::create([
+                "id_warga" => Auth::user()->id_warga,
+                "id_pengumuman" => $id
+            ]);
+        }
+
+        $pengumuman = Pengumuman::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
+        $data = [
+            'pengumuman' => $pengumuman,
+        ];
+        return view('pages.warga.pengumuman.detail', $data);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RT - Request - Detail
+RT - Request Detail
 @endpush
 @section('content')
 <div class="breadcrumb-wrapper">
