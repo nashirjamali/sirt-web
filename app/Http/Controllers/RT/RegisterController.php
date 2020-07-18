@@ -99,7 +99,6 @@ class RegisterController extends Controller
 
                 break;
             default:
-                # code...
                 break;
         }
 

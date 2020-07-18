@@ -58,7 +58,7 @@ RW - Tamu
                                 <td>{{$val->periode}}</td>
                                 <td>{{$val->tanggal}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/{{$val->id}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
@@ -94,7 +94,6 @@ RW - Tamu
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
                                 <th>Instansi</th>
-                                <th>Periode</th>
                                 <th>Tanggal</th>
                                 <th></th>
                             </tr>
@@ -106,10 +105,9 @@ RW - Tamu
                                 <td>{{$no}}</td>
                                 <td>{{$val->tamuKunjungan->nama_lengkap}}</td>
                                 <td>{{$val->instansi}}</td>
-                                <td>{{$val->tamuKunjungan->periode}}</td>
                                 <td>{{$val->tamuKunjungan->tanggal}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/{{$val->tamuKunjungan->id}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
@@ -145,7 +143,6 @@ RW - Tamu
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
                                 <th>Instansi</th>
-                                <th>Periode</th>
                                 <th>Tanggal</th>
                                 <th></th>
                             </tr>
@@ -157,10 +154,9 @@ RW - Tamu
                                 <td>{{$no}}</td>
                                 <td>{{$val->tamuKunjungan->nama_lengkap}}</td>
                                 <td>{{$val->instansi}}</td>
-                                <td>{{$val->tamuKunjungan->periode}}</td>
                                 <td>{{$val->tamuKunjungan->tanggal}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/tamu-kunjungan/{{$val->tamuKunjungan->id}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp

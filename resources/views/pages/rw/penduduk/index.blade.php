@@ -23,12 +23,12 @@ RW - Data Penduduk
                 <h2>Filter RT</h2>
             </div>
             <div class="card-body">
-                <form>
+                <form method="get" action="{{route('rw.penduduk.index')}}">
                     <div class="form-row mb-4">
                         <label>Pilih RT</label>
                         <select class="js-example-basic-multiple form-control" id="rt-multiple" name="rts[]" multiple="multiple">
-                            @foreach($rt as $val)
-                            <option value="{{$val->id}}">{{$val->nama_bagian}}</option>
+                            @foreach($bagian as $val)
+                            <option value="{{$val->id}}" <?php echo $id_bagian && in_array($val->id, $id_bagian) ? "selected" : "" ?>>{{$val->nama_bagian}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -41,387 +41,224 @@ RW - Data Penduduk
 
     <div class="col-12">
         <div class="card card-default">
-            <div class="card-header">
-                <ul class="nav nav-tabs nav-style-border pl-0 justify-content-between justify-content-xl-start bg-white nav-justified w-100" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="warga-tab" data-toggle="tab" href="#warga" role="tab" aria-controls="warga" aria-selected="true">Warga</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="mutasi-tab" data-toggle="tab" href="#mutasi" role="tab" aria-controls="mutasi" aria-selected="false">Mutasi Warga</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="sementara-tab" data-toggle="tab" href="#sementara" role="tab" aria-controls="sementara" aria-selected="false">Penduduk Sementara</a>
-                    </li>
-                </ul>
+            <div class="card-header card-header-border-bottom">
+                <h2>Summary</h2>
             </div>
             <div class="card-body">
-                <div class="tab-content">
-                    <!--begin::Warga Tab-->
-                    <div class="tab-pane fade show active" id="warga" role="tabpanel" aria-labelledby="warga-tab">
-                        <div class="border-bottom mb-5 pb-5">
-                            <h4>Summary</h4>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6 col-md-6 col-sm-12 py-4">
-                                    <p class="text-center mb-2">Jenis Kelamin</p>
-                                    <div>
-                                        <canvas id="jkel-chart"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 py-4">
-                                    <p class="text-center mb-2">Agama</p>
-                                    <div>
-                                        <canvas id="agama-chart"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-12 py-4 m-center">
-                                    <p class="text-center mb-2">Rentang Usia</p>
-                                    <div>
-                                        <canvas id="usia-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <h4>Data Warga</h4>
-                            <div>
-                                <a href="/" target="" class="btn btn-outline-success btn-sm text-uppercase">
-                                    <i class="fas fa-file-excel"></i> Export Excel
-                                </a>
-                                <a href="/" target="" class="btn btn-outline-info btn-sm text-uppercase">
-                                    <i class="fas fa-print"></i> Print
-                                </a>
-                            </div>
-                        </div>
-                        <div class="responsive-data-table">
-                            <table class="table dt-responsive nowrap data-table" id="warga-dt" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>NIK</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>Wilayah RT</th>
-                                        <th>Status</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                <div class="form-row mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <label for="">Jumlah Warga</label>
+                        <div class="w-100"></div>
+                        <h3 class="text-dark">{{$jmlh_warga}} Orang</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <label for="">Jumlah Keluarga</label>
+                        <div class="w-100"></div>
+                        <h3 class="text-dark">{{$jmlh_kk}} Keluarga</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <label for="">Jumlah Penduduk Sementara</label>
+                        <div class="w-100"></div>
+                        <h3 class="text-dark">{{$jmlh_sementara}} Orang</h3>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4 text-center">
+                        <label for="">Persebaran Penduduk</label>
+                        <div style="height: 300px">
+                            <canvas id="persebaran-chart"></canvas>
                         </div>
                     </div>
-                    <!--end::Warga Tab-->
-
-                    <!--begin::Mutasi Tab-->
-                    <div class="tab-pane pt-3 fade" id="mutasi" role="tabpanel" aria-labelledby="mutasi-tab">
-
-                        <div class="border-bottom mb-5 pb-5">
-                            <h4>Summary</h4>
-                            <div class="col-lg-12 col-md-12 col-sm-12 py-4">
-                                <p class="text-center mb-2">Statistik Mutasi Mutasi</p>
-                                <div>
-                                    <canvas id="mutasi-chart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <h4>Data Warga</h4>
-                            <div>
-                                <a href="/" target="" class="btn btn-outline-success btn-sm text-uppercase">
-                                    <i class="fas fa-file-excel"></i> Export Excel
-                                </a>
-                                <a href="/" target="" class="btn btn-outline-info btn-sm text-uppercase">
-                                    <i class="fas fa-print"></i> Print
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="responsive-data-table">
-                            <table class="table dt-responsive nowrap data-table" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Tanggal Mutasi</th>
-                                        <th>NIK</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>Wilayah RT</th>
-                                        <th>Status Mutasi</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2020-06-27</td>
-                                        <td>14567899876544512</td>
-                                        <td>Nashir Jamali</td>
-                                        <td>Laki-Laki</td>
-                                        <td>Jalan Surabaya</td>
-                                        <td>RT 002</td>
-                                        <td>Pindah</td>
-                                        <td>
-                                            <a class="btn btn-sm text-white btn-primary" href="/rw/penduduk/detail">Detail</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="w-100"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-4 text-center">
+                        <label for="">Jenis Kelamin</label>
+                        <canvas id="jkel-chart"></canvas>
                     </div>
-                    <!--end::Mutasi Tab-->
-                    <!--begin::Sementara Tab-->
-                    <div class="tab-pane pt-3 fade" id="sementara" role="tabpanel" aria-labelledby="sementara-tab">
-                        <div class="d-flex justify-content-between mb-4">
-                            <p class="">Data Penduduk Sementara</p>
-                            <div>
-                                <a href="/" target="" class="btn btn-outline-success btn-sm text-uppercase">
-                                    <i class="fas fa-file-excel"></i> Export Excel
-                                </a>
-                                <a href="/" target="" class="btn btn-outline-info btn-sm text-uppercase">
-                                    <i class="fas fa-print"></i> Print
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="responsive-data-table">
-                            <table class="table dt-responsive nowrap data-table" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>NIK</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>Wilayah RT</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>14567899876544512</td>
-                                        <td>Nashir Jamali</td>
-                                        <td>Laki-Laki</td>
-                                        <td>Jalan Surabaya</td>
-                                        <td>RT 002</td>
-                                        <td>
-                                            <a class="btn btn-sm text-white btn-primary" href="/rw/penduduk/detail">Detail</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-4 text-center">
+                        <label for="">Pekerjaan</label>
+                        <canvas id="pekerjaan-chart"></canvas>
                     </div>
-                    <!--end::Warga Tab-->
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom d-flex justify-content-between mb-4">
+                <h2>Data Warga</h2>
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <a href="/" target="" class="btn btn-outline-success btn-sm text-uppercase">
+                        <i class="fas fa-file-excel"></i> Export Excel
+                    </a>
+                    <a href="/" target="" class="btn btn-outline-info btn-sm text-uppercase">
+                        <i class="fas fa-print"></i> Print
+                    </a>
+                </div>
+                <div class="responsive-data-table">
+                    <table class="table dt-responsive nowrap data-table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>NIK</th>
+                                <th>Nama Lengkap</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Alamat</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $no = 1; @endphp
+                            @foreach($list_warga as $val)
+                            <tr>
+                                <td>{{$no}}</td>
+                                <td>{{$val['nik']}}</td>
+                                <td>{{$val['nama']}}</td>
+                                <td>{{$val['jkel']}}</td>
+                                <td>{{$val['alamat']}}</td>
+                                <td>{{$val['status']}}</td>
+                                <td>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/penduduk/{{$val['id']}}">Detail</a>
+                                </td>
+                            </tr>
+                            @php $no++; @endphp
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Mutasi Warga</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">Pengelolaan untuk warga datang / pindah / meninggal</p>
+                <a href="/rw/mutasi" class="btn btn-primary mb-4">
+                    Lihat Data
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Penduduk Sementara</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">Pengelolaan data penduduk pendatang, bertujuan untuk tinggal sementara tidak menetap</p>
+                <a href="/rw/penduduk-sementara" class="btn btn-primary mb-4">
+                    Lihat Data
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+
 @endsection
 @push('custom-script')
 <script src="{{asset('assets/plugins/charts/Chart.min.js')}}"></script>
+<script src="{{asset('assets/plugins/charts/chartjs-plugin-colorschemes.min.js')}}"></script>
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/plugins/data-tables/datatables.responsive.min.js')}}"></script>
 <script>
-    let rt = '';
     $(document).ready(function() {
-        chartJkel();
-        chartAgama();
-        chartUsia();
-        chartMutasi();
-        $('#warga-dt').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: "{{ route('rw.penduduk.data.warga') }}",
-                type: "GET",
-                data: {
-                    rt: rt
-                },
+        $('.data-table').DataTable();
+
+        let pekerjaan = <?= json_encode($pekerjaan); ?>;
+        let nama_pekerjaan = [];
+        let jmlh_pekerjaan = [];
+        pekerjaan.forEach(el => {
+            nama_pekerjaan.push(el.pekerjaan);
+            jmlh_pekerjaan.push(el.total);
+        });
+
+        new Chart(document.getElementById("pekerjaan-chart"), {
+            type: 'pie',
+            data: {
+                labels: nama_pekerjaan,
+                datasets: [{
+                    label: "Orang",
+                    data: jmlh_pekerjaan
+                }]
             },
-            columns: [{
-                    data: 'no',
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
+            options: {
+                legend: {
+                    position: 'bottom'
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.Paired12'
                     }
-                },
-                {
-                    data: 'nik',
-                    name: 'nik',
-                    orderable: false,
-                },
-                {
-                    data: 'nama',
-                    name: 'nama',
-                    orderable: false,
-                },
-                {
-                    data: 'jkel',
-                    name: 'jkel',
-                    orderable: false,
-                },
-                {
-                    data: 'alamat',
-                    name: 'alamat',
-                    orderable: false,
-                },
-                {
-                    data: 'wilayah',
-                    name: 'wilayah'
-                },
-                {
-                    data: 'status',
-                    name: 'status'
-                },
-                {
-                    data: null,
-                    render: function(data, type, full) {
-                        return '<a class="btn btn-sm text-white btn-primary" href="/rw/penduduk/detail/' + full[0] + '">Detail</a>'
-                    }
-                },
-            ]
-        });
-
-        $('#cari-penduduk').click(function(e) {
-            e.preventDefault();
-            rt = $('#rt-multiple').val();
-            $('#warga-dt').DataTable().ajax.reload();
+                }
+            }
         });
 
 
-        /*
-        Chart JS Section
-         */
-        function chartJkel() {
-            let ctx = $('#jkel-chart').get(0).getContext('2d');
-            return chart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                        data: [
-                            10,
-                            12
-                        ],
-                        backgroundColor: [
-                            "#FDCB1E",
-                            "#5D8BE8",
-                        ],
-                        label: 'Jenis Kelamin'
-                    }],
-                    labels: [
-                        'Perempuan',
-                        'Laki-laki',
-                    ]
+        let jkel = <?= json_encode($jkel); ?>;
+        let nama_jkel = [];
+        let jmlh_jkel = [];
+        jkel.forEach(el => {
+            nama_jkel.push(el.jkel == "L" ? "Laki-Laki" : "Perempuan");
+            jmlh_jkel.push(el.total);
+        });
+        new Chart(document.getElementById("jkel-chart"), {
+            type: 'pie',
+            data: {
+                labels: nama_jkel,
+                datasets: [{
+                    label: "Jenis Kelamin (orang)",
+                    data: jmlh_jkel
+                }]
+            },
+            options: {
+                legend: {
+                    position: 'bottom'
                 },
-                options: {
-                    responsive: true,
-                    legend: {
-                        position: 'bottom',
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.Paired12'
                     }
                 }
-            })
-        }
+            }
+        });
 
-        function chartAgama() {
-            let ctx = $('#agama-chart').get(0).getContext('2d');
-            return chart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                        data: [
-                            20,
-                            10,
-                            5,
-                            3,
-                            1
-                        ],
-                        backgroundColor: [
-                            "#FDCB1E",
-                            "#5D8BE8",
-                            "#29CC97",
-                            "#BFB0F7",
-                            "#FF99A1",
-                        ],
-                        label: 'Agama'
-                    }],
-                    labels: [
-                        'Islam',
-                        'Kristen',
-                        'Katolik',
-                        'Hindu',
-                        'Buddha',
-                    ]
+        let persebaran = <?= json_encode($persebaran); ?>;
+        let nama_bagian = [];
+        let jmlh_warga = [];
+        persebaran.forEach(el => {
+            nama_bagian.push(el.nama_bagian);
+            jmlh_warga.push(el.jmlh_warga);
+        });
+        new Chart(document.getElementById("persebaran-chart"), {
+            type: 'pie',
+            data: {
+                labels: nama_bagian,
+                datasets: [{
+                    label: "Orang",
+                    data: jmlh_warga
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom'
                 },
-                options: {
-                    responsive: true,
-                    legend: {
-                        position: 'bottom',
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.Paired12'
                     }
                 }
-            })
-        }
-
-        function chartUsia() {
-            let ctx = $('#usia-chart').get(0).getContext('2d');
-            return chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    datasets: [{
-                        data: [20, 10, 5, 3, 1],
-                        backgroundColor: "#BFB0F7",
-                        label: "Usia"
-                    }],
-                    labels: ['0-10', '10-18', '18-30', '40-60', '60 <', ]
-                },
-                options: {
-                    responsive: true,
-                    legend: {
-                        position: 'bottom',
-                    },
-                }
-            })
-        }
-
-        function chartMutasi() {
-            let ctx = $('#mutasi-chart').get(0).getContext('2d');
-            ctx.height = 600;
-            return chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-                    datasets: [{
-                        data: [4, 5, 6, 7, 8, 1, 2, 4, 5, 10, 5, 2],
-                        label: "Meninggal",
-                        borderColor: "#3e95cd",
-                        fill: false
-                    }, {
-                        data: [10, 4, 3, 2, 1, 5, 1, 4, 5, 10, 22],
-                        label: "Pindah",
-                        borderColor: "#8e5ea2",
-                        fill: false
-                    }, {
-                        data: [8, 17, 8, 10, 23, 6, 8, 7, 6, 4],
-                        label: "Datang",
-                        borderColor: "#3cba9f",
-                        fill: false
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    title: {
-                        display: true,
-                        text: 'Perkembangan mutasi tiap bulan, tahun 2020'
-                    }
-                }
-            })
-        }
+            }
+        });
     });
 </script>
 @endpush

@@ -188,9 +188,40 @@ class InventarisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'barang':
+                $inventaris = InventarisBarang::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'perpustakaan':
+                $inventaris = InventarisPerpustakaan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'tanah_bangunan':
+                $inventaris = InventarisTanahBangunan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'atk':
+                $inventaris = InventarisATK::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            default:
+                return redirect()->route('rw.inventaris.index');
+                break;
+        }
+
+        if ($inventaris == null) {
+            return redirect()->route('rw.inventaris.index');
+        }
+
+        $data = [
+            'inventaris' => $inventaris,
+            'jenis' => $jenis,
+        ];
+        return view('pages.rw.inventaris.detail', $data);
     }
 
     /**
@@ -199,9 +230,40 @@ class InventarisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'barang':
+                $inventaris = InventarisBarang::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'perpustakaan':
+                $inventaris = InventarisPerpustakaan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'tanah_bangunan':
+                $inventaris = InventarisTanahBangunan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            case 'atk':
+                $inventaris = InventarisATK::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                break;
+
+            default:
+                return redirect()->route('rw.inventaris.index');
+                break;
+        }
+
+        if ($inventaris == null) {
+            return redirect()->route('rw.inventaris.index');
+        }
+
+        $data = [
+            'inventaris' => $inventaris,
+            'jenis' => $jenis,
+        ];
+        return view('pages.rw.inventaris.edit', $data);
     }
 
     /**
@@ -213,7 +275,140 @@ class InventarisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'barang':
+                $validator = Validator::make(request()->all(), [
+                    'kode_barang' => 'required',
+                    'nama_barang' => 'required',
+                    'brg_tanggal_perolehan' => 'required|date',
+                    'brg_kelengkapan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'brg_kuantitas' => 'required|numeric',
+                    'brg_satuan' => 'required',
+                    'brg_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'brg_kondisi' => 'required|in:Sangat Baik,Baik,Sangat Rusak,Rusak',
+                    'brg_harga' => 'required|numeric',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+                $inventaris = InventarisBarang::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                if ($inventaris == null) {
+                    return redirect()->route('rt.inventaris.index');
+                }
+                $inventaris->kode_barang = $request->get('kode_barang');
+                $inventaris->nama_barang = $request->get('nama_barang');
+                $inventaris->tgl_perolehan = $request->get('brg_tanggal_perolehan');
+                $inventaris->kelengkapan_dokumen = $request->get('brg_kelengkapan_dokumen');
+                $inventaris->kuantitas = $request->get('brg_kuantitas');
+                $inventaris->satuan = $request->get('brg_satuan');
+                $inventaris->asal = $request->get('brg_asal');
+                $inventaris->kondisi = $request->get('brg_kondisi');
+                $inventaris->harga = $request->get('brg_harga');
+                $inventaris->save();
+                break;
+
+            case 'perpustakaan':
+                $validator = Validator::make(request()->all(), [
+                    'kode_buku' => 'required',
+                    'judul_buku' => 'required',
+                    'pengarang_buku' => 'required',
+                    'penerbit_buku' => 'required',
+                    'tahun_terbit_buku' => 'required|date_format:Y',
+                    'buku_tanggal_perolehan' => 'required|date',
+                    'buku_kepemilikan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'buku_kuantitas' => 'required|numeric',
+                    'buku_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'buku_kondisi' => 'required|in:Sangat Baik,Baik,Sangat Rusak,Rusak',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+
+                $inventaris = InventarisPerpustakaan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                if ($inventaris == null) {
+                    return redirect()->route('rt.inventaris.index');
+                }
+                $inventaris->kode_buku = $request->get('kode_buku');
+                $inventaris->judul = $request->get('judul_buku');
+                $inventaris->pengarang = $request->get('pengarang_buku');
+                $inventaris->penerbit = $request->get('penerbit_buku');
+                $inventaris->tahun_terbit = $request->get('tahun_terbit_buku');
+                $inventaris->tgl_dimiliki = $request->get('buku_tanggal_perolehan');
+                $inventaris->kepemilikan_dokumen = $request->get('buku_kepemilikan_dokumen');
+                $inventaris->asal = $request->get('buku_asal');
+                $inventaris->jumlah_buku = $request->get('buku_kuantitas');
+                $inventaris->kondisi_buku = $request->get('buku_kondisi');
+                $inventaris->save();
+                break;
+
+            case 'tanah_bangunan':
+                $validator = Validator::make(request()->all(), [
+                    'kode_tanah' => 'required',
+                    'tanah_tanggal_perolehan' => 'required|date',
+                    'tanah_kelengkapan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'tanah_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'tanah_alamat' => 'required',
+                    'tanah_luas' => 'required|numeric',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+                $inventaris = InventarisTanahBangunan::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                if ($inventaris == null) {
+                    return redirect()->route('rt.inventaris.index');
+                }
+                $inventaris->kode_tanah = $request->get('kode_tanah');
+                $inventaris->tgl_dimiliki = $request->get('tanah_tanggal_perolehan');
+                $inventaris->asal = $request->get('tanah_asal');
+                $inventaris->kelengkapan_dokumen = $request->get('tanah_kelengkapan_dokumen');
+                $inventaris->alamat = $request->get('tanah_alamat');
+                $inventaris->luas = $request->get('tanah_luas');
+                $inventaris->save();
+                break;
+
+
+            case 'atk':
+                $validator = Validator::make(request()->all(), [
+                    'kode_atk' => 'required',
+                    'nama_atk' => 'required',
+                    'atk_tanggal_perolehan' => 'required|date',
+                    'atk_kelengkapan_dokumen' => 'required|in:Lengkap,Tidak',
+                    'atk_asal' => 'required|in:Beli,Hibah,Hadiah,Wakaf,Sumbangan',
+                    'atk_kuantitas' => 'required|numeric',
+                ]);
+
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator->errors())
+                        ->withInput($request->input());
+                }
+                $inventaris = InventarisATK::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
+                if ($inventaris == null) {
+                    return redirect()->route('rt.inventaris.index');
+                }
+                $inventaris->kode_atk = $request->get('kode_atk');
+                $inventaris->nama_atk = $request->get('nama_atk');
+                $inventaris->tgl_dimiliki = $request->get('atk_tanggal_perolehan');
+                $inventaris->kelengkapan_dokumen = $request->get('atk_kelengkapan_dokumen');
+                $inventaris->asal = $request->get('atk_asal');
+                $inventaris->jumlah = $request->get('atk_kuantitas');
+                $inventaris->save();
+                break;
+
+            default:
+                break;
+        }
+        return redirect()->route('rw.inventaris.index');
     }
 
     /**
@@ -222,8 +417,29 @@ class InventarisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $jenis = $request->get('jenis');
+        switch ($jenis) {
+            case 'barang':
+                InventarisBarang::where('id', $id)->delete();
+                break;
+
+            case 'perpustakaan':
+                InventarisPerpustakaan::where('id', $id)->delete();
+                break;
+
+            case 'tanah_bangunan':
+                InventarisTanahBangunan::where('id', $id)->delete();
+                break;
+
+            case 'atk':
+                InventarisATK::where('id', $id)->delete();
+                break;
+
+            default:
+                break;
+        }
+        return redirect()->route('rw.inventaris.index');
     }
 }

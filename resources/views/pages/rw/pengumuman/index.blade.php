@@ -74,7 +74,7 @@ RW - Data Pengumuman
                                 <td>{{$val->judul_pengumuman}}</td>
                                 <td>{{$val->tgl_pengumuman}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary" href="/rt/penngumuman/detail">Detail</a>
+                                    <a class="btn btn-sm text-white btn-primary" href="/rw/pengumuman/{{$val->id}}">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
