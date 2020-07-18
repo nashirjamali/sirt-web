@@ -58,7 +58,7 @@ RW - Register
                                 <td>{{$val->penerima_surat}}</td>
                                 <td>{{$val->tgl_kirim}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary">Detail</a>
+                                    <a href="/rw/register/{{$val->id}}?jenis=keluar" class="btn btn-sm text-white btn-primary">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
@@ -109,7 +109,7 @@ RW - Register
                                 <td>{{$val->asal_surat}}</td>
                                 <td>{{$val->tgl_surat}}</td>
                                 <td>
-                                    <a class="btn btn-sm text-white btn-primary">Detail</a>
+                                    <a href="/rw/register/{{$val->id}}?jenis=masuk" class="btn btn-sm text-white btn-primary">Detail</a>
                                 </td>
                             </tr>
                             @php $no++; @endphp
