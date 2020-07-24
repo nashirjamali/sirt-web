@@ -17,11 +17,11 @@ class Pemilu extends Model
 
     public function calonPemilu()
     {
-        return $this->hasMany(CalonPemilu::class);
+        return $this->hasMany(CalonPemilu::class, 'id_calon');
     }
 
     public function undanganPemilu()
     {
-        return $this->hasMany(UndanganPemilu::class);
+        return $this->hasMany(UndanganPemilu::class, 'id_pemilu');
     }
 }

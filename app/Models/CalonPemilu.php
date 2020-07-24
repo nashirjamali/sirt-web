@@ -10,15 +10,21 @@ class CalonPemilu extends Model
     protected $fillable = [
         'id_pemilu',
         'id_warga',
+        'tipe',
     ];
 
     public function pemilu()
     {
-        return $this->belongsTo(Pemilu::class);
+        return $this->belongsTo(Pemilu::class, 'id_pemilu');
+    }
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class, 'id_warga');
     }
 
     public function pengusul()
     {
-        return $this->hasMany(Pengusul::class);
+        return $this->hasMany(Pengusul::class, 'id_warga');
     }
 }

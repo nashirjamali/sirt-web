@@ -43,7 +43,7 @@
     @endif
 
 
-    
+
     <!-- RT MENU -->
     @if(Auth::user()->tipe == 'RT')
     <li>
@@ -85,12 +85,17 @@
             <span class="nav-text">Pengumuman</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rt/pemilu*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/pemilu">
+            <i class="mdi mdi-vote"></i>
+            <span class="nav-text">Pemilu</span>
+        </a>
+    </li>
     @endif
     <hr>
 
 
-
-
+    
     <!-- Warga MENU -->
     <li>
         <h6 class="px-4 py-2">Menu Warga</h6>
@@ -105,6 +110,12 @@
         <a class="sidenav-item-link" href="/warga/request">
             <i class="mdi mdi-email-plus-outline"></i>
             <span class="nav-text">Request Surat Kependudukan</span>
+        </a>
+    </li>
+    <li class="has-sub {{ request()->is('warga/pemilu*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/warga/pemilu">
+            <i class="mdi mdi-vote"></i>
+            <span class="nav-text">Pemilu</span>
         </a>
     </li>
 

@@ -15,6 +15,6 @@ class UndanganPemilu extends Model
 
     public function pemilu()
     {
-        return $this->belongsTo(Pemilu::class);
+        return $this->belongsTo(Pemilu::class, 'id_pemilu');
     }
 }

@@ -42,7 +42,12 @@ class Warga extends Model
 
     public function pengusulPemilu()
     {
-        return $this->hasMany(Pengusul::class);
+        return $this->hasMany(Pengusul::class, 'id_warga');
+    }
+
+    public function calonPemilu()
+    {
+        return $this->hasMany(CalonPemilu::class, 'id_warga');
     }
 
     public function aspirasi()

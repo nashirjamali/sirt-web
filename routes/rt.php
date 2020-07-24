@@ -19,3 +19,4 @@ Route::resource('penduduk-sementara', 'RT\PendudukSementaraController');
 Route::resource('register', 'RT\RegisterController');
 Route::resource('pengumuman', 'RT\PengumumanController');
 Route::resource('request', 'RT\RequestSuratKependudukan');
+Route::resource('pemilu', 'RT\PemiluController');

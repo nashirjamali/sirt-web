@@ -14,11 +14,11 @@ class Pengusul extends Model
 
     public function calonPemilu()
     {
-        return $this->belongsTo(CalonPemilu::class);
+        return $this->belongsTo(CalonPemilu::class, 'id_calon');
     }
 
     public function wargaPengusul()
     {
-        return $this->belongsTo(Warga::class);
+        return $this->belongsTo(Warga::class, 'id_warga');
     }
 }
