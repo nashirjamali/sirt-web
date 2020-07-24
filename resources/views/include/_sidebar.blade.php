@@ -40,6 +40,12 @@
             <span class="nav-text">Pengumuman</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rw/pemilu*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/pemilu">
+            <i class="mdi mdi-vote"></i>
+            <span class="nav-text">Pemilu</span>
+        </a>
+    </li>
     @endif
 
 

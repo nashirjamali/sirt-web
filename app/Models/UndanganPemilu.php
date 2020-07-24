@@ -9,8 +9,7 @@ class UndanganPemilu extends Model
     protected $table = 'undangan_pemilu';
     protected $fillable = [
         'id_pemilu',
-        'id_warga',
-        
+        'isi',
     ];
 
     public function pemilu()

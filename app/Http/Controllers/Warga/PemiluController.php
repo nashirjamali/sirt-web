@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CalonPemilu;
 use App\Models\Pemilu;
 use App\Models\Pengusul;
+use App\Models\UndanganPemilu;
 use App\Models\Warga;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -20,63 +21,79 @@ class PemiluController extends Controller
      */
     public function index()
     {
-        $undangan = null;
         $calon_rt = null;
         $calon_rw = null;
+        $undangan_rt = null;
+        $undangan_rw = null;
+        $pemilu_rt = null;
+        $pemilu_rw = null;
         $today = date('Y-m-d');
-        $pemilu = Pemilu::where('id_bagian', Auth::user()->id_bagian)->orderBy('created_at', 'desc')->first();
+        $id_bagian = Auth::user()->warga->id_bagian;
 
-        if ($today <= $pemilu->tgl_pemilu) {
-            $is_calon = CalonPemilu::where('id_pemilu', $pemilu->id)->where('tipe', 'RT')->get('id')->toArray();
-            
-            if ($is_calon) {
-                $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->where('id_calon', $is_calon)->first();
-                if (!$pengusul) {
-                    $calon_rt = Warga::where('id_bagian', Auth::user()->id_bagian)
-                        ->whereDoesntHave('mutasi', function (Builder $query) {
-                            $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
-                        })
-                        ->get();
-                }
-            } else {                
-                $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->count();
-                if ($pengusul < 2) {
-                    $calon_rt = Warga::where('id_bagian', Auth::user()->id_bagian)
-                        ->whereDoesntHave('mutasi', function (Builder $query) {
-                            $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
-                        })
-                        ->get();
+        $pemilu = Pemilu::where('id_bagian', $id_bagian)->orderBy('tgl_pemilu', 'desc')->first();
+        if ($pemilu) {
+
+            $undangan_rt = UndanganPemilu::where('id_pemilu', $pemilu->id)->first();
+            $pemilu_rt = $pemilu;
+            if ($today <= $pemilu->tgl_pemilu) {
+                $is_calon = CalonPemilu::where('id_pemilu', $pemilu->id)->get('id')->toArray();
+                if ($is_calon) {
+                    $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->whereIn('id_calon', $is_calon)->first();
+                    if (!$pengusul) {
+                        $calon_rt = Warga::where('id_bagian', $id_bagian)
+                            ->whereDoesntHave('mutasi', function (Builder $query) {
+                                $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
+                            })
+                            ->get();
+                    }
+                } else {
+                    $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->count();
+                    if ($pengusul < 2) {
+                        $calon_rt = Warga::where('id_bagian', $id_bagian)
+                            ->whereDoesntHave('mutasi', function (Builder $query) {
+                                $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
+                            })
+                            ->get();
+                    }
                 }
             }
         }
 
-        if ($today <= $pemilu->tgl_pemilu) {
-            $is_calon = CalonPemilu::where('id_pemilu', $pemilu->id)->where('tipe', "RW")->get('id')->toArray();
-            if ($is_calon) {
-                $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->where('id_calon', $is_calon)->first();
-                if (!$pengusul) {
-                    $calon_rw = Warga::where('id_bagian', Auth::user()->id_bagian)
-                        ->whereDoesntHave('mutasi', function (Builder $query) {
-                            $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
-                        })
-                        ->get();
-                }
-            } else {
-                $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->count();
-                if ($pengusul < 2) {
-                    $calon_rw = Warga::where('id_bagian', Auth::user()->id_bagian)
-                        ->whereDoesntHave('mutasi', function (Builder $query) {
-                            $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
-                        })
-                        ->get();
+        $pemilu = Pemilu::where('id_bagian', 1)->orderBy('tgl_pemilu', 'desc')->first();
+
+        if ($pemilu) {
+            $undangan_rw = UndanganPemilu::where('id_pemilu', $pemilu->id)->first();
+            $pemilu_rw = $pemilu;
+            if ($today <= $pemilu->tgl_pemilu) {
+                $is_calon = CalonPemilu::where('id_pemilu', $pemilu->id)->get('id')->toArray();
+                if ($is_calon) {
+                    $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->whereIn('id_calon', $is_calon)->first();
+                    if (!$pengusul) {
+                        $calon_rw = Warga::where('id_bagian', $id_bagian)
+                            ->whereDoesntHave('mutasi', function (Builder $query) {
+                                $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
+                            })
+                            ->get();
+                    }
+                } else {
+                    $pengusul = Pengusul::where('id_warga', Auth::user()->id_warga)->count();
+                    if ($pengusul < 2) {
+                        $calon_rw = Warga::where('id_bagian', $id_bagian)
+                            ->whereDoesntHave('mutasi', function (Builder $query) {
+                                $query->whereIn('mutasi_warga.status', ['Meninggal', 'Pindah']);
+                            })
+                            ->get();
+                    }
                 }
             }
         }
-
         $data = [
             "calon_rt" => $calon_rt,
             "calon_rw" => $calon_rw,
-            "undangan" => $undangan,
+            "undangan_rt" => $undangan_rt,
+            "undangan_rw" => $undangan_rw,
+            "pemilu_rt" => $pemilu_rt,
+            "pemilu_rw" => $pemilu_rw,
         ];
 
         return view('pages.warga.pemilu.index', $data);
@@ -100,17 +117,32 @@ class PemiluController extends Controller
      */
     public function store(Request $request)
     {
-        $pemilu = Pemilu::where('id_bagian', Auth::user()->id_bagian)->orderBy('created_at', 'desc')->first();
-        $calon = new CalonPemilu;
-        $calon->id_warga = $request->get('id_warga');
-        $calon->id_pemilu = $pemilu->id;
-        $calon->tipe = $request->get('tipe');
-        $calon->save();
+        $tipe = $request->get('tipe');
+        $id_bagian = Auth::user()->warga->id_bagian;
+        if ($tipe == 'RW') {
+            $pemilu = Pemilu::where('id_bagian', 1)->orderBy('created_at', 'desc')->first();
+            $calon = new CalonPemilu;
+            $calon->id_warga = $request->get('id_warga');
+            $calon->id_pemilu = $pemilu->id;
+            $calon->save();
 
-        $pengusul = new Pengusul;
-        $pengusul->id_calon = $calon->id;
-        $pengusul->id_warga = Auth::user()->id_warga;
-        $pengusul->save();
+            $pengusul = new Pengusul;
+            $pengusul->id_calon = $calon->id;
+            $pengusul->id_warga = Auth::user()->id_warga;
+            $pengusul->save();
+        } else {
+            $pemilu = Pemilu::where('id_bagian', $id_bagian)->orderBy('created_at', 'desc')->first();
+            $calon = new CalonPemilu;
+            $calon->id_warga = $request->get('id_warga');
+            $calon->id_pemilu = $pemilu->id;
+            $calon->save();
+
+            $pengusul = new Pengusul;
+            $pengusul->id_calon = $calon->id;
+            $pengusul->id_warga = Auth::user()->id_warga;
+            $pengusul->save();
+        }
+
 
         return redirect()->route('warga.pemilu.index');
     }

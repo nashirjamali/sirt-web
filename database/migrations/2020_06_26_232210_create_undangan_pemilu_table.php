@@ -17,8 +17,7 @@ class CreateUndanganPemiluTable extends Migration
             $table->id();
             $table->bigInteger('id_pemilu')->unsigned();
             $table->foreign('id_pemilu')->references('id')->on('pemilu')->cascadeOnDelete();
-            $table->bigInteger('id_warga')->unsigned();
-            $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
+            $table->longText('isi');
             $table->timestamps();
         });
     }

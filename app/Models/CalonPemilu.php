@@ -10,7 +10,6 @@ class CalonPemilu extends Model
     protected $fillable = [
         'id_pemilu',
         'id_warga',
-        'tipe',
     ];
 
     public function pemilu()

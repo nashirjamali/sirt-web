@@ -35,19 +35,36 @@ RT - Detail Pemilu
                         <div class="w-100"></div>
                         <h5 class="text-dark">{{$pemilu->periode}}</h5>
                     </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                        <label for="">Tanggal Pelaksanaan</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$pemilu->tgl_pemilu}}</h5>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                        <label for="">Tempat Pelaksanaam</label>
+                        <div class="w-100"></div>
+                        <h5 class="text-dark">{{$pemilu->tempat_pemilu}}</h5>
+                    </div>
                 </div>
                 <a href="/rt/pemilu/{{$pemilu->id}}/edit" class="mr-2 btn btn-warning btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Edit
                 </a>
-                <a href="/rt/pemilu/{{$pemilu->id}}/edit" class="mr-2 btn btn-primary btn-pill text-white">
+                @if($undangan)
+                <a href="/rw/undangan-pemilu/{{$undangan->id}}" class="mr-2 btn btn-primary btn-pill text-white">
+                    <i class="mdi mdi-circle-edit-outline"></i>
+                    Edit Undangan
+                </a>
+                @else
+                <a href="/rw/undangan-pemilu/create" class="mr-2 btn btn-primary btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Sebar Undangan
                 </a>
+                @endif
             </div>
         </div>
     </div>
-    <div class="w-100"></div>
+
     <div class="col-lg-6 col-md-12 col-sm-12">
         <div class="card card-default">
             <div class="card-header">
@@ -68,39 +85,6 @@ RT - Detail Pemilu
                         </thead>
                         <tbody>
                             @foreach($calonRT as $val)
-                            <tr>
-                                <td>{{$val->warga->nama}}</td>
-                                <td>{{$val->warga->jkel}}</td>
-                                <td>{{$val->total}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="card card-default">
-            <div class="card-header">
-                <div class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
-                    <i class="mdi mdi-account-group font-size-20"></i>
-                </div>
-                <h2>Usulan Calon Ketua RW</h2>
-            </div>
-            <div class="card-body">
-                <div class="responsive-data-table">
-                    <table class="table dt-responsive nowrap data-table" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($calonRW as $val)
                             <tr>
                                 <td>{{$val->warga->nama}}</td>
                                 <td>{{$val->warga->jkel}}</td>

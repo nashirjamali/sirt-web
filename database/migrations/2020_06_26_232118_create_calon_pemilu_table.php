@@ -19,7 +19,6 @@ class CreateCalonPemiluTable extends Migration
             $table->foreign('id_pemilu')->references('id')->on('pemilu')->cascadeOnDelete();
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('warga')->cascadeOnDelete();
-            $table->string('tipe');
             $table->timestamps();
         });
     }

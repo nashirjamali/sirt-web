@@ -64,13 +64,12 @@ class PemiluController extends Controller
     public function show($id)
     {
         $pemilu = Pemilu::where('id_bagian', Auth::user()->id_bagian)->where('id', $id)->first();
-        $calonRT = CalonPemilu::where('id_pemilu', $pemilu->id)->where('tipe', 'RT')->with('warga')->groupBy('id_warga')->select('id_warga', DB::raw('count(*) as total'))->get();
-        $calonRW = CalonPemilu::where('id_pemilu', $pemilu->id)->where('tipe', 'RW')->with('warga')->groupBy('id_warga')->select('id_warga', DB::raw('count(*) as total'))->get();
-
+        $calonRT = CalonPemilu::where('id_pemilu', $pemilu->id)->with('warga')->groupBy('id_warga')->select('id_warga', DB::raw('count(*) as total'))->get();
+        $undangan = UndanganPemilu::where('id_pemilu', $pemilu->id)->first();
         $data = [
             "pemilu" => $pemilu,
             "calonRT" => $calonRT,
-            "calonRW" => $calonRW,
+            "undangan" => $undangan,
         ];
 
         return view('pages.rt.pemilu.detail', $data);
