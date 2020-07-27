@@ -101,7 +101,7 @@ RT - Penduduk Sementara
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Tambah Data Mutasi</button>
+    <button type="submit" class="btn btn-primary btn-lg">Tambah Penduduk Sementara</button>
 </form>
 
 @if($errors->any())

@@ -34,7 +34,7 @@ RT - Edit Mutasi Warga
         <div class="col-12">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Edit Penduduk Sementara</h2>
+                    <h2>Edit Mutasi Warga</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
