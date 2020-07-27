@@ -11,7 +11,7 @@ RW - Aspirasi
 @endpush
 @section('content')
 <div class="breadcrumb-wrapper">
-    <h1>Request Surat Kependudukan</h1>
+    <h1>Data Aspirasi Warga</h1>
 </div>
 
 <div class="row">
