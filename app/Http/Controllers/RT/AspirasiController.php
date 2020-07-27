@@ -4,6 +4,9 @@ namespace App\Http\Controllers\RT;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AspirasiWarga;
+use App\Models\Bagian;
+use Illuminate\Support\Facades\Auth;
 
 class AspirasiController extends Controller
 {
@@ -14,7 +17,12 @@ class AspirasiController extends Controller
      */
     public function index()
     {
-        //
+        $aspirasi = AspirasiWarga::where('id_bagian', Auth::user()->id_bagian)->get();
+        
+        $data = [
+            "aspirasi" => $aspirasi,
+        ];
+        return view('pages.rt.aspirasi.index', $data);
     }
 
     /**
@@ -46,7 +54,12 @@ class AspirasiController extends Controller
      */
     public function show($id)
     {
-        //
+        $aspirasi = AspirasiWarga::find($id);
+        
+        $data = [
+            "aspirasi" => $aspirasi,
+        ];
+        return view('pages.rt.aspirasi.detail', $data);
     }
 
     /**

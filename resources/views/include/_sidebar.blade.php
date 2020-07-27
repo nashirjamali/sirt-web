@@ -109,6 +109,12 @@
             <span class="nav-text">Rapat</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rt/aspirasi*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/aspirasi">
+            <i class="mdi mdi-chat-processing"></i>
+            <span class="nav-text">Aspirasi</span>
+        </a>
+    </li>
     @endif
     <hr>
 
