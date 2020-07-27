@@ -22,7 +22,7 @@ class Rapat extends Model
 
     public function pemimpin()
     {
-        return $this->belongsTo(Warga::class);
+        return $this->belongsTo(Warga::class, 'id_pemimpin');
     }
 
     public function presensi()

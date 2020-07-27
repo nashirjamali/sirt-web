@@ -46,6 +46,12 @@
             <span class="nav-text">Pemilu</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rw/rapat*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rw/rapat">
+            <i class="mdi mdi-timetable"></i>
+            <span class="nav-text">Rapat</span>
+        </a>
+    </li>
     @endif
 
 
@@ -97,11 +103,17 @@
             <span class="nav-text">Pemilu</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('rt/pemilu*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/rt/rapat">
+            <i class="mdi mdi-timetable"></i>
+            <span class="nav-text">Rapat</span>
+        </a>
+    </li>
     @endif
     <hr>
 
 
-    
+
     <!-- Warga MENU -->
     <li>
         <h6 class="px-4 py-2">Menu Warga</h6>

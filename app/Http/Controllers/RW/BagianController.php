@@ -127,7 +127,15 @@ class BagianController extends Controller
      */
     public function show($id)
     {
-        //
+        $bagian = Bagian::find($id);
+        $pengurus = User::where('id_bagian', $bagian->id)->get();
+
+        $data = [
+            "bagian" => $bagian,
+            "pengurus" => $pengurus,
+        ];
+
+        return view('pages.rw.bagian.detail', $data);
     }
 
     /**

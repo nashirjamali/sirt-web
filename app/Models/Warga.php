@@ -32,7 +32,7 @@ class Warga extends Model
 
     public function pemimpinRapat()
     {
-        return $this->hasOne(Rapat::class);
+        return $this->hasOne(Rapat::class, 'id_pemimpin');
     }
 
     public function presensiRapat()
