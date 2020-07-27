@@ -52,7 +52,7 @@ class Warga extends Model
 
     public function aspirasi()
     {
-        return $this->hasMany(AspirasiWarga::class);
+        return $this->hasMany(AspirasiWarga::class, 'id_warga');
     }
 
     public function user()

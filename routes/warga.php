@@ -14,3 +14,4 @@ Route::get('/', function() {
 Route::resource('pengumuman', 'Warga\PengumumanController');
 Route::resource('request', 'Warga\RequestSuratKependudukan');
 Route::resource('pemilu', 'Warga\PemiluController');
+Route::resource('aspirasi', 'Warga\AspirasiController');

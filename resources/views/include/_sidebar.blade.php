@@ -136,5 +136,11 @@
             <span class="nav-text">Pemilu</span>
         </a>
     </li>
+    <li class="has-sub {{ request()->is('warga/aspirasi*') ? 'active' : '' }}">
+        <a class="sidenav-item-link" href="/warga/aspirasi">
+            <i class="mdi mdi-chat-processing"></i>
+            <span class="nav-text">Aspirasi</span>
+        </a>
+    </li>
 
 </ul>
