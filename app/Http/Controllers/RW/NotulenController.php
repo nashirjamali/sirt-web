@@ -5,11 +5,9 @@ namespace App\Http\Controllers\RW;
 use App\Http\Controllers\Controller;
 use App\Models\NotulenRapat;
 use App\Models\Rapat;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class RapatController extends Controller
+class NotulenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +16,7 @@ class RapatController extends Controller
      */
     public function index()
     {
-        $rapat = Rapat::where('id_bagian', Auth::user()->id_bagian)->get();
-        $data = [
-            "rapat" => $rapat,
-        ];
-        return view('pages.rw.rapat.index', $data);
+        //
     }
 
     /**
@@ -30,10 +24,13 @@ class RapatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $user = User::where('id_bagian', Auth::user()->id_bagian)->where('tipe', '!=', 'Warga')->get();
-        return view('pages.rw.rapat.create', ['user' => $user]);
+        $id = $request->get('id_rapat');
+
+        $rapat = Rapat::find($id);
+        
+        return view('pages.rw.rapat.notulen.create', ['rapat' => $rapat]);
     }
 
     /**
@@ -44,17 +41,15 @@ class RapatController extends Controller
      */
     public function store(Request $request)
     {
-        // id, id_bagian, id_pemimpin, tgl_rapat, waktu_rapat, tempat_rapat, created_at, updated_at
+        $id_rapat = $request->get('id_rapat');
+        $isi_notulen = $request->get('content');
 
-        $rapat = new Rapat;
-        $rapat->id_bagian = Auth::user()->id_bagian;
-        $rapat->id_pemimpin = $request->get('id_pemimpin');
-        $rapat->tgl_rapat = $request->get('tgl_rapat');
-        $rapat->waktu_rapat = $request->get('waktu_rapat');
-        $rapat->tempat_rapat = $request->get('tempat_rapat');
-        $rapat->save();
+        $notulen = new NotulenRapat;
+        $notulen->id_rapat = $id_rapat;
+        $notulen->isi_notulen = $isi_notulen;
+        $notulen->save();
 
-        return redirect()->route('rw.rapat.index');
+        return redirect()->route('rw.rapat.show', $id_rapat);
     }
 
     /**
@@ -65,13 +60,7 @@ class RapatController extends Controller
      */
     public function show($id)
     {
-        $rapat = Rapat::where('id', $id)->where('id_bagian', Auth::user()->id_bagian)->first();
-        $notulen = NotulenRapat::where('id_rapat', $rapat->id)->first();
-        $data = [
-            "rapat" => $rapat,
-            "notulen" => $notulen,
-        ];
-        return view('pages.rw.rapat.detail', $data);
+        //
     }
 
     /**

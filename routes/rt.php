@@ -21,3 +21,5 @@ Route::resource('pengumuman', 'RT\PengumumanController');
 Route::resource('request', 'RT\RequestSuratKependudukan');
 Route::resource('pemilu', 'RT\PemiluController');
 Route::resource('undangan-pemilu', 'RT\UndanganPemilu');
+Route::resource('rapat', 'RT\RapatController');
+Route::resource('notulen', 'RT\NotulenController');

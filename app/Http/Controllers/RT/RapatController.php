@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\RW;
+namespace App\Http\Controllers\RT;
 
 use App\Http\Controllers\Controller;
 use App\Models\NotulenRapat;
@@ -22,7 +22,7 @@ class RapatController extends Controller
         $data = [
             "rapat" => $rapat,
         ];
-        return view('pages.rw.rapat.index', $data);
+        return view('pages.rt.rapat.index', $data);
     }
 
     /**
@@ -33,7 +33,7 @@ class RapatController extends Controller
     public function create()
     {
         $user = User::where('id_bagian', Auth::user()->id_bagian)->where('tipe', '!=', 'Warga')->get();
-        return view('pages.rw.rapat.create', ['user' => $user]);
+        return view('pages.rt.rapat.create', ['user' => $user]);
     }
 
     /**
@@ -44,8 +44,6 @@ class RapatController extends Controller
      */
     public function store(Request $request)
     {
-        // id, id_bagian, id_pemimpin, tgl_rapat, waktu_rapat, tempat_rapat, created_at, updated_at
-
         $rapat = new Rapat;
         $rapat->id_bagian = Auth::user()->id_bagian;
         $rapat->id_pemimpin = $request->get('id_pemimpin');
@@ -54,7 +52,7 @@ class RapatController extends Controller
         $rapat->tempat_rapat = $request->get('tempat_rapat');
         $rapat->save();
 
-        return redirect()->route('rw.rapat.index');
+        return redirect()->route('rt.rapat.index');
     }
 
     /**
@@ -71,7 +69,7 @@ class RapatController extends Controller
             "rapat" => $rapat,
             "notulen" => $notulen,
         ];
-        return view('pages.rw.rapat.detail', $data);
+        return view('pages.rt.rapat.detail', $data);
     }
 
     /**

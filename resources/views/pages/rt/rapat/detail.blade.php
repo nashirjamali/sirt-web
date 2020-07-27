@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RW - Detail Rapat
+RT - Detail Rapat
 @endpush
 @section('content')
 <div class="breadcrumb-wrapper">
@@ -8,12 +8,12 @@ RW - Detail Rapat
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-0">
             <li class="breadcrumb-item">
-                <a href="/rw/rapat">
+                <a href="/rt/rapat">
                     <span class="mdi mdi-home"></span>
                 </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="/rw/rapat">
+                <a href="/rt/rapat">
                     Data Rapat
                 </a>
             </li>
@@ -54,7 +54,7 @@ RW - Detail Rapat
                         <h5 class="text-dark">{{$rapat->pemimpin->nama}}</h5>
                     </div>
                 </div>
-                <a href="/rw/rapat/{{$rapat->id}}/edit" class="mr-2 btn btn-warning btn-pill text-white">
+                <a href="/rt/rapat/{{$rapat->id}}/edit" class="mr-2 btn btn-warning btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Edit
                 </a>
@@ -62,7 +62,7 @@ RW - Detail Rapat
                     <i class="mdi mdi-trash-can"></i>
                     Hapus
                 </button>
-                <a href="/rw/notulen/create?id_rapat={{$rapat->id}}" class="mr-2 btn btn-primary btn-pill text-white">
+                <a href="/rt/notulen/create?id_rapat={{$rapat->id}}" class="mr-2 btn btn-primary btn-pill text-white">
                     <i class="mdi mdi-circle-edit-outline"></i>
                     Buat Notulen
                 </a>
@@ -91,7 +91,7 @@ RW - Detail Rapat
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="{{route('rw.rapat.destroy', $rapat->id)}}" method="post">
+        <form action="{{route('rt.rapat.destroy', $rapat->id)}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <div class="modal-content">

@@ -103,7 +103,7 @@
             <span class="nav-text">Pemilu</span>
         </a>
     </li>
-    <li class="has-sub {{ request()->is('rt/pemilu*') ? 'active' : '' }}">
+    <li class="has-sub {{ request()->is('rt/rapat*') ? 'active' : '' }}">
         <a class="sidenav-item-link" href="/rt/rapat">
             <i class="mdi mdi-timetable"></i>
             <span class="nav-text">Rapat</span>

@@ -23,3 +23,4 @@ Route::resource('pemilu', 'RW\PemiluController');
 Route::resource('undangan-pemilu', 'RW\UndanganPemilu');
 Route::resource('pengurus', 'RW\PengurusController');
 Route::resource('rapat', 'RW\RapatController');
+Route::resource('notulen', 'RW\NotulenController');

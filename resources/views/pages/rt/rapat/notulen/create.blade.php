@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @push('page-title')
-RW - Notulen Rapat
+RT - Notulen Rapat
 @endpush
 @push('custom-style')
 <link href="{{asset('assets/plugins/summernote/summernote.min.css')}}" rel="stylesheet">
@@ -12,7 +12,7 @@ RW - Notulen Rapat
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-0">
             <li class="breadcrumb-item">
-                <a href="/rw/rapat/{{$rapat->id}}">
+                <a href="/rt/rapat/{{$rapat->id}}">
                     <span class="mdi mdi-home"></span>
                 </a>
             </li>
@@ -31,7 +31,7 @@ RW - Notulen Rapat
     </button>
 </div>
 @endif
-<form id="form" method="POST" action="{{route('rw.notulen.store')}}">
+<form id="form" method="POST" action="{{route('rt.notulen.store')}}">
     @csrf
     <input type="hidden" name="id_rapat" value="{{$rapat->id}}">
     <div class="row">
